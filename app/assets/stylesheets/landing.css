@@ -1,0 +1,22 @@
+#landing-intro {
+  text-align: center;
+}
+
+#img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-color: #CCC;
+  border-width: medium;
+  height: 580px;
+  width: 850px;
+}
+
+#left-arrow {
+  height: 50px;
+}
+
+#right-arrow {
+  height: 50px;
+}

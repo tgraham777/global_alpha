@@ -1,4 +1,3 @@
-
 $(document).ready(function(){
   var slideimages = new Array()
   slideimages[0] = new Image()
@@ -11,14 +10,24 @@ $(document).ready(function(){
   var step = 1;
 
   setInterval(function(){
-    $('img')[0].src = slideimages[step].src;
+    $('#img')[0].src = slideimages[step].src;
 
     if(step < 2) {
       step++;
     } else {
       step = 0;
     }
-  }, 3000);
+  }, 7000);
 
-  // debugger;
+  $('#img').click(function(){
+    window.alert("You need to sign in!");
+  })
+
+  $('#left-arrow').click(function(){
+    window.alert("You clicked the left arrow!");
+  })
+
+  $('#right-arrow').click(function(){
+    window.alert("You clicked the right arrow!");
+  })
 });
