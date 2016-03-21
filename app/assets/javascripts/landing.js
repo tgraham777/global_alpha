@@ -19,15 +19,41 @@ $(document).ready(function(){
     }
   }, 7000);
 
-  $('#img').click(function(){
+  $('#img').click(function(event){
     window.alert("You need to sign in!");
+    return false;
   })
 
-  $('#left-arrow').click(function(){
-    window.alert("You clicked the left arrow!");
+  $('#left-arrow').click(function(event){
+    moveLeft();
+    return false;
   })
 
-  $('#right-arrow').click(function(){
-    window.alert("You clicked the right arrow!");
+  $('#right-arrow').click(function(event){
+    moveRight();
+    return false;
   })
+
+  function moveRight(){
+    $('#img')[0].src = slideimages[step].src;
+
+    if(step < 2) {
+      step++;
+    } else {
+      step = 0;
+    }
+  }
+
+  function moveLeft(){
+    if(step === 1){
+      $('#img')[0].src = slideimages[2].src;
+      step--;
+    } else if(step === 2) {
+      $('#img')[0].src = slideimages[0].src;
+      step--;
+    } else if(step === 0){
+      $('#img')[0].src = slideimages[1].src;
+      step = 2;
+    }
+  }
 });
