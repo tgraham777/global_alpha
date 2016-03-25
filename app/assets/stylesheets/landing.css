@@ -62,9 +62,11 @@
 	float: left;
 	margin-left: 7.5%;
 	text-align: center;
-  width: 15%
+  width: 15%;
+  opacity: 0.5;
 }
 
 .landing-control-item:first-child {
 	margin-left: 250px;
+  opacity: 1;
 }
