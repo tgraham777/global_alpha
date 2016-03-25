@@ -21,7 +21,7 @@ $(document).ready(function(){
   }, 7000);
 
   $('#img').click(function(event){
-    window.alert("You need to log in!");
+    window.location.href = '/login';
     return false;
   })
 
