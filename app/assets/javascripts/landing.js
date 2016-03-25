@@ -56,4 +56,22 @@ $(document).ready(function(){
       step = 2;
     }
   }
+
+  $('#landing-control-macro').click(function(event){
+    $('#img')[0].src = slideimages[0].src;
+    step = 1;
+    return false;
+  })
+
+  $('#landing-control-finmkt').click(function(event){
+    $('#img')[0].src = slideimages[1].src;
+    step = 2;
+    return false;
+  })
+
+  $('#landing-control-keyind').click(function(event){
+    $('#img')[0].src = slideimages[2].src;
+    step = 0;
+    return false;
+  })
 });
