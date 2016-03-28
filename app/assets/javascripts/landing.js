@@ -83,17 +83,17 @@ $(document).ready(function(){
 
   function changeOpacity(){
     if(step === 0){
-      $('#landing-control-hottop').css({ 'opacity' : 0.5, 'border-width' : 'thin' });
-      $('#landing-control-macro').css({ 'opacity' : 0.5, 'border-width' : 'thin' });
-      $('#landing-control-finmkt').css({ 'opacity' : 1, 'border-width' : 'medium' });
+      $('#landing-control-hottop').css({ 'opacity' : 0.5, 'border-width' : 'thin', 'color' : '#AAA' });
+      $('#landing-control-macro').css({ 'opacity' : 0.5, 'border-width' : 'thin', 'color' : '#AAA' });
+      $('#landing-control-finmkt').css({ 'opacity' : 1, 'border-width' : 'medium', 'color' : 'green' });
     } else if(step === 1){
-      $('#landing-control-hottop').css({ 'opacity' : 1, 'border-width' : 'medium' });
-      $('#landing-control-macro').css({ 'opacity' : 0.5, 'border-width' : 'thin' });
-      $('#landing-control-finmkt').css({ 'opacity' : 0.5, 'border-width' : 'thin' });
+      $('#landing-control-hottop').css({ 'opacity' : 1, 'border-width' : 'medium', 'color' : 'green' });
+      $('#landing-control-macro').css({ 'opacity' : 0.5, 'border-width' : 'thin', 'color' : '#AAA' });
+      $('#landing-control-finmkt').css({ 'opacity' : 0.5, 'border-width' : 'thin', 'color' : '#AAA' });
     } else {
-      $('#landing-control-hottop').css({ 'opacity' : 0.5, 'border-width' : 'thin' });
-      $('#landing-control-macro').css({ 'opacity' : 1, 'border-width' : 'medium' });
-      $('#landing-control-finmkt').css({ 'opacity' : 0.5, 'border-width' : 'thin' });
+      $('#landing-control-hottop').css({ 'opacity' : 0.5, 'border-width' : 'thin', 'color' : '#AAA' });
+      $('#landing-control-macro').css({ 'opacity' : 1, 'border-width' : 'medium', 'color' : 'green' });
+      $('#landing-control-finmkt').css({ 'opacity' : 0.5, 'border-width' : 'thin', 'color' : '#AAA' });
     }
   }
 });
