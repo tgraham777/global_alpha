@@ -20,12 +20,6 @@ $(document).ready(function(){
     changeOpacity();
   }, 7000);
 
-  $('#img').click(function(event){
-    window.alert("You need to log in first!")
-    window.location.href = '/login';
-    return false;
-  })
-
   $('#left-arrow').click(function(event){
     moveLeft();
     changeOpacity();
