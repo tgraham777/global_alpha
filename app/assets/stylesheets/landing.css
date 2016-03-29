@@ -30,6 +30,7 @@
 
 #left-arrow:hover {
   height: 55px;
+  cursor: pointer;
 }
 
 #right-arrow {
@@ -43,6 +44,7 @@
 
 #right-arrow:hover {
   height: 55px;
+  cursor: pointer;
 }
 
 .landing-controls {
