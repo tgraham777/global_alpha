@@ -5,7 +5,11 @@
 <div class="landing-container">
   <%= image_tag "/images/left-arrow.png", id: "left-arrow", alt: "Left Arrow" %>
 
-  <%= link_to(image_tag("/images/img1.jpg", id: "img", alt: "Landing Image"), dashboard_path) %>
+  <div id="cf">
+    <%= link_to(image_tag("/images/img3.jpg", class: "meep", id: "img3", alt: "Landing Image"), dashboard_path) %>
+    <%= link_to(image_tag("/images/img2.jpg", class: "top", id: "img2", alt: "Landing Image"), dashboard_path) %>
+    <%= link_to(image_tag("/images/img1.jpg", class: "bottom", id: "img1", alt: "Landing Image"), dashboard_path) %>
+  </div>
 
   <%= image_tag "/images/right-arrow.png", id: "right-arrow", alt: "Right Arrow" %>
 </div>

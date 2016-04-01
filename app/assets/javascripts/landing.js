@@ -1,82 +1,100 @@
 $(document).ready(function(){
-  var slideimages = new Array()
-  slideimages[0] = new Image()
-  slideimages[0].src = "/images/img1.jpg"
-  slideimages[1] = new Image()
-  slideimages[1].src = "/images/img2.jpg"
-  slideimages[2] = new Image()
-  slideimages[2].src = "/images/img3.jpg"
-
   var step = 1;
 
-  setInterval(function(){
-    $('#img')[0].src = slideimages[step].src;
-
-    if(step < 2) {
+  var interval = setInterval(function(){
+    if(step === 1){
+      $('#img1').fadeOut(1500);
       step++;
-    } else {
+    } else if(step === 2){
+      $('#img2').fadeOut(1500);
       step = 0;
+    } else if(step === 0){
+      $('#img1').fadeIn(1500);
+      $('#img2').fadeIn(1500);
+      step++;
     }
-    changeOpacity();
+
+    changeButtonOpacity();
   }, 7000);
 
   $('#left-arrow').click(function(event){
     moveLeft();
-    changeOpacity();
+    changeButtonOpacity();
     return false;
   })
 
   $('#right-arrow').click(function(event){
     moveRight();
-    changeOpacity();
+    changeButtonOpacity();
     return false;
   })
 
   function moveRight(){
-    $('#img')[0].src = slideimages[step].src;
-
-    if(step < 2) {
+    clearInterval(interval);
+    if(step === 1){
+      $('#img2').fadeIn(1500);
+      $('#img1').fadeOut(1500);
       step++;
-    } else {
+    } else if(step === 2){
+      $('#img3').fadeIn(1500);
+      $('#img2').fadeOut(1500);
       step = 0;
+    } else if(step === 0){
+      $('#img1').fadeIn(1500);
+      $('#img3').fadeOut(1500);
+      step++;
     }
   }
 
   function moveLeft(){
+    clearInterval(interval);
     if(step === 1){
-      $('#img')[0].src = slideimages[2].src;
+      $('#img3').fadeIn(1500);
+      $('#img1').fadeOut(1500);
+      $('#img2').fadeOut(1500);
       step--;
     } else if(step === 2) {
-      $('#img')[0].src = slideimages[0].src;
+      $('#img1').fadeIn(1500);
+      $('#img2').fadeOut(1500);
       step--;
     } else if(step === 0){
-      $('#img')[0].src = slideimages[1].src;
+      $('#img2').fadeIn(1500);
+      $('#img3').fadeOut(1500);
       step = 2;
     }
   }
 
   $('#landing-control-hottop').click(function(event){
-    $('#img')[0].src = slideimages[0].src;
+    clearInterval(interval);
+    $('#img1').fadeIn(1500);
+    $('#img2').fadeOut(1500);
+    $('#img3').fadeOut(1500);
     step = 1;
-    changeOpacity();
+    changeButtonOpacity();
     return false;
   })
 
   $('#landing-control-macro').click(function(event){
-    $('#img')[0].src = slideimages[1].src;
+    clearInterval(interval);
+    $('#img1').fadeOut(1500);
+    $('#img2').fadeIn(1500);
+    $('#img3').fadeOut(1500);
     step = 2;
-    changeOpacity();
+    changeButtonOpacity();
     return false;
   })
 
   $('#landing-control-finmkt').click(function(event){
-    $('#img')[0].src = slideimages[2].src;
+    clearInterval(interval);
+    $('#img1').fadeOut(1500);
+    $('#img2').fadeOut(1500);
+    $('#img3').fadeIn(1500);
     step = 0;
-    changeOpacity();
+    changeButtonOpacity();
     return false;
   })
 
-  function changeOpacity(){
+  function changeButtonOpacity(){
     if(step === 0){
       $('#landing-control-hottop').css({ 'opacity' : 0.5, 'border-width' : 'thin', 'color' : '#AAA', 'border-color' : '#CCC' });
       $('#landing-control-macro').css({ 'opacity' : 0.5, 'border-width' : 'thin', 'color' : '#AAA', 'border-color' : '#CCC' });

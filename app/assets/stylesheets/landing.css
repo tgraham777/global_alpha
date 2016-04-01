@@ -1,3 +1,21 @@
+#cf {
+  position: relative;
+  height: 500px;
+  width: 850px;
+  margin: 0 auto;
+  display: inline-block;
+  border-style: solid;
+  border-color: #CCC;
+  border-width: medium;
+}
+
+#cf img {
+  position: absolute;
+  left: 0;
+  height: 500px;
+  width: 850px;
+}
+
 #landing-intro {
   text-align: center;
   color: #000060;
@@ -10,7 +28,7 @@
   overflow: auto;
 }
 
-#img {
+.img {
   display: inline-block;
   border-style: solid;
   border-color: #CCC;
