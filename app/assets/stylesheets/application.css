@@ -14,10 +14,15 @@
  *= require_self
  */
 
-.alert.flash.error {
-  background-color: #FF8888;
+.alert {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
-.alert.flash.success {
+.alert.success {
   background-color: #88FF88;
+}
+
+.alert.error {
+  background-color: #FF8888;
 }
