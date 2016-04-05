@@ -1,5 +1,43 @@
-<h1>Welcome, <%= current_user.username %></h1>
-<h3>You have logged in successfully.</h3>
+<div class="navbar-wrapper">
+  <div class="container">
 
-<%= link_to "Back to Landing", root_path %><br>
-<%= link_to "View Dashboard", dashboard_path %>
+    <nav class="navbar navbar-inverse navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Global Alpha</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <% if current_user %>
+              <li class="active"><a href="/logout" data-method="delete">Log Out</a></li>
+            <% else %>
+              <li class="active"><a href="/login">Log In</a></li>
+            <% end %>
+
+            <li><a href="/users/new">Sign Up</a></li>
+            <li><a href="/">Back to Landing</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">View Dashboard <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/dashboard">Hot Topic</a></li>
+                <li><a href="/dashboard">Global Macro</a></li>
+                <li><a href="/dashboard">Financial Markets</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container" id="user-container">
+  <h1>Welcome, <%= current_user.username %></h1>
+  <h3>You have logged in successfully.</h3>
+</div>
