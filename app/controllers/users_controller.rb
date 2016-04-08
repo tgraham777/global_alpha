@@ -15,7 +15,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    if current_user
+      @user = User.find(session[:user_id])
+    else
+      flash[:error] = "You need to log in or create an account first!"
+      redirect_to login_path
+    end
   end
 
 private
