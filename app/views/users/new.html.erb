@@ -15,12 +15,10 @@
           <ul class="nav navbar-nav">
             <% if current_user %>
               <li class="active"><a href="/logout" data-method="delete">Log Out</a></li>
+              <li><%= link_to "My Profile", user_path(current_user) %></li>
             <% else %>
               <li class="active"><a href="/login">Log In</a></li>
             <% end %>
-
-            <li><a href="/users/new">Sign Up</a></li>
-            <li><a href="/">Back to Landing</a></li>
           </ul>
         </div>
       </div>
