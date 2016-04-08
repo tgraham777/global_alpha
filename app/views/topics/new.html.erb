@@ -17,11 +17,11 @@
               <li class="active"><a href="/logout" data-method="delete">Log Out</a></li>
             <% else %>
               <li class="active"><a href="/login">Log In</a></li>
-              <li><a href="/users/new">Sign Up</a></li>
             <% end %>
 
+            <li><a href="/users/new">Sign Up</a></li>
+            <li><a href="/">Back to Landing</a></li>
             <li><%= link_to "Back to Topics", topics_path %></li>
-            <li><%= link_to "Create Topic", new_topic_path %></li>
           </ul>
         </div>
       </div>
@@ -29,7 +29,19 @@
   </div>
 </div>
 
-<div class="container" id="user-container">
-  <h1>Welcome, <%= current_user.username %></h1>
-  <h3>You have logged in successfully.</h3>
+<div class="container" id="new-topic-container">
+  <h1>Create Topic</h1>
+
+  <%= form_tag topics_path do %>
+    <%= label_tag :title %>
+    <%= text_field_tag :title, params[:title] %><br>
+
+    <%= label_tag :body %>
+    <%= text_area_tag :body, params[:body] %><br>
+
+    <%= label_tag :tags %><span><em> (separate with commas)</em></span>
+    <%= text_field_tag :tags, params[:tags] %><br>
+
+    <%= submit_tag "Create Topic" %>
+  <% end %>
 </div>
