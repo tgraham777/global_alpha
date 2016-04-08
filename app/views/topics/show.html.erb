@@ -14,15 +14,13 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <% if current_user %>
-              <li><%= link_to "View Profile", user_path(current_user) %></li>
               <li class="active"><a href="/logout" data-method="delete">Log Out</a></li>
+              <li><%= link_to "My Profile", user_path(current_user) %></li>
+              <li><%= link_to "Back to Topics", topics_path %></li>
             <% else %>
               <li class="active"><a href="/login">Log In</a></li>
               <li><a href="/users/new">Sign Up</a></li>
             <% end %>
-
-            <li><%= link_to "Back to Topics", topics_path %></li>
-            <li><%= link_to "Create Topic", new_topic_path %></li>
           </ul>
         </div>
       </div>
@@ -31,6 +29,7 @@
 </div>
 
 <div class="container" id="topic-container">
+  <%= link_to "Create new topic", new_topic_path %>
   <h1><%= @topic.title %></h1>
   <h5><%= @topic.body %></h5>
   <h3>Tags</h3>
