@@ -39,7 +39,7 @@
   <h1>Topics Index</h1>
   <h5><%= link_to "Create new topic", new_topic_path %></h5>
   <% @topics.each do |topic| %>
-    <h2><%= topic.title %></h2>
+    <hr><h2><%= topic.title %></h2>
     <p><%= topic.body %></p>
     <%= link_to "View topic", topic_path(topic) %>
   <% end %>
