@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :require_login
-  
+
   def index
     @topics = Topic.all
   end
@@ -25,6 +25,6 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find_by(id: params[:id])
+    @topic = Topic.find_by(title: params[:title])
   end
 end

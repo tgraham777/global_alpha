@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   root 'landing#index'
 
-  resources :users, only: [:new, :create, :show]
-  resources :topics, only: [:new, :create, :index, :show]
+  resources :users, only: [:new, :create, :show], param: :username
+  resources :topics, only: [:new, :create, :index, :show], param: :title
   resources :tags, only: [:create]
 
   get '/login', to: 'sessions#new'
