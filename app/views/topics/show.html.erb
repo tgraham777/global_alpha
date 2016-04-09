@@ -38,4 +38,7 @@
       <li><%= tag.name %></li>
     <% end %>
   </ul>
+  <div class="delete-topic">
+    <%= button_to "Delete topic", topic_path(@topic), method: :delete %>
+  </div>
 </div>
