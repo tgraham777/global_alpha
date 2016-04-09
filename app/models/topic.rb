@@ -5,5 +5,7 @@ class Topic < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :body
 
-  # accepts_nested_attributes_for :tags
+  def to_param
+    title
+  end
 end
