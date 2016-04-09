@@ -17,7 +17,8 @@
               <li class="active"><a href="/logout" data-method="delete">Log Out</a></li>
               <li><%= link_to "My Profile", user_path(current_user) %></li>
             <% else %>
-              <li class="active"><a href="/login">Log In</a></li>
+              <li><a href="/login">Log In</a></li>
+              <li class="active"><a href="/users/new">Sign Up</a></li>
             <% end %>
           </ul>
         </div>
