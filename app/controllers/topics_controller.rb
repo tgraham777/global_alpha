@@ -14,7 +14,7 @@ class TopicsController < ApplicationController
     if @topic.save
       tags = params[:tags].split(", ")
       tags.each do |tag_name|
-        @topic.tags.create(name: tag_name)
+        @topic.tags << Tag.find_or_create_by(name: tag_name)
       end
 
       redirect_to @topic
