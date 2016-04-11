@@ -1,7 +1,6 @@
 class TagsController < ApplicationController
   before_action :require_login
-  
-  def create
 
+  def create
   end
 end
