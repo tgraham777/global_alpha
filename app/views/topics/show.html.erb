@@ -29,7 +29,6 @@
 </div>
 
 <div class="container" id="topic-container">
-  <h5><%= link_to "Create new topic", new_topic_path %></h5>
   <h1><%= @topic.title %></h1>
   <h5><%= @topic.body %></h5>
   <h3>Tags</h3>
@@ -37,8 +36,7 @@
     <% @topic.tags.each do |tag| %>
       <li><%= tag.name %></li>
     <% end %>
-  </ul>
-  <div class="delete-topic">
-    <%= button_to "Delete topic", topic_path(@topic), method: :delete %>
-  </div>
+  </ul><br>
+
+  <%= button_to "Delete topic", topic_path(@topic), method: :delete, class: "btn btn-control btn-danger" %>
 </div>
