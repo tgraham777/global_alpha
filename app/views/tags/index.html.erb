@@ -45,7 +45,7 @@
 
   <ul>
     <% @tags.each do |tag| %>
-      <li><%= tag.name.capitalize %></li>
+      <li><%= tag.name.capitalize %> - <%= link_to "Delete", tag_path(tag), method: :delete %></li>
     <% end %>
   </ul>
 </div>

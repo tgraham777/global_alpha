@@ -31,6 +31,7 @@ class TopicsController < ApplicationController
 
   def destroy
     topic = Topic.find_by(title: params[:title])
+    topic.tags.clear
     topic.destroy
     flash[:success] = "Topic deleted!"
     redirect_to topics_path

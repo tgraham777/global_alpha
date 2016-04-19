@@ -21,6 +21,14 @@ class TagsController < ApplicationController
     @tags = Tag.all
   end
 
+  def destroy
+    tag = Tag.find_by(id: params[:id])
+    tag.topics.clear
+    tag.destroy
+    flash[:success] = "Tag deleted!"
+    redirect_to tags_path
+  end
+
 private
   def tag_params
     params.require(:tag).permit(:name)
