@@ -39,9 +39,21 @@
     <%= label_tag :body %>
     <%= text_area_tag :body, params[:body], type: "body", class: "form-control", placeholder: "Enter description" %><br><br>
 
-    <%= label_tag :tags %><span><em> (separate with commas)</em></span>
-    <%= text_field_tag :tags, params[:tags], type: "tags", class: "form-control", placeholder: "Enter tags" %><br><br>
+    <%= label_tag :tags %><span><em> (select all that apply)</em></span><br>
 
-    <%= submit_tag "Create Topic", class: "btn btn-control btn-primary" %>
+    <div class="col-md-4">
+      <%= collection_check_boxes :topic, :tags, Tag.all, :name, :name do |b| %>
+        <div class="row"><%= b.label(class: "check_box") do %>
+          <div class="col-xs-4">
+            <%= b.check_box(class: "check_box") %>
+          </div>
+            <%= b.object.name.capitalize %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <br><br><br><%= submit_tag "Create Topic", class: "btn btn-control btn-primary" %>
+
   <% end %>
 </div>

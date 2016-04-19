@@ -7,15 +7,16 @@ class TopicsController < ApplicationController
 
   def new
     @topic = Topic.new
-    @tags = Tag.all
   end
 
   def create
     @topic = Topic.new(title: params[:title], body: params[:body])
     if @topic.save
-      tags = params[:tags].split(", ")
+      tags = params[:topic][:tags]
       tags.each do |tag_name|
-        @topic.tags << Tag.find_or_create_by(name: tag_name)
+        if tag_name != ""
+          @topic.tags << Tag.find_or_create_by(name: tag_name)
+        end
       end
 
       redirect_to @topic
