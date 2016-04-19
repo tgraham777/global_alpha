@@ -3,4 +3,5 @@ class Tag < ActiveRecord::Base
   has_many :topics, through: :topic_tags
 
   validates_presence_of :name
+  validates_uniqueness_of :name
 end
