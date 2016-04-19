@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160419225753) do
+ActiveRecord::Schema.define(version: 20160419230145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,22 @@ ActiveRecord::Schema.define(version: 20160419225753) do
 
   add_index "country_tags", ["country_id"], name: "index_country_tags_on_country_id", using: :btree
   add_index "country_tags", ["tag_id"], name: "index_country_tags_on_tag_id", using: :btree
+
+  create_table "indicator_tags", force: :cascade do |t|
+    t.integer  "indicator_id"
+    t.integer  "tag_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "indicator_tags", ["indicator_id"], name: "index_indicator_tags_on_indicator_id", using: :btree
+  add_index "indicator_tags", ["tag_id"], name: "index_indicator_tags_on_tag_id", using: :btree
+
+  create_table "indicators", force: :cascade do |t|
+    t.text     "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "tags", force: :cascade do |t|
     t.text     "name"
@@ -64,6 +80,8 @@ ActiveRecord::Schema.define(version: 20160419225753) do
 
   add_foreign_key "country_tags", "countries"
   add_foreign_key "country_tags", "tags"
+  add_foreign_key "indicator_tags", "indicators"
+  add_foreign_key "indicator_tags", "tags"
   add_foreign_key "topic_tags", "tags"
   add_foreign_key "topic_tags", "topics"
 end
