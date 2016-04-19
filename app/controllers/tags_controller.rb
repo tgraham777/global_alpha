@@ -6,6 +6,7 @@ class TagsController < ApplicationController
   end
 
   def create
+    params[:tag][:name].downcase!
     @tag = Tag.new(tag_params)
     if @tag.save
       flash[:success] = "Tag successfully created!"
