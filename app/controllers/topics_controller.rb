@@ -15,7 +15,7 @@ class TopicsController < ApplicationController
       tags = params[:topic][:tags]
       tags.each do |tag_name|
         if tag_name != ""
-          @topic.tags << Tag.find_or_create_by(name: tag_name)
+          @topic.tags << Tag.find_by(name: tag_name)
         end
       end
 

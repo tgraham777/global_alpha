@@ -37,11 +37,11 @@
 </div>
 
 <div class="container" id="tag-index-container">
-  <br><form method="GET" action="/tags/new">
-    <input type="submit" value="Create new tag", class="btn btn-control btn-success">
-  </form>
-
   <h1>Tag Index</h1>
+
+  <form method="GET" action="/tags/new">
+    <input type="submit" value="Create new tag", class="btn btn-control btn-success">
+  </form><br>
 
   <ul>
     <% @tags.each do |tag| %>
