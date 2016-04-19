@@ -35,7 +35,7 @@
   <h3>Tags</h3>
   <ul>
     <% @topic.tags.each do |tag| %>
-      <li><%= tag.name %></li>
+      <li><%= tag.name.capitalize %></li>
     <% end %>
   </ul><br>
 
