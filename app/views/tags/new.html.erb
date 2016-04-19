@@ -16,8 +16,16 @@
             <% if current_user %>
               <li><a href="/logout" data-method="delete">Log Out</a></li>
               <li><%= link_to "My Profile", user_path(current_user) %></li>
-              <li><%= link_to "Tags", tags_path %></li>
-              <li><%= link_to "Back to Topics", topics_path %></li>
+              <li><%= link_to "Topics", topics_path %></li>
+              <li><%= link_to "Back to Tags", tags_path %></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/dashboard">Hot Topic</a></li>
+                  <li><a href="/dashboard">Global Macro</a></li>
+                  <li><a href="/dashboard">Financial Markets</a></li>
+                </ul>
+              </li>
             <% else %>
               <li><a href="/login">Log In</a></li>
               <li><a href="/users/new">Sign Up</a></li>
@@ -29,26 +37,13 @@
   </div>
 </div>
 
-<div class="container" id="new-topic-container">
-  <h1>Create Topic</h1>
+<div class="container" id="new-tag-container">
+  <h1>Create Tag</h1>
 
-  <%= form_tag topics_path, html: { class: "form-group" } do %>
-    <%= label_tag :title %>
-    <%= text_field_tag :title, params[:title], type: "title", class: "form-control", placeholder: "Enter title" %><br><br>
+  <%= form_for @tag, html: { class: "form-group" } do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name, type: "username", class: "form-control", placeholder: "Enter tag name" %><br>
 
-    <%= label_tag :body %>
-    <%= text_area_tag :body, params[:body], type: "body", class: "form-control", placeholder: "Enter description" %><br><br>
-
-    <%= label_tag :tags %><span><em> (select all that apply)</em></span><br>
-
-    <%= collection_check_boxes :topic, :tags, Tag.all, :name, :name do |b| %>
-      <p>
-        <%= b.check_box(class: "check_box") %>
-        <%= b.object.name.capitalize %>
-      </p>
-    <% end %>
-
-    <br><%= submit_tag "Create Topic", class: "btn btn-control btn-primary" %>
-
+    <%= f.submit "Create Tag", class: "btn btn-control btn-primary" %>
   <% end %>
 </div>
