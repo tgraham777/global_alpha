@@ -19,6 +19,15 @@
               <li><%= link_to "My Profile", user_path(current_user) %></li>
               <li><%= link_to "Topics", topics_path %></li>
               <li><%= link_to "Tags", tags_path %></li>
+              <li><%= link_to "Countries", countries_path %></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dashboard <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="/dashboard">Hot Topic</a></li>
+                  <li><a href="/dashboard">Global Macro</a></li>
+                  <li><a href="/dashboard">Financial Markets</a></li>
+                </ul>
+              </li>
             <% else %>
               <li><a href="/login">Log In</a></li>
               <li><a href="/users/new">Sign Up</a></li>

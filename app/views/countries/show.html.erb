@@ -38,13 +38,14 @@
   </div>
 </div>
 
-<div class="container" id="new-tag-container">
-  <h1>Create Tag</h1>
+<div class="container" id="country-container">
+  <h1><%= @country.name.capitalize %></h1>
+  <h3>Tags</h3>
+  <ul>
+    <% @country.tags.each do |tag| %>
+      <li><%= tag.name.capitalize %></li>
+    <% end %>
+  </ul><br>
 
-  <%= form_for @tag, html: { class: "form-group" } do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name, type: "username", class: "form-control", placeholder: "Enter tag name" %><br>
-
-    <%= f.submit "Create Tag", class: "btn btn-control btn-primary" %>
-  <% end %>
+  <%= button_to "Delete country", country_path(@country), method: :delete, class: "btn btn-control btn-danger" %>
 </div>

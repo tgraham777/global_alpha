@@ -38,13 +38,16 @@
   </div>
 </div>
 
-<div class="container" id="new-tag-container">
-  <h1>Create Tag</h1>
+<div class="container" id="country-index-container">
+  <h1>Country Index</h1>
 
-  <%= form_for @tag, html: { class: "form-group" } do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name, type: "username", class: "form-control", placeholder: "Enter tag name" %><br>
+  <form method="GET" action="/countries/new">
+    <input type="submit" value="Create new country", class="btn btn-control btn-success">
+  </form><br>
 
-    <%= f.submit "Create Tag", class: "btn btn-control btn-primary" %>
-  <% end %>
+  <ul>
+    <% @countries.each do |country| %>
+      <li><%= link_to country.name.capitalize, country_path(country) %></li>
+    <% end %>
+  </ul>
 </div>
