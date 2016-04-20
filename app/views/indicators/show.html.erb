@@ -44,13 +44,14 @@
   </div>
 </div>
 
-<div class="container" id="new-tag-container">
-  <h1>Create Tag</h1>
+<div class="container" id="indicator-container">
+  <h1><%= @indicator.name.capitalize %></h1>
+  <h3>Tags</h3>
+  <ul>
+    <% @indicator.tags.each do |tag| %>
+      <li><%= tag.name.capitalize %></li>
+    <% end %>
+  </ul><br>
 
-  <%= form_for @tag, html: { class: "form-group" } do |f| %>
-    <%= f.label :name %>
-    <%= f.text_field :name, type: "username", class: "form-control", placeholder: "Enter tag name" %><br>
-
-    <%= f.submit "Create Tag", class: "btn btn-control btn-primary" %>
-  <% end %>
+  <%= button_to "Delete Indicator", indicator_path(@indicator), method: :delete, class: "btn btn-control btn-danger" %>
 </div>

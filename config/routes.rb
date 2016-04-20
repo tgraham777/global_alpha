@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :topics, param: :title
   resources :tags, only: [:new, :create, :index, :destroy]
   resources :countries
+  resources :indicators
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'
