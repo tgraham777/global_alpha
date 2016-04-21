@@ -29,11 +29,13 @@ class IndicatorsController < ApplicationController
   end
 
   def show
-    @indicator = Indicator.find_by(name: params[:name])
+    indicator_name = params[:name].split("-").join(" ")
+    @indicator = Indicator.find_by(name: indicator_name)
   end
 
   def destroy
-    indicator = Indicator.find_by(name: params[:name])
+    indicator_name = params[:name].split("-").join(" ")
+    indicator = Indicator.find_by(name: indicator_name)
     indicator.tags.clear
     indicator.destroy
     flash[:success] = "Indicator deleted!"
