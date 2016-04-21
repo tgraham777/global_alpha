@@ -6,6 +6,6 @@ class Topic < ActiveRecord::Base
   validates_presence_of :body
 
   def to_param
-    title
+    title.split(" ").join("-")
   end
 end
