@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show], param: :username
   resources :topics, param: :title
   resources :tags, only: [:new, :create, :index, :destroy]
-  resources :countries
-  resources :indicators
+  resources :countries, param: :name
+  resources :indicators, param: :name
+  resources :previews, param: :name
 
   get '/login', to: 'sessions#new'
   post '/login', to: 'sessions#create'

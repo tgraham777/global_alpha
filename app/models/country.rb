@@ -3,4 +3,8 @@ class Country < ActiveRecord::Base
   has_many :tags, through: :country_tags
 
   validates :name, presence: true, uniqueness: true
+
+  def to_param
+    name
+  end
 end

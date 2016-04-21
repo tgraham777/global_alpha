@@ -1,0 +1,19 @@
+<div class="container" id="new-preview-container">
+  <h1>Add Preview</h1>
+
+  <%= form_tag previews_path, html: { class: "form-group" } do %>
+    <%= label_tag :name %>
+    <%= text_field_tag :name, params[:name], type: "name", class: "form-control", placeholder: "Enter preview name" %><br><br>
+
+    <%= label_tag :tags %><span><em> (select all that apply)</em></span><br>
+
+    <%= collection_check_boxes :preview, :tags, Tag.all, :name, :name do |b| %>
+      <p>
+        <%= b.check_box(class: "check_box") %>
+        <%= b.object.name.capitalize %>
+      </p>
+    <% end %>
+
+    <br><%= submit_tag "Create Preview", class: "btn btn-control btn-primary" %>
+  <% end %>
+</div>
