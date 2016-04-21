@@ -5,7 +5,6 @@ class Indicator < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
 
   def to_param
-    # name
     name.split(" ").join("-")
   end
 end
