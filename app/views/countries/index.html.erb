@@ -7,7 +7,7 @@
 
   <ul>
     <% @countries.each do |country| %>
-      <li><%= link_to country.name.capitalize, country_path(country) %></li>
+      <li><%= link_to country.name.split.map(&:capitalize).join(' '), country_path(country) %></li>
     <% end %>
   </ul>
 </div>

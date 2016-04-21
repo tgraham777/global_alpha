@@ -10,6 +10,7 @@ class TopicsController < ApplicationController
   end
 
   def create
+    params[:title].downcase!
     @topic = Topic.new(title: params[:title], body: params[:body])
     if @topic.save
       tags = params[:topic][:tags]
@@ -27,11 +28,13 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @topic = Topic.find_by(title: params[:title])
+    topic_name = params[:title].split("-").join(" ")
+    @topic = Topic.find_by(title: topic_name)
   end
 
   def destroy
-    topic = Topic.find_by(title: params[:title])
+    topic_name = params[:title].split("-").join(" ")
+    topic = Topic.find_by(title: topic_name)
     topic.tags.clear
     topic.destroy
     flash[:success] = "Topic deleted!"

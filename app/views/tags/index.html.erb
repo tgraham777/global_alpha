@@ -7,7 +7,7 @@
 
   <ul>
     <% @tags.each do |tag| %>
-      <li><%= tag.name.capitalize %> - <%= link_to "Delete", tag_path(tag), method: :delete %></li>
+      <li><%= tag.name.split.map(&:capitalize).join(' ') %> - <%= link_to "Delete", tag_path(tag), method: :delete %></li>
     <% end %>
   </ul>
 </div>

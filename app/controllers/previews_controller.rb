@@ -29,11 +29,13 @@ class PreviewsController < ApplicationController
   end
 
   def show
-    @preview = Preview.find_by(name: params[:name])
+    preview_name = params[:name].split("-").join(" ")
+    @preview = Preview.find_by(name: preview_name)
   end
 
   def destroy
-    preview = Preview.find_by(name: params[:name])
+    preview_name = params[:name].split("-").join(" ")
+    preview = Preview.find_by(name: preview_name)
     preview.tags.clear
     preview.destroy
     flash[:success] = "Preview deleted!"

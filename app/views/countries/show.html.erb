@@ -1,9 +1,9 @@
 <div class="container" id="country-container">
-  <h1><%= @country.name.capitalize %></h1>
+  <h1><%= @country.name.split.map(&:capitalize).join(' ') %></h1>
   <h3>Tags</h3>
   <ul>
     <% @country.tags.each do |tag| %>
-      <li><%= tag.name.capitalize %></li>
+      <li><%= tag.name.split.map(&:capitalize).join(' ') %></li>
     <% end %>
   </ul><br>
 
