@@ -1,0 +1,11 @@
+<div class="container" id="preview-container">
+  <h1><%= @preview.name.capitalize %></h1>
+  <h3>Tags</h3>
+  <ul>
+    <% @preview.tags.each do |tag| %>
+      <li><%= tag.name.capitalize %></li>
+    <% end %>
+  </ul><br>
+
+  <%= button_to "Delete Preview", preview_path(@preview), method: :delete, class: "btn btn-control btn-danger" %>
+</div>

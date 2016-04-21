@@ -29,11 +29,11 @@ class CountriesController < ApplicationController
   end
 
   def show
-    @country = Country.find_by(id: params[:id])
+    @country = Country.find_by(name: params[:name])
   end
 
   def destroy
-    country = Country.find_by(id: params[:id])
+    country = Country.find_by(name: params[:name])
     country.tags.clear
     country.destroy
     flash[:success] = "Country deleted!"

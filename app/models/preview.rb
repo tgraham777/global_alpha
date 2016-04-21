@@ -3,4 +3,8 @@ class Preview < ActiveRecord::Base
   has_many :tags, through: :preview_tags
 
   validates :name, presence: true, uniqueness: true
+
+  def to_param
+    name
+  end
 end
