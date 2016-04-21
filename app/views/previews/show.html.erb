@@ -7,5 +7,9 @@
     <% end %>
   </ul><br>
 
-  <%= button_to "Delete Preview", preview_path(@preview), method: :delete, class: "btn btn-control btn-danger" %>
+  <% if current_user %>
+    <%= button_to "Delete Preview", preview_path(@preview), method: :delete, class: "btn btn-control btn-danger" %>
+  <% else %>
+    <%= button_to "Learn More", dashboard_path, method: :get, class: "btn btn-control btn-success" %>
+  <% end %>
 </div>
