@@ -10,6 +10,7 @@ class TopicsController < ApplicationController
   end
 
   def create
+    params[:title].downcase!
     @topic = Topic.new(title: params[:title], body: params[:body])
     if @topic.save
       tags = params[:topic][:tags]
