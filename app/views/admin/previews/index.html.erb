@@ -1,0 +1,13 @@
+<div class="container" id="preview-index-container">
+  <h1>Preview Index</h1>
+
+  <form method="GET" action="/previews/new">
+    <input type="submit" value="Create new preview", class="btn btn-control btn-success">
+  </form><br>
+
+  <ul>
+    <% @previews.each do |preview| %>
+      <li><%= link_to preview.name.split.map(&:capitalize).join(' '), preview_path(preview) %></li>
+    <% end %>
+  </ul>
+</div>

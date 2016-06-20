@@ -1,0 +1,22 @@
+<div class="container" id="new-topic-container">
+  <h1>Create Topic</h1>
+
+  <%= form_tag topics_path, html: { class: "form-group" } do %>
+    <%= label_tag :title %>
+    <%= text_field_tag :title, params[:title], type: "title", class: "form-control", placeholder: "Enter title" %><br><br>
+
+    <%= label_tag :body %>
+    <%= text_area_tag :body, params[:body], type: "body", class: "form-control", placeholder: "Enter description" %><br><br>
+
+    <%= label_tag :tags %><span><em> (select all that apply)</em></span><br>
+
+    <%= collection_check_boxes :topic, :tags, Tag.all, :name, :name do |b| %>
+      <p>
+        <%= b.check_box(class: "check_box") %>
+        <%= b.object.name.capitalize %>
+      </p>
+    <% end %>
+
+    <br><%= submit_tag "Create Topic", class: "btn btn-control btn-primary" %>
+  <% end %>
+</div>

@@ -1,0 +1,11 @@
+<div class="container" id="indicator-container">
+  <h1><%= @indicator.name.split.map(&:capitalize).join(' ') %></h1>
+  <h3>Tags</h3>
+  <ul>
+    <% @indicator.tags.each do |tag| %>
+      <li><%= tag.name.split.map(&:capitalize).join(' ') %></li>
+    <% end %>
+  </ul><br>
+
+  <%= button_to "Delete Indicator", indicator_path(@indicator), method: :delete, class: "btn btn-control btn-danger" %>
+</div>

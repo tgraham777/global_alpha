@@ -26,11 +26,7 @@
     <%= flash_messages %>
   </div>
 
-  <% if current_admin? %>
-    <%= render 'layouts/admin_navbar' %>
-  <% else %>
-    <%= render 'layouts/navbar' %>
-  <% end %>
+  <%= render 'layouts/navbar' %>
   <%= yield %>
 
   <hr>

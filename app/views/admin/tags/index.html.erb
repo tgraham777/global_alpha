@@ -1,0 +1,13 @@
+<div class="container" id="tag-index-container">
+  <h1>Tag Index</h1>
+
+  <form method="GET" action="/tags/new">
+    <input type="submit" value="Create new tag", class="btn btn-control btn-success">
+  </form><br>
+
+  <ul>
+    <% @tags.each do |tag| %>
+      <li><%= tag.name.split.map(&:capitalize).join(' ') %> - <%= link_to "Delete", tag_path(tag), method: :delete %></li>
+    <% end %>
+  </ul>
+</div>

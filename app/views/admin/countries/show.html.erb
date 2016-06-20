@@ -1,0 +1,11 @@
+<div class="container" id="country-container">
+  <h1><%= @country.name.split.map(&:capitalize).join(' ') %></h1>
+  <h3>Tags</h3>
+  <ul>
+    <% @country.tags.each do |tag| %>
+      <li><%= tag.name.split.map(&:capitalize).join(' ') %></li>
+    <% end %>
+  </ul><br>
+
+  <%= button_to "Delete country", country_path(@country), method: :delete, class: "btn btn-control btn-danger" %>
+</div>

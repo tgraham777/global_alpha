@@ -1,0 +1,13 @@
+<div class="container" id="country-index-container">
+  <h1>Indicator Index</h1>
+
+  <form method="GET" action="/indicators/new">
+    <input type="submit" value="Create new indicator", class="btn btn-control btn-success">
+  </form><br>
+
+  <ul>
+    <% @indicators.each do |indicator| %>
+      <li><%= link_to indicator.name.split.map(&:capitalize).join(' '), indicator_path(indicator) %></li>
+    <% end %>
+  </ul>
+</div>

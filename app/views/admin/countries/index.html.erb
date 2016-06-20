@@ -1,0 +1,13 @@
+<div class="container" id="country-index-container">
+  <h1>Country Index</h1>
+
+  <form method="GET" action="/countries/new">
+    <input type="submit" value="Create new country", class="btn btn-control btn-success">
+  </form><br>
+
+  <ul>
+    <% @countries.each do |country| %>
+      <li><%= link_to country.name.split.map(&:capitalize).join(' '), country_path(country) %></li>
+    <% end %>
+  </ul>
+</div>

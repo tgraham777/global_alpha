@@ -1,0 +1,15 @@
+<div class="container" id="preview-container">
+  <h1><%= @preview.name.split.map(&:capitalize).join(' ') %></h1>
+  <h3>Tags</h3>
+  <ul>
+    <% @preview.tags.each do |tag| %>
+      <li><%= tag.name.split.map(&:capitalize).join(' ') %></li>
+    <% end %>
+  </ul><br>
+
+  <% if current_user %>
+    <%= button_to "Delete Preview", preview_path(@preview), method: :delete, class: "btn btn-control btn-danger" %>
+  <% else %>
+    <%= button_to "Learn More", dashboard_path, method: :get, class: "btn btn-control btn-success" %>
+  <% end %>
+</div>
