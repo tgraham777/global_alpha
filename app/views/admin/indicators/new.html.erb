@@ -1,7 +1,7 @@
 <div class="container" id="new-indicator-container">
   <h1>Add Indicator</h1>
 
-  <%= form_tag indicators_path, html: { class: "form-group" } do %>
+  <%= form_tag admin_indicators_path, html: { class: "form-group" } do %>
     <%= label_tag :name %>
     <%= text_field_tag :name, params[:name], type: "name", class: "form-control", placeholder: "Enter indicator name" %><br><br>
 

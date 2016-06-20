@@ -39,6 +39,6 @@ class Admin::PreviewsController < Admin::BaseController
     preview.tags.clear
     preview.destroy
     flash[:success] = "Preview deleted!"
-    redirect_to previews_path
+    redirect_to admin_previews_path
   end
 end

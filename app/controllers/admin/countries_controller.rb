@@ -39,6 +39,6 @@ class Admin::CountriesController < Admin::BaseController
     country.tags.clear
     country.destroy
     flash[:success] = "Country deleted!"
-    redirect_to countries_path
+    redirect_to admin_countries_path
   end
 end

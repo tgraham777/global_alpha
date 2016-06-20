@@ -39,6 +39,6 @@ class Admin::IndicatorsController < Admin::BaseController
     indicator.tags.clear
     indicator.destroy
     flash[:success] = "Indicator deleted!"
-    redirect_to indicators_path
+    redirect_to admin_indicators_path
   end
 end

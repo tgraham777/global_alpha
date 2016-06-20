@@ -1,13 +1,9 @@
 <div class="container" id="topics-container">
   <h1>Topic Index</h1>
 
-  <form method="GET" action="/topics/new">
-    <input type="submit" value="Create new topic", class="btn btn-control btn-success">
-  </form>
-
   <% @topics.each do |topic| %>
     <hr><h2><%= topic.title.split.map(&:capitalize).join(' ') %></h2>
     <p><%= topic.body %></p>
-    <%= link_to "View topic", topic_path(topic) %>
+    <%= link_to "View topic", admin_topic_path(topic) %>
   <% end %>
 </div>

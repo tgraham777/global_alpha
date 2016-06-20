@@ -8,8 +8,8 @@
   </ul><br>
 
   <% if current_user %>
-    <%= button_to "Delete Preview", preview_path(@preview), method: :delete, class: "btn btn-control btn-danger" %>
+    <%= button_to "Delete Preview", admin_preview_path(@preview), method: :delete, class: "btn btn-control btn-danger" %>
   <% else %>
-    <%= button_to "Learn More", dashboard_path, method: :get, class: "btn btn-control btn-success" %>
+    <%= button_to "Learn More", admin_dashboard_path, method: :get, class: "btn btn-control btn-success" %>
   <% end %>
 </div>

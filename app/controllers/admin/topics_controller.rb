@@ -38,6 +38,6 @@ class Admin::TopicsController < Admin::BaseController
     topic.tags.clear
     topic.destroy
     flash[:success] = "Topic deleted!"
-    redirect_to topics_path
+    redirect_to admin_topics_path
   end
 end

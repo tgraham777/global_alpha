@@ -6,6 +6,4 @@
       <li><%= tag.name.split.map(&:capitalize).join(' ') %></li>
     <% end %>
   </ul><br>
-
-  <%= button_to "Delete country", country_path(@country), method: :delete, class: "btn btn-control btn-danger" %>
 </div>
