@@ -1,7 +1,7 @@
 <div class="container" id="new-country-container">
   <h1>Add Country</h1>
 
-  <%= form_tag countries_path, html: { class: "form-group" } do %>
+  <%= form_tag admin_countries_path, html: { class: "form-group" } do %>
     <%= label_tag :name %>
     <%= text_field_tag :name, params[:name], type: "name", class: "form-control", placeholder: "Enter country name" %><br><br>
 

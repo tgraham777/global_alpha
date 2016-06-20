@@ -1,4 +1,4 @@
-class TagsController < ApplicationController
+class Admin::TagsController < Admin::BaseController
   before_action :require_login
 
   def new
@@ -10,7 +10,7 @@ class TagsController < ApplicationController
     @tag = Tag.new(tag_params)
     if @tag.save
       flash[:success] = "Tag successfully created!"
-      redirect_to tags_path
+      redirect_to admin_tags_path
     else
       flash[:error] = @tag.errors.full_messages.first
       render :action => 'new'
@@ -26,7 +26,7 @@ class TagsController < ApplicationController
     tag.topics.clear
     tag.destroy
     flash[:success] = "Tag deleted!"
-    redirect_to tags_path
+    redirect_to admin_tags_path
   end
 
 private

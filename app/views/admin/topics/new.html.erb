@@ -1,7 +1,7 @@
 <div class="container" id="new-topic-container">
   <h1>Create Topic</h1>
 
-  <%= form_tag topics_path, html: { class: "form-group" } do %>
+  <%= form_tag admin_topics_path, html: { class: "form-group" } do %>
     <%= label_tag :title %>
     <%= text_field_tag :title, params[:title], type: "title", class: "form-control", placeholder: "Enter title" %><br><br>
 

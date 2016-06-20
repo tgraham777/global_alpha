@@ -5,4 +5,5 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :require_login
+  helper_method :current_admin?
 end
