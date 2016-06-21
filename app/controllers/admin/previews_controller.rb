@@ -29,12 +29,12 @@ class Admin::PreviewsController < Admin::BaseController
   end
 
   def show
-    preview_name = params[:name]#.split("-").join(" ")
+    preview_name = params[:name].split("-").join(" ")
     @preview = Preview.find_by(name: preview_name)
   end
 
   def destroy
-    preview_name = params[:name]#.split("-").join(" ")
+    preview_name = params[:name].split("-").join(" ")
     preview = Preview.find_by(name: preview_name)
     preview.tags.clear
     preview.destroy
