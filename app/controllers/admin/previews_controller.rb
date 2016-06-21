@@ -17,7 +17,7 @@ class Admin::PreviewsController < Admin::BaseController
         end
       end
 
-      redirect_to @preview
+      redirect_to admin_preview_path(@preview)
     else
       flash[:error] = @preview.errors.full_messages.first
       render :action => 'new'
@@ -29,12 +29,12 @@ class Admin::PreviewsController < Admin::BaseController
   end
 
   def show
-    preview_name = params[:name].split("-").join(" ")
+    preview_name = params[:name]#.split("-").join(" ")
     @preview = Preview.find_by(name: preview_name)
   end
 
   def destroy
-    preview_name = params[:name].split("-").join(" ")
+    preview_name = params[:name]#.split("-").join(" ")
     preview = Preview.find_by(name: preview_name)
     preview.tags.clear
     preview.destroy
