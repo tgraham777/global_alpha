@@ -6,8 +6,8 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def create
-    params[:tag][:name].downcase!
-    @tag = Tag.new(tag_params)
+    tag_name = params[:name].downcase!
+    @tag = Tag.new(name: tag_name)
     if @tag.save
       flash[:success] = "Tag successfully created!"
       redirect_to admin_tags_path
@@ -24,13 +24,11 @@ class Admin::TagsController < Admin::BaseController
   def destroy
     tag = Tag.find_by(id: params[:id])
     tag.topics.clear
+    tag.indicators.clear
+    tag.previews.clear
+    tag.countries.clear
     tag.destroy
     flash[:success] = "Tag deleted!"
     redirect_to admin_tags_path
-  end
-
-private
-  def tag_params
-    params.require(:tag).permit(:name)
   end
 end
