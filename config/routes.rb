@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :previews, only: [:index, :show], param: :name
 
   namespace :admin do
-    resources :users, only: [:new, :create, :show], param: :username
+    resources :users, only: [:new, :create, :show, :index, :destroy], param: :username
     resources :topics, param: :title
     resources :tags, only: [:new, :create, :index, :destroy]
     resources :countries, param: :name
