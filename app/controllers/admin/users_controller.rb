@@ -7,8 +7,10 @@ class Admin::UsersController < Admin::BaseController
     params[:username].downcase!
     @user = User.new(username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation], role: params[:role])
     if @user.save
-      flash[:success] = "New user #{@user.username} created with role of #{@user.role}"
-      redirect_to login_path
+      name = @user.username.capitalize
+      role = @user.role.capitalize
+      flash[:success] = "New user #{name} created with role of #{role}"
+      redirect_to new_admin_user_path
     else
       flash[:error] = @user.errors.full_messages.first
       render :action => 'new'
