@@ -1,6 +1,6 @@
 <div class="container" id="user-container">
   <h1><%= @user.username.split.map(&:capitalize).join(' ') %></h1>
-  <h4>Role: <%= @user.role %></h4>
+  <h4>Role: <%= @user.role.capitalize %></h4>
   <h4>Date created: <%= @user.created_at %></h4>
   <h4>Date updated: <%= @user.updated_at %></h4>
 
