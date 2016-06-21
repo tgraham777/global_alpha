@@ -5,8 +5,9 @@
     <%= label_tag :username %>
     <%= text_field_tag :username, params[:username], type: "username", class: "form-control", placeholder: "Enter username" %><br>
 
-    <%= label_tag :role %>
-    <%= text_field_tag :role, params[:role], type: "role", class: "form-control", placeholder: "Enter role" %><br>
+    <%= label_tag :role %><br>
+    Default  <%= check_box_tag :role, "default", true %>&nbsp
+    Admin  <%= check_box_tag :role, "admin", false %><br><br>
 
     <%= label_tag :password %>
     <%= password_field_tag :password, params[:password], type: "password", class: "form-control", placeholder: "Enter password" %><br>
