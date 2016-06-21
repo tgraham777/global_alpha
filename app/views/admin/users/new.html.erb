@@ -47,16 +47,19 @@
 <div class="container" id="new-user-container">
   <h1>Create Account</h1>
 
-  <%= form_for @user, html: { class: "form-group" } do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :username, type: "username", class: "form-control", placeholder: "Enter username" %><br>
+  <%= form_tag admin_users_path, html: { class: "form-group" } do %>
+    <%= label_tag :username %>
+    <%= text_field_tag :username, params[:username], type: "username", class: "form-control", placeholder: "Enter username" %><br>
 
-    <%= f.label :password %>
-    <%= f.password_field :password, type: "password", class: "form-control", placeholder: "Enter password" %><br>
+    <%= label_tag :role %>
+    <%= text_field_tag :role, params[:role], type: "role", class: "form-control", placeholder: "Enter role" %><br>
 
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, type: "password-confirmation", class: "form-control", placeholder: "Confirm password" %><br>
+    <%= label_tag :password %>
+    <%= password_field_tag :password, params[:password], type: "password", class: "form-control", placeholder: "Enter password" %><br>
 
-    <%= f.submit "Create Account", class: "btn btn-control btn-primary" %>
+    <%= label_tag :password_confirmation %>
+    <%= text_field_tag :password_confirmation, params[:password_confirmation], type: "password_confirmation", class: "form-control", placeholder: "Confirm password" %><br>
+
+    <br><%= submit_tag "Create Account", class: "btn btn-control btn-primary" %>
   <% end %>
 </div>
