@@ -16,6 +16,7 @@
             <% if current_user %>
               <li><a href="/logout" data-method="delete">Log Out</a></li>
               <li><%= link_to "My Profile", admin_user_path(current_user) %></li>
+              <li><%= link_to "Create Account", new_admin_user_path %></li>
               <li><%= link_to "Previews", admin_previews_path %></li>
               <li><%= link_to "Tags", admin_tags_path %></li>
               <li class="dropdown">

@@ -4,11 +4,11 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def create
-    params[:user][:username].downcase!
-    @user = User.new(user_params)
+    params[:username].downcase!
+    @user = User.new(username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation], role: params[:role])
     if @user.save
-      session[:user_id] = @user.id
-      redirect_to @user
+      flash[:success] = "New user #{@user.username} created with role of #{@user.role}"
+      redirect_to login_path
     else
       flash[:error] = @user.errors.full_messages.first
       render :action => 'new'
@@ -23,10 +23,5 @@ class Admin::UsersController < Admin::BaseController
       flash[:error] = "You need to log in or create an account first!"
       redirect_to login_path
     end
-  end
-
-private
-  def user_params
-    params.require(:user).permit(:username, :password, :password_confirmation)
   end
 end
