@@ -34,8 +34,8 @@ class Admin::CountriesController < Admin::BaseController
   end
 
   def destroy
-    # country_name = params[:name].split("-").join(" ")
-    country = Country.find_by(name: "u.s.")
+    country_name = params[:name].split("-").join(" ")
+    country = Country.find_by(name: country_name)
     country.tags.clear
     country.destroy
     flash[:success] = "Country deleted!"

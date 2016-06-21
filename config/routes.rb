@@ -15,7 +15,6 @@ Rails.application.routes.draw do
     resources :indicators, param: :name
     resources :previews, param: :name
     get '/dashboard', to: 'dashboard#index'
-    get '/countries/u.s.', to: 'countries#destroy'
   end
 
   get '/login', to: 'sessions#new'
