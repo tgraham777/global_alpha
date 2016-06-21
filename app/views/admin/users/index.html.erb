@@ -1,0 +1,14 @@
+<div class="container" id="topics-container">
+  <h1>User Index</h1>
+
+  <form method="GET" action="/admin/users/new">
+    <input type="submit" value="Create account", class="btn btn-control btn-success">
+  </form>
+
+  <% @users.each do |user| %>
+    <hr><h4><%= link_to user.username.split.map(&:capitalize).join(' '), admin_user_path(user) %></h4>
+    <h6>Role: <%= user.role %></h6>
+    <h6>Date created: <%= user.created_at %></h6>
+    <h6>Date updated: <%= user.updated_at %></h6>
+  <% end %>
+</div>

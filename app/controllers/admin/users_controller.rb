@@ -3,6 +3,10 @@ class Admin::UsersController < Admin::BaseController
     @user = User.new
   end
 
+  def index
+    @users = User.all
+  end
+
   def create
     params[:username].downcase!
     @user = User.new(username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation], role: params[:role])
@@ -25,5 +29,13 @@ class Admin::UsersController < Admin::BaseController
       flash[:error] = "You need to log in or create an account first!"
       redirect_to login_path
     end
+  end
+
+  def destroy
+    user_name = params[:username].downcase.split("-").join(" ")
+    user = User.find_by(username: user_name)
+    user.destroy
+    flash[:success] = "User deleted!"
+    redirect_to admin_users_path
   end
 end
