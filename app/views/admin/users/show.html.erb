@@ -4,5 +4,6 @@
   <h4>Date created: <%= @user.created_at %></h4>
   <h4>Date updated: <%= @user.updated_at %></h4>
 
+  <br><%= button_to "Edit profile", edit_admin_user_path(@user), method: :get, class: "btn btn-control btn-success" %>
   <br><%= button_to "Delete user", admin_user_path(@user), method: :delete, class: "btn btn-control btn-danger" %>
 </div>
