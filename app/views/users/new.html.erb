@@ -1,0 +1,20 @@
+<div class="container" id="new-user-container">
+  <h1>Create Account</h1>
+
+  <%= form_tag users_path, html: { class: "form-group" } do %>
+    <%= label_tag :username %>
+    <%= text_field_tag :username, params[:username], type: "username", class: "form-control", placeholder: "Enter username" %><br>
+
+    <%= label_tag :role %><br>
+    Default  <%= check_box_tag :role, "default", true %>&nbsp
+    Admin  <%= check_box_tag :role, "admin", false %><br><br>
+
+    <%= label_tag :password %>
+    <%= password_field_tag :password, params[:password], type: "password", class: "form-control", placeholder: "Enter password" %><br>
+
+    <%= label_tag :password_confirmation %>
+    <%= text_field_tag :password_confirmation, params[:password_confirmation], type: "password_confirmation", class: "form-control", placeholder: "Confirm password" %><br>
+
+    <br><%= submit_tag "Create Account", class: "btn btn-control btn-primary" %>
+  <% end %>
+</div>
