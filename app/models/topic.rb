@@ -6,8 +6,6 @@ class Topic < ActiveRecord::Base
   has_many :visuals, through: :topic_visuals
 
   validates_presence_of :title
-  validates_presence_of :intro
-  validates_presence_of :conclusion
   validates_presence_of :report_date
 
   def to_param

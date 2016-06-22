@@ -10,8 +10,11 @@
       <%= label_tag :title %>
       <%= text_field_tag :title, params[:title], type: "title", class: "form-control", placeholder: "Enter title" %><br>
 
+      <%= label_tag :report_date %>
+      <%= text_field_tag :report_date, params[:report_date], type: "report_date", class: "form-control", placeholder: "Enter report date" %><br>
+
       <%= label_tag :intro %>
-      <%= text_area_tag :intro, params[:intro], type: "intro", class: "form-control", placeholder: "Enter introduction" %><br>
+      <%= text_area_tag :intro, params[:intro], type: "intro", class: "form-control", placeholder: "Enter introduction (if applicable)" %><hr>
 
       <%= label_tag :visual_link_1 %>
       <%= text_field_tag :visual_link_1, params[:visual_link_1], type: "visual_link_1", class: "form-control", placeholder: "Enter link or URL" %><br>
@@ -22,6 +25,9 @@
       <%= label_tag :description_1 %>
       <%= text_area_tag :description_1, params[:description_1], type: "description_1", class: "form-control", placeholder: "Enter description for visual and/or additional text" %><br>
     </div>
+
+    <hr><%= label_tag :conclusion %>
+    <%= text_area_tag :conclusion, params[:conclusion], type: "conclusion", class: "form-control", placeholder: "Enter conclusion (if applicable)" %><br>
 
     <br><%= label_tag :tags %><span><em> (select all that apply)</em></span><br>
     <%= collection_check_boxes :topic, :tags, Tag.all, :name, :name do |b| %>

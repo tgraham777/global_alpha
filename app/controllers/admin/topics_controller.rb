@@ -11,7 +11,7 @@ class Admin::TopicsController < Admin::BaseController
 
   def create
     params[:title].downcase!
-    @topic = Topic.new(title: params[:title], body: params[:body], visual_link: params[:visual_link])
+    @topic = Topic.new(body: params[:body], title: params[:title], intro: params[:intro], conclusion: params[:conclusion], report_date: params[:report_date])
     if @topic.save
       tags = params[:topic][:tags]
       tags.each do |tag_name|
