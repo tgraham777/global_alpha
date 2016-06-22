@@ -6,22 +6,24 @@
   </div>
 
   <%= form_tag admin_topics_path, html: { class: "form-group" } do %>
-    <%= label_tag :title %>
-    <%= text_field_tag :title, params[:title], type: "title", class: "form-control", placeholder: "Enter title" %><br>
+    <div class="default-topic-items">
+      <%= label_tag :title %>
+      <%= text_field_tag :title, params[:title], type: "title", class: "form-control", placeholder: "Enter title" %><br>
 
-    <%= label_tag :intro %>
-    <%= text_area_tag :intro, params[:intro], type: "intro", class: "form-control", placeholder: "Enter introduction" %><br>
+      <%= label_tag :intro %>
+      <%= text_area_tag :intro, params[:intro], type: "intro", class: "form-control", placeholder: "Enter introduction" %><br>
 
-    <%= label_tag :visual_link_1 %>
-    <%= text_field_tag :visual_link_1, params[:visual_link_1], type: "visual_link_1", class: "form-control", placeholder: "Enter link or URL" %><br>
+      <%= label_tag :visual_link_1 %>
+      <%= text_field_tag :visual_link_1, params[:visual_link_1], type: "visual_link_1", class: "form-control", placeholder: "Enter link or URL" %><br>
 
-    <%= label_tag :caption_1 %>
-    <%= text_field_tag :caption_1, params[:caption_1], type: "caption_1", class: "form-control", placeholder: "Enter caption for visual" %><br>
+      <%= label_tag :caption_1 %>
+      <%= text_field_tag :caption_1, params[:caption_1], type: "caption_1", class: "form-control", placeholder: "Enter caption for visual" %><br>
 
-    <%= label_tag :description_1 %>
-    <%= text_field_tag :description_1, params[:description_1], type: "description_1", class: "form-control", placeholder: "Enter description for visual and/or additional text" %><br>
+      <%= label_tag :description_1 %>
+      <%= text_field_tag :description_1, params[:description_1], type: "description_1", class: "form-control", placeholder: "Enter description for visual and/or additional text" %><br>
+    </div>
 
-    <%= label_tag :tags %><span><em> (select all that apply)</em></span><br>
+    <br><%= label_tag :tags %><span><em> (select all that apply)</em></span><br>
     <%= collection_check_boxes :topic, :tags, Tag.all, :name, :name do |b| %>
       <p>
         <%= b.check_box(class: "check_box") %>
