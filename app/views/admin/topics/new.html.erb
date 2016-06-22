@@ -1,15 +1,24 @@
 <div class="container" id="new-topic-container">
   <h1>Create Topic</h1>
 
+  <div class="add-body-button-container">
+    <%= button_to "Add body section", "javascript:void(0)", class: "btn btn-control btn-success", id: "add-body-button" %><br>
+  </div>
+  <div class="add-visual-button-container">
+    <%= button_to "Add visual link", "javascript:void(0)", class: "btn btn-control btn-success", id: "add-visual-button" %><br>
+  </div>
+
   <%= form_tag admin_topics_path, html: { class: "form-group" } do %>
     <%= label_tag :title %>
-    <%= text_field_tag :title, params[:title], type: "title", class: "form-control", placeholder: "Enter title" %><br><br>
+    <%= text_field_tag :title, params[:title], type: "title", class: "form-control", placeholder: "Enter title" %><br>
 
     <%= label_tag :body %>
-    <%= text_area_tag :body, params[:body], type: "body", class: "form-control", placeholder: "Enter description" %><br><br>
+    <%= text_area_tag :body, params[:body], type: "body", class: "form-control", placeholder: "Enter description" %><br>
+
+    <%= label_tag :visual_link %>
+    <%= text_field_tag :visual_link, params[:visual_link], type: "visual_link", class: "form-control", placeholder: "Enter link or URL" %><br>
 
     <%= label_tag :tags %><span><em> (select all that apply)</em></span><br>
-
     <%= collection_check_boxes :topic, :tags, Tag.all, :name, :name do |b| %>
       <p>
         <%= b.check_box(class: "check_box") %>
