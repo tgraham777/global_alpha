@@ -11,7 +11,7 @@ class Admin::TopicsController < Admin::BaseController
 
   def create
     params[:title].downcase!
-    @topic = Topic.new(title: params[:title], body: params[:body])
+    @topic = Topic.new(title: params[:title], body: params[:body], visual_link: params[:visual_link])
     if @topic.save
       tags = params[:topic][:tags]
       tags.each do |tag_name|
@@ -20,7 +20,7 @@ class Admin::TopicsController < Admin::BaseController
         end
       end
 
-      redirect_to @topic
+      redirect_to admin_topic_path(@topic)
     else
       flash[:error] = @topic.errors.full_messages.first
       render :action => 'new'
