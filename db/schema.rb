@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160622211304) do
+ActiveRecord::Schema.define(version: 20160622211546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,16 @@ ActiveRecord::Schema.define(version: 20160622211304) do
   add_index "topic_tags", ["tag_id"], name: "index_topic_tags_on_tag_id", using: :btree
   add_index "topic_tags", ["topic_id"], name: "index_topic_tags_on_topic_id", using: :btree
 
+  create_table "topic_visuals", force: :cascade do |t|
+    t.integer  "topic_id"
+    t.integer  "visual_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "topic_visuals", ["topic_id"], name: "index_topic_visuals_on_topic_id", using: :btree
+  add_index "topic_visuals", ["visual_id"], name: "index_topic_visuals_on_visual_id", using: :btree
+
   create_table "topics", force: :cascade do |t|
     t.text     "title"
     t.datetime "created_at",  null: false
@@ -112,4 +122,6 @@ ActiveRecord::Schema.define(version: 20160622211304) do
   add_foreign_key "preview_tags", "tags"
   add_foreign_key "topic_tags", "tags"
   add_foreign_key "topic_tags", "topics"
+  add_foreign_key "topic_visuals", "topics"
+  add_foreign_key "topic_visuals", "visuals"
 end
