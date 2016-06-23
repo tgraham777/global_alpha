@@ -33,6 +33,8 @@ class Admin::TopicsController < Admin::BaseController
     topic_name = params[:title].split("-").join(" ")
     topic = Topic.find_by(title: topic_name)
     topic.tags.clear
+    topic.visuals.clear
+    topic.descriptions.clear
     topic.destroy
     flash[:success] = "Topic deleted!"
     redirect_to admin_topics_path
@@ -50,7 +52,6 @@ private
 
   def create_visuals
     i = 11
-
     while i < params.flatten.count - 14 do
       visual = Visual.new(link: params.flatten[i], caption: params.flatten[i+1])
       if visual.save
@@ -65,7 +66,6 @@ private
 
   def create_descriptions
     i = 15
-
     while i < params.flatten.count - 10 do
       description = Description.new(body: params.flatten[i])
       if description.save
