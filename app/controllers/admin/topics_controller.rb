@@ -11,7 +11,8 @@ class Admin::TopicsController < Admin::BaseController
 
   def create
     params[:title].downcase!
-    @topic = Topic.new(title: params[:title], intro: params[:intro], conclusion: params[:conclusion], report_date: params[:report_date])
+    visual_count = (params.count-10)/3
+    @topic = Topic.new(title: params[:title], intro: params[:intro], conclusion: params[:conclusion], report_date: params[:report_date], visual_count: visual_count)
     if @topic.save
       create_tags
       create_visuals

@@ -4,13 +4,13 @@
 
   <p><%= @topic.intro %></p>
 
-  <br><%= @topic.visuals[0].link.html_safe %>
-  <%= @topic.visuals[0].caption %><br>
-  <br><p><%= @topic.descriptions[0].body %></p>
-
-  <br><%= @topic.visuals[1].link.html_safe %>
-  <%= @topic.visuals[1].caption %><br>
-  <br><p><%= @topic.descriptions[1].body %></p>
+  <% i = 0 %>
+  <% while i < @topic.visual_count %>
+    <br><%= @topic.visuals[i].link.html_safe %>
+    <%= @topic.visuals[i].caption %><br>
+    <br><p><%= @topic.descriptions[i].body %></p>
+    <% i += 1 %>
+  <% end %>
 
   <h2>Conclusion</h2>
   <p><%= @topic.conclusion %></p><hr>
