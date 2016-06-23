@@ -53,7 +53,7 @@ private
   def create_visuals
     i = 11
     while i < params.flatten.count - 14 do
-      visual = Visual.new(link: params.flatten[i], caption: params.flatten[i+1])
+      visual = Visual.new(link: params.flatten[i], caption: params.flatten[i+2])
       if visual.save
         @topic.visuals << visual
       else

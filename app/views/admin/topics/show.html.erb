@@ -1,6 +1,21 @@
 <div class="container" id="topic-container">
   <h1><%= @topic.title.split.map(&:capitalize).join(' ') %></h1>
-  <h3>Tags</h3>
+  <h4><em><%= @topic.report_date %></em></h4>
+
+  <p><%= @topic.intro %></p>
+
+  <br><%= @topic.visuals[0].link.html_safe %>
+  <%= @topic.visuals[0].caption %><br>
+  <br><p><%= @topic.descriptions[0].body %></p>
+
+  <br><%= @topic.visuals[1].link.html_safe %>
+  <%= @topic.visuals[1].caption %><br>
+  <br><p><%= @topic.descriptions[1].body %></p>
+
+  <h2>Conclusion</h2>
+  <p><%= @topic.conclusion %></p><hr>
+
+  <h4>Tags</h4>
   <ul>
     <% @topic.tags.each do |tag| %>
       <li><%= tag.name.split.map(&:capitalize).join(' ') %></li>
