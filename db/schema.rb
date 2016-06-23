@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620202444) do
+ActiveRecord::Schema.define(version: 20160623173852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 20160620202444) do
 
   add_index "country_tags", ["country_id"], name: "index_country_tags_on_country_id", using: :btree
   add_index "country_tags", ["tag_id"], name: "index_country_tags_on_tag_id", using: :btree
+
+  create_table "descriptions", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "descriptions", ["topic_id"], name: "index_descriptions_on_topic_id", using: :btree
 
   create_table "indicator_tags", force: :cascade do |t|
     t.integer  "indicator_id"
@@ -80,11 +89,24 @@ ActiveRecord::Schema.define(version: 20160620202444) do
   add_index "topic_tags", ["tag_id"], name: "index_topic_tags_on_tag_id", using: :btree
   add_index "topic_tags", ["topic_id"], name: "index_topic_tags_on_topic_id", using: :btree
 
-  create_table "topics", force: :cascade do |t|
-    t.text     "title"
-    t.text     "body"
+  create_table "topic_visuals", force: :cascade do |t|
+    t.integer  "topic_id"
+    t.integer  "visual_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  add_index "topic_visuals", ["topic_id"], name: "index_topic_visuals_on_topic_id", using: :btree
+  add_index "topic_visuals", ["visual_id"], name: "index_topic_visuals_on_visual_id", using: :btree
+
+  create_table "topics", force: :cascade do |t|
+    t.text     "title"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.text     "intro"
+    t.text     "conclusion"
+    t.string   "report_date"
+    t.integer  "visual_count"
   end
 
   create_table "users", force: :cascade do |t|
@@ -95,12 +117,22 @@ ActiveRecord::Schema.define(version: 20160620202444) do
     t.integer  "role",            default: 0
   end
 
+  create_table "visuals", force: :cascade do |t|
+    t.string   "link"
+    t.string   "caption"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "country_tags", "countries"
   add_foreign_key "country_tags", "tags"
+  add_foreign_key "descriptions", "topics"
   add_foreign_key "indicator_tags", "indicators"
   add_foreign_key "indicator_tags", "tags"
   add_foreign_key "preview_tags", "previews"
   add_foreign_key "preview_tags", "tags"
   add_foreign_key "topic_tags", "tags"
   add_foreign_key "topic_tags", "topics"
+  add_foreign_key "topic_visuals", "topics"
+  add_foreign_key "topic_visuals", "visuals"
 end

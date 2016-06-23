@@ -1,6 +1,5 @@
 <div class="container" id="topic-container">
   <h1><%= @topic.title.split.map(&:capitalize).join(' ') %></h1>
-  <h5><%= @topic.body %></h5>
   <h3>Tags</h3>
   <ul>
     <% @topic.tags.each do |tag| %>

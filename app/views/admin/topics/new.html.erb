@@ -1,15 +1,35 @@
 <div class="container" id="new-topic-container">
   <h1>Create Topic</h1>
 
+  <div class="add-visual-button-container">
+    <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "add-visual-button" %><br>
+  </div>
+
   <%= form_tag admin_topics_path, html: { class: "form-group" } do %>
-    <%= label_tag :title %>
-    <%= text_field_tag :title, params[:title], type: "title", class: "form-control", placeholder: "Enter title" %><br><br>
+    <div class="default-topic-items">
+      <%= label_tag :title %>
+      <%= text_field_tag :title, params[:title], type: "title", class: "form-control", placeholder: "Enter title" %><br>
 
-    <%= label_tag :body %>
-    <%= text_area_tag :body, params[:body], type: "body", class: "form-control", placeholder: "Enter description" %><br><br>
+      <%= label_tag :report_date %>
+      <%= text_field_tag :report_date, params[:report_date], type: "report_date", class: "form-control", placeholder: "Enter report date" %><br>
 
-    <%= label_tag :tags %><span><em> (select all that apply)</em></span><br>
+      <%= label_tag :intro %>
+      <%= text_area_tag :intro, params[:intro], type: "intro", class: "form-control", placeholder: "Enter introduction (if applicable)" %><hr>
 
+      <%= label_tag :visual_link_1 %>
+      <%= text_field_tag :visual_link_1, params[:visual_link_1], type: "visual_link_1", class: "form-control", placeholder: "Enter link or URL" %><br>
+
+      <%= label_tag :caption_1 %>
+      <%= text_field_tag :caption_1, params[:caption_1], type: "caption_1", class: "form-control", placeholder: "Enter caption for visual" %><br>
+
+      <%= label_tag :description_1 %>
+      <%= text_area_tag :description_1, params[:description_1], type: "description_1", class: "form-control", placeholder: "Enter description for visual and/or additional text" %><br>
+    </div>
+
+    <hr><%= label_tag :conclusion %>
+    <%= text_area_tag :conclusion, params[:conclusion], type: "conclusion", class: "form-control", placeholder: "Enter conclusion (if applicable)" %><br>
+
+    <br><%= label_tag :tags %><span><em> (select all that apply)</em></span><br>
     <%= collection_check_boxes :topic, :tags, Tag.all, :name, :name do |b| %>
       <p>
         <%= b.check_box(class: "check_box") %>
@@ -17,6 +37,6 @@
       </p>
     <% end %>
 
-    <br><%= submit_tag "Create Topic", class: "btn btn-control btn-primary" %>
+    <br><%= submit_tag "Create Topic", class: "btn btn-control btn-success" %>
   <% end %>
 </div>
