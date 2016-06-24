@@ -7,6 +7,6 @@
 
   <% @topics.each do |topic| %>
     <hr><h2><%= topic.title.split.map(&:capitalize).join(' ') %></h2>
-    <%= link_to "View topic", admin_topic_path(topic) %>
+    <%= link_to "View topic", admin_topic_path(topic) %> - <%= link_to "Delete", admin_topic_path(topic), method: :delete %>
   <% end %>
 </div>
