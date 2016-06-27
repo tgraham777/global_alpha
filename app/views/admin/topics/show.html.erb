@@ -4,12 +4,10 @@
 
   <p><%= @topic.intro %></p>
 
-  <% i = 0 %>
-  <% while i < @topic.visual_count %>
-    <br><%= @topic.visuals[i].link.html_safe %>
-    <span style="padding-left: 175px;"><em><%= @topic.visuals[i].caption %></em></span><br>
-    <br><p><%= @topic.descriptions[i].body %></p>
-    <% i += 1 %>
+  <% @topic.visuals.each_with_index do |visual, index| %>
+    <br><%= visual.link.html_safe %>
+    <span style="padding-left: 175px;"><em><%= visual.caption %></em></span><br>
+    <br><p><%= @topic.descriptions[index].body %></p>
   <% end %>
 
   <h3>Conclusion</h3>
