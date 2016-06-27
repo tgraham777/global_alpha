@@ -7,7 +7,7 @@
   <% @topic.visuals.each_with_index do |visual, index| %>
     <br><%= visual.link.html_safe %>
     <span style="padding-left: 175px;"><em><%= visual.caption %></em></span><br>
-    <br><p><%= @topic.descriptions[index].body %></p>
+    <br><%= simple_format(@topic.descriptions[index].body) %>
   <% end %>
 
   <h3>Conclusion</h3>
