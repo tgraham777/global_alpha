@@ -11,13 +11,13 @@ class Admin::TopicsController < Admin::BaseController
 
   def create
     params[:title].downcase!
-    visual_count = (params.count-10)/3
-    @topic = Topic.new(title: params[:title], intro: params[:intro], conclusion: params[:conclusion], report_date: params[:report_date], visual_count: visual_count)
+    create_visual_count
+
+    @topic = Topic.new(title: params[:title], intro: params[:intro], conclusion: params[:conclusion], report_date: params[:report_date], visual_count: @visual_count)
     if @topic.save
       create_tags
       create_visuals
       create_descriptions
-
       redirect_to admin_topic_path(@topic)
     else
       flash[:error] = @topic.errors.full_messages.first
@@ -42,6 +42,14 @@ class Admin::TopicsController < Admin::BaseController
   end
 
 private
+  def create_visual_count
+    if params[:visual_link_1] = ""
+      @visual_count = 0
+    else
+      @visual_count = (params.count-10)/3
+    end
+  end
+
   def create_tags
     tags = params[:topic][:tags]
     tags.each do |tag_name|
@@ -52,16 +60,13 @@ private
   end
 
   def create_visuals
-    i = 11
-    while i < params.flatten.count - 14 do
-      visual = Visual.new(link: params.flatten[i], caption: params.flatten[i+2])
-      if visual.save
+    if @visual_count > 0
+      i = 11
+      while i < params.flatten.count - 14 do
+        visual = Visual.new(link: params.flatten[i], caption: params.flatten[i+2])
         @topic.visuals << visual
-      else
-        flash[:error] = visual.errors.full_messages.first
-        render :action => 'new'
+        i += 6
       end
-      i += 6
     end
   end
 
@@ -69,12 +74,7 @@ private
     i = 15
     while i < params.flatten.count - 10 do
       description = Description.new(body: params.flatten[i])
-      if description.save
-        @topic.descriptions << description
-      else
-        flash[:error] = description.errors.full_messages.first
-        render :action => 'new'
-      end
+      @topic.descriptions << description
       i += 6
     end
   end
