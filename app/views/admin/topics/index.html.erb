@@ -6,7 +6,7 @@
   </form>
 
   <% @topics.each do |topic| %>
-    <hr><h2><%= link_to topic.title.split.map(&:capitalize).join(' '), admin_topic_path(topic) %></h2>
+    <hr><h2><%= link_to topic.title, admin_topic_path(topic) %></h2>
     <h4><em><%= topic.report_date %></em></h4>
     <%= truncate(topic.intro, length: 250) %>
   <% end %>

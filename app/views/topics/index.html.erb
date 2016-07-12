@@ -2,7 +2,7 @@
   <h1>Topic Index</h1>
 
   <% @topics.each do |topic| %>
-    <hr><h2><%= link_to topic.title.split.map(&:capitalize).join(' '), topic_path(topic) %></h2>
+    <hr><h2><%= link_to topic.title, topic_path(topic) %></h2>
     <h4><em><%= topic.report_date %></em></h4>
     <%= truncate(topic.intro, length: 250) %>
   <% end %>
