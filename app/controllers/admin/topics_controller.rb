@@ -10,10 +10,9 @@ class Admin::TopicsController < Admin::BaseController
   end
 
   def create
-    params[:title].downcase!
     create_visual_count
 
-    @topic = Topic.new(title: params[:title], intro: params[:intro], conclusion: params[:conclusion], report_date: params[:report_date], visual_count: @visual_count)
+    @topic = Topic.new(title: params[:title], intro: params[:intro], conclusion: params[:conclusion], report_date: params[:report_date], visual_count: @visual_count, display_name: SecureRandom.hex(10))
     if @topic.save
       create_tags
       create_visuals
@@ -26,8 +25,7 @@ class Admin::TopicsController < Admin::BaseController
   end
 
   def show
-    topic_name = params[:title].split("-").join(" ")
-    @topic = Topic.find_by(title: topic_name)
+    @topic = Topic.find_by(display_name: params[:display_name])
   end
 
   def destroy

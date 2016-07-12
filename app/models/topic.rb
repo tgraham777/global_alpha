@@ -11,6 +11,6 @@ class Topic < ActiveRecord::Base
   validates_presence_of :visual_count
 
   def to_param
-    title.split(" ").join("-")
+    display_name
   end
 end

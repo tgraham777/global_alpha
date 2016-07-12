@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, param: :username
-    resources :topics, param: :title
+    resources :topics, param: :display_name
     resources :tags, only: [:new, :create, :index, :destroy]
     resources :countries, param: :name
     resources :indicators, param: :name
