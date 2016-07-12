@@ -1,13 +1,15 @@
 <div class="container" id="topic-container">
-  <h1><%= @topic.title.split.map(&:capitalize).join(' ') %></h1>
+  <h1><%= @topic.title.titlecase %></h1>
   <h5><em><%= @topic.report_date %></em></h5>
 
   <p><%= @topic.intro %></p>
 
-  <% @topic.visuals.each_with_index do |visual, index| %>
-    <br><%= visual.link.html_safe %>
-    <span style="padding-left: 175px;"><em><%= visual.caption %></em></span><br>
-    <br><p><%= simple_format(@topic.descriptions[index].body) %></p>
+  <% @topic.descriptions.each_with_index do |description, index| %>
+    <% if @topic.visuals.any? %>
+      <br><%= @topic.visuals[index].link.html_safe %>
+      <span style="padding-left: 175px;"><em><%= @topic.visuals[index].caption %></em></span><br><br>
+    <% end %>
+    <p><%= simple_format(description.body) %></p>
   <% end %>
 
   <h3>Conclusion</h3>

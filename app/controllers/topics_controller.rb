@@ -6,7 +6,6 @@ class TopicsController < ApplicationController
   end
 
   def show
-    topic_name = params[:title].split("-").join(" ")
-    @topic = Topic.find_by(title: topic_name)
+    @topic = Topic.find_by(display_name: params[:display_name])
   end
 end
