@@ -29,8 +29,7 @@ class Admin::TopicsController < Admin::BaseController
   end
 
   def destroy
-    topic_name = params[:title].split("-").join(" ")
-    topic = Topic.find_by(title: topic_name)
+    topic = Topic.find_by(display_name: params[:display_name])
     topic.tags.clear
     topic.visuals.clear
     topic.descriptions.clear
