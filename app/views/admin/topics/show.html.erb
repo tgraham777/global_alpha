@@ -3,7 +3,6 @@
   <h5><em><%= @topic.report_date %></em></h5>
 
   <p><%= @topic.intro %></p>
-
   <% @topic.descriptions.each_with_index do |description, index| %>
     <% if @topic.visuals.any? %>
       <br><%= @topic.visuals[index].link.html_safe %>
@@ -22,5 +21,6 @@
     <% end %>
   </ul><br>
 
+  <%= button_to "Edit topic", edit_admin_topic_path(@topic), method: :get, class: "btn btn-control btn-success" %><br>
   <%= button_to "Delete topic", admin_topic_path(@topic), method: :delete, class: "btn btn-control btn-danger" %>
 </div>

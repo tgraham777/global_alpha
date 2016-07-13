@@ -28,6 +28,21 @@ class Admin::TopicsController < Admin::BaseController
     @topic = Topic.find_by(display_name: params[:display_name])
   end
 
+  def edit
+    @topic = Topic.find_by(display_name: params[:display_name])
+  end
+
+  def update
+    @topic = Topic.find_by(display_name: params[:display_name])
+    # if @user.update(password: params[:password], password_confirmation: params[:password_confirmation], role: params[:role])
+    #   flash[:success] = "User #{@user.username.split.map(&:capitalize).join(' ')} was updated successfully."
+    #   redirect_to admin_user_path(@user)
+    # else
+    #   flash[:error] = @user.errors.full_messages.first
+    #   redirect_to edit_admin_user_path(@user)
+    # end
+  end
+
   def destroy
     topic = Topic.find_by(display_name: params[:display_name])
     topic.tags.clear
@@ -40,7 +55,7 @@ class Admin::TopicsController < Admin::BaseController
 
 private
   def create_visual_count
-    if params[:visual_link_1] = ""
+    if params[:visual_link_1] == ""
       @visual_count = 0
     else
       @visual_count = (params.count-10)/3

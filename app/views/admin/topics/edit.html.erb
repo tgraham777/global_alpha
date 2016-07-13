@@ -1,0 +1,42 @@
+<div class="container" id="new-topic-container">
+  <h1>Edit Topic</h1>
+
+  <div class="add-visual-button-container">
+    <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "add-visual-button" %><br>
+  </div>
+
+  <!-- Use @topic.visual_count to determine how many visual fields to display; what about descriptions? -->
+
+  <%= form_for @topic, html: { class: "form-group" } do |f| %>
+    <div class="default-topic-items">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %><br>
+
+      <%= f.label :report_date %>
+      <%= f.text_field :report_date, class: "form-control" %><br>
+
+      <%= f.label :intro %>
+      <%= f.text_area :intro, class: "form-control" %><br>
+
+      <% @topic.descriptions.each_with_index do |description, index| %>
+        <% if @topic.visuals.any? %>
+          Visual link <%= index + 1 %>: <%= f.text_field @topic.visuals[index].link %>
+          Visual caption <%= index + 1 %>: <%= f.text_field @topic.visuals[index].caption %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <hr><%= f.label :conclusion %>
+    <%= f.text_area :conclusion, class: "form-control" %><br>
+
+    <br><%= f.label :tags %><span><em> (select all that apply)</em></span><br>
+    <%= collection_check_boxes :topic, :tags, Tag.all, :name, :name do |b| %>
+      <p>
+        <%= b.check_box(class: "check_box") %>
+        <%= b.object.name.split.map(&:capitalize).join(' ') %>
+      </p>
+    <% end %>
+
+    <br><%= f.submit "Update topic", class: "btn btn-control btn-primary" %>
+  <% end %>
+</div>
