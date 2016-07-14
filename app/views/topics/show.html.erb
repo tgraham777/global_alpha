@@ -3,13 +3,10 @@
   <h5><em><%= @topic.report_date %></em></h5>
 
   <p><%= @topic.intro %></p>
-
-  <% @topic.descriptions.each_with_index do |description, index| %>
-    <% if @topic.visuals.any? %>
-      <br><%= @topic.visuals[index].link.html_safe %>
-      <span style="padding-left: 175px;"><em><%= @topic.visuals[index].caption %></em></span><br><br>
-    <% end %>
-    <p><%= simple_format(description.body) %></p>
+  <% @topic.visuals.each do |visual| %>
+    <br><%= visual.link.html_safe %>
+    <span style="padding-left: 175px;"><em><%= visual.caption %></em></span><br><br>
+    <p><%= simple_format(visual.description) %></p>
   <% end %>
 
   <h3>Conclusion</h3>

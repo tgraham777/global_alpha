@@ -16,7 +16,6 @@ class Admin::TopicsController < Admin::BaseController
     if @topic.save
       create_tags
       create_visuals
-      create_descriptions
       redirect_to admin_topic_path(@topic)
     else
       flash[:error] = @topic.errors.full_messages.first
@@ -26,6 +25,21 @@ class Admin::TopicsController < Admin::BaseController
 
   def show
     @topic = Topic.find_by(display_name: params[:display_name])
+  end
+
+  def edit
+    @topic = Topic.find_by(display_name: params[:display_name])
+  end
+
+  def update
+    @topic = Topic.find_by(display_name: params[:display_name])
+    # if @user.update(password: params[:password], password_confirmation: params[:password_confirmation], role: params[:role])
+    #   flash[:success] = "User #{@user.username.split.map(&:capitalize).join(' ')} was updated successfully."
+    #   redirect_to admin_user_path(@user)
+    # else
+    #   flash[:error] = @user.errors.full_messages.first
+    #   redirect_to edit_admin_user_path(@user)
+    # end
   end
 
   def destroy
@@ -40,7 +54,7 @@ class Admin::TopicsController < Admin::BaseController
 
 private
   def create_visual_count
-    if params[:visual_link_1] = ""
+    if params[:visual_link_1] == ""
       @visual_count = 0
     else
       @visual_count = (params.count-10)/3
@@ -60,19 +74,10 @@ private
     if @visual_count > 0
       i = 11
       while i < params.flatten.count - 14 do
-        visual = Visual.new(link: params.flatten[i], caption: params.flatten[i+2])
+        visual = Visual.new(link: params.flatten[i], caption: params.flatten[i+2], description: params.flatten[i+4])
         @topic.visuals << visual
         i += 6
       end
-    end
-  end
-
-  def create_descriptions
-    i = 15
-    while i < params.flatten.count - 10 do
-      description = Description.new(body: params.flatten[i])
-      @topic.descriptions << description
-      i += 6
     end
   end
 end
