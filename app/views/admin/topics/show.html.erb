@@ -6,7 +6,7 @@
   <% @topic.visuals.each do |visual| %>
     <br><%= visual.link.html_safe %>
     <span style="padding-left: 175px;"><em><%= visual.caption %></em></span><br><br>
-    <p><%= simple_format(visual.description.body) %></p>
+    <p><%= simple_format(visual.description) %></p>
   <% end %>
 
   <h3>Conclusion</h3>
