@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160712213432) do
+ActiveRecord::Schema.define(version: 20160714034657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,9 +37,11 @@ ActiveRecord::Schema.define(version: 20160712213432) do
     t.integer  "topic_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "visual_id"
   end
 
   add_index "descriptions", ["topic_id"], name: "index_descriptions_on_topic_id", using: :btree
+  add_index "descriptions", ["visual_id"], name: "index_descriptions_on_visual_id", using: :btree
 
   create_table "indicator_tags", force: :cascade do |t|
     t.integer  "indicator_id"
@@ -128,6 +130,7 @@ ActiveRecord::Schema.define(version: 20160712213432) do
   add_foreign_key "country_tags", "countries"
   add_foreign_key "country_tags", "tags"
   add_foreign_key "descriptions", "topics"
+  add_foreign_key "descriptions", "visuals"
   add_foreign_key "indicator_tags", "indicators"
   add_foreign_key "indicator_tags", "tags"
   add_foreign_key "preview_tags", "previews"
