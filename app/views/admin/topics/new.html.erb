@@ -1,42 +1,48 @@
 <div class="container" id="new-topic-container">
-  <h1>Create Topic</h1>
+  <h1>Edit Topic</h1>
 
   <div class="add-visual-button-container">
     <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "add-visual-button" %><br>
   </div>
 
-  <%= form_tag admin_topics_path, html: { class: "form-group" } do %>
+  <%= form_for [:admin, @topic], html: { class: "form-group" } do |f| %>
     <div class="default-topic-items">
-      <%= label_tag :title %>
-      <%= text_field_tag :title, params[:title], type: "title", class: "form-control", placeholder: "Enter title" %><br>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Enter title" %><br>
 
-      <%= label_tag :report_date %>
-      <%= text_field_tag :report_date, params[:report_date], type: "report_date", class: "form-control", placeholder: "Enter report date" %><br>
+      <%= f.label :report_date %>
+      <%= f.text_field :report_date, class: "form-control", placeholder: "Enter report date" %><br>
 
-      <%= label_tag :intro %>
-      <%= text_area_tag :intro, params[:intro], type: "intro", class: "form-control", placeholder: "Enter introduction (if applicable)" %><hr>
+      <%= f.label :intro %>
+      <%= f.text_area :intro, class: "form-control", placeholder: "Enter introduction (if applicable)" %><br><hr>
 
-      <%= label_tag :visual_link_1 %>
-      <%= text_field_tag :visual_link_1, params[:visual_link_1], type: "visual_link_1", class: "form-control", placeholder: "Enter link or URL" %><br>
+      <h4>Visual #1</h4>
 
-      <%= label_tag :caption_1 %>
-      <%= text_field_tag :caption_1, params[:caption_1], type: "caption_1", class: "form-control", placeholder: "Enter caption for visual" %><br>
+      <%= f.fields_for :visual do |ff| %>
+        <%= ff.label :link %>
+        <%= ff.text_field :link, class: "form-control", placeholder: "Enter Tableau script or URL" %><br>
 
-      <%= label_tag :description_1 %>
-      <%= text_area_tag :description_1, params[:description_1], type: "description_1", class: "form-control", placeholder: "Enter description for visual and/or additional text" %><br>
+        <%= ff.label :caption %>
+        <%= ff.text_field :caption, class: "form-control", placeholder: "Enter caption for visual" %><br>
+
+        <%= ff.label :description %>
+        <%= ff.text_area :description, class: "form-control", placeholder: "Enter description for visual and/or additional text" %><br><hr>
+      <% end %>
     </div>
 
-    <hr><%= label_tag :conclusion %>
-    <%= text_area_tag :conclusion, params[:conclusion], type: "conclusion", class: "form-control", placeholder: "Enter conclusion (if applicable)" %><br>
+    <%= f.label :conclusion %>
+    <%= f.text_area :conclusion, class: "form-control", placeholder: "Enter conclusion (if applicable)" %><br>
 
-    <br><%= label_tag :tags %><span><em> (select all that apply)</em></span><br>
-    <%= collection_check_boxes :topic, :tags, Tag.all, :name, :name do |b| %>
+    <br><%= f.label :tags %><span><em> (select all that apply)</em></span><br>
+    <%= f.fields_for :tags do |tag| %>
+      <%= collection_check_boxes :topic, :tags, Tag.all, :name, :name do |b| %>
       <p>
         <%= b.check_box(class: "check_box") %>
         <%= b.object.name.split.map(&:capitalize).join(' ') %>
       </p>
+      <% end %>
     <% end %>
 
-    <br><%= submit_tag "Create Topic", class: "btn btn-control btn-success" %>
+    <br><%= f.submit "Update topic", class: "btn btn-control btn-primary" %>
   <% end %>
 </div>

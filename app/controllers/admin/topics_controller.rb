@@ -33,13 +33,13 @@ class Admin::TopicsController < Admin::BaseController
 
   def update
     @topic = Topic.find_by(display_name: params[:display_name])
-    # if @user.update(password: params[:password], password_confirmation: params[:password_confirmation], role: params[:role])
-    #   flash[:success] = "User #{@user.username.split.map(&:capitalize).join(' ')} was updated successfully."
-    #   redirect_to admin_user_path(@user)
-    # else
-    #   flash[:error] = @user.errors.full_messages.first
-    #   redirect_to edit_admin_user_path(@user)
-    # end
+    if @topic.update(password: params[:password], password_confirmation: params[:password_confirmation], role: params[:role])
+      flash[:success] = "User #{@user.username.split.map(&:capitalize).join(' ')} was updated successfully."
+      redirect_to admin_user_path(@user)
+    else
+      flash[:error] = @user.errors.full_messages.first
+      redirect_to edit_admin_user_path(@user)
+    end
   end
 
   def destroy
