@@ -16,14 +16,17 @@
       <%= f.label :intro %>
       <%= f.text_area :intro, class: "form-control" %><br>
 
-      <!-- <%#= f.fields_for :descriptions  %> -->
+      <%= f.fields_for :visuals do |ff| %>
+        <%= ff.label :link %>
+        <%= ff.text_field :link, class: "form-control" %><br>
 
-      <% @topic.descriptions.each_with_index do |description, index| %>
-        <% if @topic.visuals.any? %>
-          Visual link <%= index + 1 %>:<br>
-          Visual caption <%= index + 1 %>:<br>
+        <%= ff.label :caption %>
+        <%= ff.text_field :caption, class: "form-control" %><br>
+
+        <%= ff.fields_for :descriptions do |fff| %>
+          <%= fff.label :body %>
+          <%= fff.text_area :body, class: "form-control" %><br>
         <% end %>
-        <%= simple_format(description.body) %>
       <% end %>
     </div>
 
