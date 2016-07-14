@@ -10,6 +10,7 @@ class Admin::TopicsController < Admin::BaseController
   end
 
   def create
+    byebug
     create_visual_count
 
     @topic = Topic.new(title: params[:title], intro: params[:intro], conclusion: params[:conclusion], report_date: params[:report_date], visual_count: @visual_count, display_name: SecureRandom.hex(10))

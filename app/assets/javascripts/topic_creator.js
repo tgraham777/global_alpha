@@ -3,6 +3,6 @@ $(document).ready(function(){
 
   $('#add-visual-button').click(function(){
     count++;
-    $('.default-topic-items').append('<br><label for="visual_link_"' + count + '>Visual link ' + count + '</label><input type="visual_link_' + count + '" name="visual_link_' + count + '" id="visual_link_' + count + '" class="form-control" placeholder="Enter link or URL"><br><label for="caption_' + count + '">Caption ' + count + '</label><input type="caption_' + count + '" name="caption_' + count + '" id="caption_' + count + '" class="form-control" placeholder="Enter caption for visual"><br><label for="description_' + count + '">Description ' + count + '</label><textarea type="description_' + count + '" name="description_' + count + '" id="description_' + count + '" class="form-control" placeholder="Enter description for visual and/or additional text"></textarea><br>');
+    $('.default-topic-items').append('<h4>Visual #' + count + '</h4><label for="topic_visual_link">Link</label><input class="form-control" placeholder="Enter Tableau script or URL" type="text" name="topic[visual][link]" id="topic_visual_link"><br><label for="topic_visual_caption">Caption</label><input class="form-control" placeholder="Enter caption for visual" type="text" name="topic[visual][caption]" id="topic_visual_caption"><br><label for="topic_visual_description">Description</label><textarea class="form-control" placeholder="Enter description for visual and/or additional text" name="topic[visual][description]" id="topic_visual_description"></textarea><br><hr>');
   });
 });
