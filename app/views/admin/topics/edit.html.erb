@@ -23,8 +23,11 @@
         <%= ff.label :caption %>
         <%= ff.text_field :caption, class: "form-control" %><br>
 
+        <%= ff.label :description %>
+        <%= ff.text_field :description, class: "form-control" %><br>
+
         <%= ff.fields_for :descriptions do |fff| %>
-          <%= fff.label :body %>
+          <%= fff.label :description %>
           <%= fff.text_area :body, class: "form-control" %><br>
         <% end %>
       <% end %>
