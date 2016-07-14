@@ -15,8 +15,7 @@ class Admin::TopicsController < Admin::BaseController
     @topic = Topic.new(title: params[:title], intro: params[:intro], conclusion: params[:conclusion], report_date: params[:report_date], visual_count: @visual_count, display_name: SecureRandom.hex(10))
     if @topic.save
       create_tags
-      create_visuals
-      create_descriptions
+      create_visuals_and_descriptions
       redirect_to admin_topic_path(@topic)
     else
       flash[:error] = @topic.errors.full_messages.first
@@ -71,23 +70,25 @@ private
     end
   end
 
-  def create_visuals
+  def create_visuals_and_descriptions
     if @visual_count > 0
       i = 11
       while i < params.flatten.count - 14 do
         visual = Visual.new(link: params.flatten[i], caption: params.flatten[i+2])
+        description = Description.new(body: params.flatten[i+4])
+        visual.description = description
         @topic.visuals << visual
         i += 6
       end
     end
   end
 
-  def create_descriptions
-    i = 15
-    while i < params.flatten.count - 10 do
-      description = Description.new(body: params.flatten[i])
-      @topic.descriptions << description
-      i += 6
-    end
-  end
+  # def create_descriptions
+  #   i = 15
+  #   while i < params.flatten.count - 10 do
+  #     description = Description.new(body: params.flatten[i])
+  #     @topic.descriptions << description
+  #     i += 6
+  #   end
+  # end
 end
