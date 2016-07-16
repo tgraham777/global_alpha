@@ -7,15 +7,14 @@ class Admin::TopicsController < Admin::BaseController
 
   def new
     @topic = Topic.new
+    @visuals = @topic.visuals.build
   end
 
   def create
-    create_visual_count
-
-    @topic = Topic.new(title: params[:title], intro: params[:intro], conclusion: params[:conclusion], report_date: params[:report_date], visual_count: @visual_count, display_name: SecureRandom.hex(10))
+    @topic = Topic.new(topic_params)
     if @topic.save
+      @topic.update(display_name: SecureRandom.hex(10))
       create_tags
-      create_visuals
       redirect_to admin_topic_path(@topic)
     else
       flash[:error] = @topic.errors.full_messages.first
@@ -33,7 +32,7 @@ class Admin::TopicsController < Admin::BaseController
 
   def update
     @topic = Topic.find_by(display_name: params[:display_name])
-    # if @user.update(password: params[:password], password_confirmation: params[:password_confirmation], role: params[:role])
+    # if @topic.update(password: params[:password], password_confirmation: params[:password_confirmation], role: params[:role])
     #   flash[:success] = "User #{@user.username.split.map(&:capitalize).join(' ')} was updated successfully."
     #   redirect_to admin_user_path(@user)
     # else
@@ -53,31 +52,17 @@ class Admin::TopicsController < Admin::BaseController
   end
 
 private
-  def create_visual_count
-    if params[:visual_link_1] == ""
-      @visual_count = 0
-    else
-      @visual_count = (params.count-10)/3
-    end
-  end
-
   def create_tags
     tags = params[:topic][:tags]
-    tags.each do |tag_name|
-      if tag_name != ""
-        @topic.tags << Tag.find_by(name: tag_name)
+    tags.each do |tag_id|
+      if tag_id != ""
+        @topic.tags << Tag.find_by(id: tag_id)
       end
     end
   end
 
-  def create_visuals
-    if @visual_count > 0
-      i = 11
-      while i < params.flatten.count - 14 do
-        visual = Visual.new(link: params.flatten[i], caption: params.flatten[i+2], description: params.flatten[i+4])
-        @topic.visuals << visual
-        i += 6
-      end
-    end
+
+  def topic_params
+    params.require(:topic).permit(:title, :report_date, :intro, :conclusion, { visuals_attributes: [:id, :link, :caption, :description]})
   end
 end

@@ -5,7 +5,7 @@
     <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "add-visual-button" %><br>
   </div>
 
-  <%= form_for @topic, html: { class: "form-group" } do |f| %>
+  <%= form_for [:admin, @topic], html: { class: "form-group" } do |f| %>
     <div class="default-topic-items">
       <%= f.label :title %>
       <%= f.text_field :title, class: "form-control" %><br>
