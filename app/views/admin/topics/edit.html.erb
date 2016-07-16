@@ -2,7 +2,7 @@
   <h1>Edit Topic</h1>
 
   <div class="add-visual-button-container">
-    <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "add-visual-button" %><br>
+    <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "edit-add-visual-button" %><br>
   </div>
 
   <%= form_for [:admin, @topic], html: { class: "form-group" } do |f| %>
@@ -14,17 +14,19 @@
       <%= f.text_field :report_date, class: "form-control" %><br>
 
       <%= f.label :intro %>
-      <%= f.text_area :intro, class: "form-control" %><br><hr>
+      <%= f.text_area :intro, class: "form-control" %><br>
 
-      <%= f.fields_for :visuals do |ff| %>
-        <%= ff.label :link %>
-        <%= ff.text_field :link, class: "form-control" %><br>
+      <%= f.fields_for :visuals, @visuals do |ff| %>
+        <div class="edit-page-visual-counter">
+          <hr><%= ff.label :link %>
+          <%= ff.text_field :link, class: "form-control" %><br>
 
-        <%= ff.label :caption %>
-        <%= ff.text_field :caption, class: "form-control" %><br>
+          <%= ff.label :caption %>
+          <%= ff.text_field :caption, class: "form-control" %><br>
 
-        <%= ff.label :description %>
-        <%= ff.text_area :description, class: "form-control" %><br>
+          <%= ff.label :description %>
+          <%= ff.text_area :description, class: "form-control" %><br>
+        </div>
       <% end %>
     </div>
 
@@ -32,11 +34,13 @@
     <%= f.text_area :conclusion, class: "form-control" %><br>
 
     <br><%= f.label :tags %><span><em> (select all that apply)</em></span><br>
-    <%= collection_check_boxes :topic, :tags, Tag.all, :name, :name do |b| %>
+    <%= f.fields_for :tags do |tag| %>
+      <%= collection_check_boxes :topic, :tags, Tag.all, :id, :name do |b| %>
       <p>
         <%= b.check_box(class: "check_box") %>
         <%= b.object.name.split.map(&:capitalize).join(' ') %>
       </p>
+      <% end %>
     <% end %>
 
     <br><%= f.submit "Update topic", class: "btn btn-control btn-primary" %>
