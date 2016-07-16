@@ -28,24 +28,25 @@ class Admin::TopicsController < Admin::BaseController
 
   def edit
     @topic = Topic.find_by(display_name: params[:display_name])
+    @visuals = @topic.visuals.reverse
   end
 
   def update
     @topic = Topic.find_by(display_name: params[:display_name])
-    # if @topic.update(password: params[:password], password_confirmation: params[:password_confirmation], role: params[:role])
-    #   flash[:success] = "User #{@user.username.split.map(&:capitalize).join(' ')} was updated successfully."
-    #   redirect_to admin_user_path(@user)
-    # else
-    #   flash[:error] = @user.errors.full_messages.first
-    #   redirect_to edit_admin_user_path(@user)
-    # end
+    if @topic.update(topic_params)
+      update_tags
+      flash[:success] = "Topic was updated successfully!"
+      redirect_to admin_topic_path(@topic)
+    else
+      flash[:error] = @user.errors.full_messages.first
+      redirect_to edit_admin_topic_path(@topic)
+    end
   end
 
   def destroy
     topic = Topic.find_by(display_name: params[:display_name])
     topic.tags.clear
     topic.visuals.clear
-    topic.descriptions.clear
     topic.destroy
     flash[:success] = "Topic deleted!"
     redirect_to admin_topics_path
@@ -61,6 +62,15 @@ private
     end
   end
 
+  def update_tags
+    @topic.tags.clear
+    tags = params[:topic][:tags]
+    tags.each do |tag_id|
+      if tag_id != ""
+        @topic.tags << Tag.find_by(id: tag_id)
+      end
+    end
+  end
 
   def topic_params
     params.require(:topic).permit(:title, :report_date, :intro, :conclusion, { visuals_attributes: [:id, :link, :caption, :description]})
