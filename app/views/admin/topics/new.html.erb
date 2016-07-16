@@ -1,5 +1,5 @@
 <div class="container" id="new-topic-container">
-  <h1>Edit Topic</h1>
+  <h1>Create Topic</h1>
 
   <div class="add-visual-button-container">
     <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "add-visual-button" %><br>
@@ -18,7 +18,7 @@
 
       <h4>Visual #1</h4>
 
-      <%= f.fields_for :visual do |ff| %>
+      <%= f.fields_for :visuals do |ff| %>
         <%= ff.label :link %>
         <%= ff.text_field :link, class: "form-control", placeholder: "Enter Tableau script or URL" %><br>
 
@@ -35,7 +35,7 @@
 
     <br><%= f.label :tags %><span><em> (select all that apply)</em></span><br>
     <%= f.fields_for :tags do |tag| %>
-      <%= collection_check_boxes :topic, :tags, Tag.all, :name, :name do |b| %>
+      <%= collection_check_boxes :topic, :tags, Tag.all, :id, :name do |b| %>
       <p>
         <%= b.check_box(class: "check_box") %>
         <%= b.object.name.split.map(&:capitalize).join(' ') %>
@@ -43,6 +43,6 @@
       <% end %>
     <% end %>
 
-    <br><%= f.submit "Update topic", class: "btn btn-control btn-primary" %>
+    <br><%= f.submit "Create topic", class: "btn btn-control btn-primary" %>
   <% end %>
 </div>

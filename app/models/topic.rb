@@ -9,7 +9,7 @@ class Topic < ActiveRecord::Base
   validates_presence_of :title
   validates_uniqueness_of :title
   validates_presence_of :report_date
-  validates_presence_of :visual_count
+  # validates_presence_of :visual_count
 
   def to_param
     display_name
