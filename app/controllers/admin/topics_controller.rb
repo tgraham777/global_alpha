@@ -29,7 +29,7 @@ class Admin::TopicsController < Admin::BaseController
 
   def edit
     @topic = Topic.find_by(display_name: params[:display_name])
-    @visuals = @topic.visuals.reverse
+    @visuals = @topic.visuals.sort
   end
 
   def update
