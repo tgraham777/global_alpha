@@ -24,6 +24,7 @@ class Admin::TopicsController < Admin::BaseController
 
   def show
     @topic = Topic.find_by(display_name: params[:display_name])
+    @visuals = @topic.visuals.sort
   end
 
   def edit
