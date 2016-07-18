@@ -17,7 +17,7 @@ class Admin::IndicatorsController < Admin::BaseController
         end
       end
 
-      redirect_to @indicator
+      redirect_to admin_indicator_path(@indicator)
     else
       flash[:error] = @indicator.errors.full_messages.first
       render :action => 'new'

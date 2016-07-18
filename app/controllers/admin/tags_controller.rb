@@ -22,7 +22,7 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def destroy
-    tag = Tag.find_by(display_name: params[:display_name])
+    tag = Tag.find_by(id: params[:id])
     tag.topics.clear
     tag.indicators.clear
     tag.previews.clear

@@ -17,7 +17,7 @@ class Admin::CountriesController < Admin::BaseController
         end
       end
 
-      redirect_to @country
+      redirect_to admin_country_path(@country)
     else
       flash[:error] = @country.errors.full_messages.first
       render :action => 'new'
