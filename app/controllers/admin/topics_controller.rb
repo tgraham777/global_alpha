@@ -1,5 +1,5 @@
 class Admin::TopicsController < Admin::BaseController
-  # before_action :require_login
+  before_action :require_login
 
   def index
     @topics = Topic.all
