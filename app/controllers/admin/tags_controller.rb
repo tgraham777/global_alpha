@@ -1,5 +1,5 @@
 class Admin::TagsController < Admin::BaseController
-  before_action :require_login
+  # before_action :require_login
 
   def new
     @tag = Tag.new

@@ -1,5 +1,5 @@
 class Admin::PreviewsController < Admin::BaseController
-  before_action :require_login, except: [:show]
+  # before_action :require_login, except: [:show]
 
   def new
     @preview = Preview.new

@@ -1,5 +1,5 @@
 class Admin::IndicatorsController < Admin::BaseController
-  before_action :require_login
+  # before_action :require_login
 
   def new
     @indicator = Indicator.new
