@@ -6,7 +6,6 @@ class CountriesController < ApplicationController
   end
 
   def show
-    country_name = params[:name].split("-").join(" ")
-    @country = Country.find_by(name: country_name)
+    @country = Country.find_by(display_name: params[:display_name])
   end
 end

@@ -3,7 +3,7 @@
 
   <ul>
     <% @previews.each do |preview| %>
-      <li><%= link_to preview.name.split.map(&:capitalize).join(' '), preview_path(preview) %></li>
+      <li><%= link_to preview.name, preview_path(preview) %></li>
     <% end %>
   </ul>
 </div>

@@ -10,7 +10,7 @@
     <%= collection_check_boxes :country, :tags, Tag.all, :name, :name do |b| %>
       <p>
         <%= b.check_box(class: "check_box") %>
-        <%= b.object.name.split.map(&:capitalize).join(' ') %>
+        <%= b.object.name %>
       </p>
     <% end %>
 
