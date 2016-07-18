@@ -4,10 +4,10 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def create
-    params[:username].downcase!
     @user = User.new(username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation], role: params[:role])
     if @user.save
-      name = @user.username.split.map(&:capitalize).join(' ')
+      @user.update(display_name: SecureRandom.hex(10))
+      name = @user.username
       role = @user.role.capitalize
       flash[:success] = "New user #{name} created with role of #{role}"
       redirect_to new_admin_user_path
@@ -23,8 +23,7 @@ class Admin::UsersController < Admin::BaseController
 
   def show
     if current_user
-      user_name = params[:username].split("-").join(" ")
-      @user = User.find_by(username: user_name)
+      @user = User.find_by(display_name: params[:display_name])
     else
       flash[:error] = "You need to log in or create an account first!"
       redirect_to login_path
@@ -32,15 +31,13 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def edit
-    user_name = params[:username].split("-").join(" ")
-    @user = User.find_by(username: user_name)
+    @user = User.find_by(display_name: params[:display_name])
   end
 
   def update
-    user_name = params[:username].split("-").join(" ")
-    @user = User.find_by(username: user_name)
+    @user = User.find_by(display_name: params[:display_name])
     if @user.update(password: params[:password], password_confirmation: params[:password_confirmation], role: params[:role])
-      flash[:success] = "User #{@user.username.split.map(&:capitalize).join(' ')} was updated successfully."
+      flash[:success] = "User #{@user.username} was updated successfully."
       redirect_to admin_user_path(@user)
     else
       flash[:error] = @user.errors.full_messages.first
@@ -49,8 +46,7 @@ class Admin::UsersController < Admin::BaseController
   end
 
   def destroy
-    user_name = params[:username].downcase.split("-").join(" ")
-    user = User.find_by(username: user_name)
+    user = User.find_by(display_name: params[:display_name])
     user.destroy
     flash[:success] = "User deleted!"
     redirect_to admin_users_path

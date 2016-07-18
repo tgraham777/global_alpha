@@ -6,10 +6,10 @@ class Admin::CountriesController < Admin::BaseController
   end
 
   def create
-    params[:name].downcase!
     @country = Country.new(name: params[:name])
 
     if @country.save
+      @country.update(display_name: SecureRandom.hex(10))
       tags = params[:country][:tags]
       tags.each do |tag_name|
         if tag_name != ""
@@ -17,7 +17,7 @@ class Admin::CountriesController < Admin::BaseController
         end
       end
 
-      redirect_to @country
+      redirect_to admin_country_path(@country)
     else
       flash[:error] = @country.errors.full_messages.first
       render :action => 'new'
@@ -29,13 +29,11 @@ class Admin::CountriesController < Admin::BaseController
   end
 
   def show
-    country_name = params[:name].split("-").join(" ")
-    @country = Country.find_by(name: country_name)
+    @country = Country.find_by(display_name: params[:display_name])
   end
 
   def destroy
-    country_name = params[:name].split("-").join(" ")
-    country = Country.find_by(name: country_name)
+    country = Country.find_by(display_name: params[:display_name])
     country.tags.clear
     country.destroy
     flash[:success] = "Country deleted!"

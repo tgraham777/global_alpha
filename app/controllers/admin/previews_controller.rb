@@ -6,10 +6,10 @@ class Admin::PreviewsController < Admin::BaseController
   end
 
   def create
-    params[:name].downcase!
     @preview = Preview.new(name: params[:name])
 
     if @preview.save
+      @preview.update(display_name: SecureRandom.hex(10))
       tags = params[:preview][:tags]
       tags.each do |tag_name|
         if tag_name != ""
@@ -29,13 +29,11 @@ class Admin::PreviewsController < Admin::BaseController
   end
 
   def show
-    preview_name = params[:name].split("-").join(" ")
-    @preview = Preview.find_by(name: preview_name)
+    @preview = Preview.find_by(display_name: params[:display_name])
   end
 
   def destroy
-    preview_name = params[:name].split("-").join(" ")
-    preview = Preview.find_by(name: preview_name)
+    preview = Preview.find_by(display_name: params[:display_name])
     preview.tags.clear
     preview.destroy
     flash[:success] = "Preview deleted!"

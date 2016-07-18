@@ -15,7 +15,7 @@
   <h4>Tags</h4>
   <ul>
     <% @topic.tags.each do |tag| %>
-      <li><%= tag.name.split.map(&:capitalize).join(' ') %></li>
+      <li><%= tag.name %></li>
     <% end %>
   </ul><br>
 </div>

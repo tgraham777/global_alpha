@@ -1,5 +1,5 @@
 <div class="container" id="new-user-container">
-  <h1>Edit User: <span style="color: red"><%= @user.username.split.map(&:capitalize).join(' ') %></span></h1>
+  <h1>Edit User: <span style="color: red"><%= @user.username %></span></h1>
 
   <%= form_tag admin_user_path(@user), method: :put, html: { class: "form-group" } do %>
     <%= label_tag :password %>
@@ -11,7 +11,7 @@
     <%= label_tag :role %><br>
     Default  <%= check_box_tag :role, "default", true %>&nbsp
     Admin  <%= check_box_tag :role, "admin", false %><br><br>
-    
+
     <br><%= submit_tag "Submit", class: "btn btn-control btn-primary" %>
   <% end %>
 </div>

@@ -7,7 +7,7 @@
 
   <ul>
     <% @indicators.each do |indicator| %>
-      <li><%= link_to indicator.name.split.map(&:capitalize).join(' '), admin_indicator_path(indicator) %></li>
+      <li><%= link_to indicator.name, admin_indicator_path(indicator) %></li>
     <% end %>
   </ul>
 </div>

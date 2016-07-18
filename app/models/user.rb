@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
   enum role: %w(default admin)
 
   def to_param
-    username.split(" ").join("-")
+    display_name
   end
 end

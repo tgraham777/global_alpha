@@ -5,6 +5,6 @@ class Preview < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
 
   def to_param
-    name.split(" ").join("-")
+    display_name
   end
 end

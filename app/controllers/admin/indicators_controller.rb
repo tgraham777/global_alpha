@@ -6,10 +6,10 @@ class Admin::IndicatorsController < Admin::BaseController
   end
 
   def create
-    params[:name].downcase!
     @indicator = Indicator.new(name: params[:name])
 
     if @indicator.save
+      @indicator.update(display_name: SecureRandom.hex(10))
       tags = params[:indicator][:tags]
       tags.each do |tag_name|
         if tag_name != ""
@@ -17,7 +17,7 @@ class Admin::IndicatorsController < Admin::BaseController
         end
       end
 
-      redirect_to @indicator
+      redirect_to admin_indicator_path(@indicator)
     else
       flash[:error] = @indicator.errors.full_messages.first
       render :action => 'new'
@@ -29,13 +29,11 @@ class Admin::IndicatorsController < Admin::BaseController
   end
 
   def show
-    indicator_name = params[:name].split("-").join(" ")
-    @indicator = Indicator.find_by(name: indicator_name)
+    @indicator = Indicator.find_by(display_name: params[:display_name])
   end
 
   def destroy
-    indicator_name = params[:name].split("-").join(" ")
-    indicator = Indicator.find_by(name: indicator_name)
+    indicator = Indicator.find_by(display_name: params[:display_name])
     indicator.tags.clear
     indicator.destroy
     flash[:success] = "Indicator deleted!"

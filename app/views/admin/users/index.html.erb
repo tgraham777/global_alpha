@@ -6,7 +6,7 @@
   </form>
 
   <% @users.each do |user| %>
-    <hr><h4><%= link_to user.username.split.map(&:capitalize).join(' '), admin_user_path(user) %></h4>
+    <hr><h4><%= link_to user.username, admin_user_path(user) %></h4>
     <h6>Role: <%= user.role.capitalize %></h6>
     <h6>Date created: <%= user.created_at %></h6>
     <h6>Date updated: <%= user.updated_at %></h6>

@@ -6,7 +6,6 @@ class IndicatorsController < ApplicationController
   end
 
   def show
-    indicator_name = params[:name].split("-").join(" ")
-    @indicator = Indicator.find_by(name: indicator_name)
+    @indicator = Indicator.find_by(display_name: params[:display_name])
   end
 end

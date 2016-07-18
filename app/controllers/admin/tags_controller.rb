@@ -6,9 +6,9 @@ class Admin::TagsController < Admin::BaseController
   end
 
   def create
-    tag_name = params[:name].downcase!
-    @tag = Tag.new(name: tag_name)
+    @tag = Tag.new(name: params[:name])
     if @tag.save
+      @tag.update(display_name: SecureRandom.hex(10))
       flash[:success] = "Tag successfully created!"
       redirect_to admin_tags_path
     else
