@@ -20,11 +20,11 @@
     <%= flash_messages %>
   </div>
 
-  <% if current_admin? %>
-    <%= render 'layouts/admin_navbar' %>
-  <% else %>
+  <!-- <% if current_admin? %>
+    <%#= render 'layouts/admin_navbar' %>
+  <% else %> -->
     <%= render 'layouts/navbar' %>
-  <% end %>
+  <!-- <% end %> -->
   <%= yield %>
 
   <hr>
