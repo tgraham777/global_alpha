@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160716013110) do
+ActiveRecord::Schema.define(version: 20160718195833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "countries", force: :cascade do |t|
     t.text     "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "display_name"
   end
 
   create_table "country_tags", force: :cascade do |t|
@@ -44,8 +45,9 @@ ActiveRecord::Schema.define(version: 20160716013110) do
 
   create_table "indicators", force: :cascade do |t|
     t.text     "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "display_name"
   end
 
   create_table "preview_tags", force: :cascade do |t|
@@ -60,14 +62,16 @@ ActiveRecord::Schema.define(version: 20160716013110) do
 
   create_table "previews", force: :cascade do |t|
     t.text     "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "display_name"
   end
 
   create_table "tags", force: :cascade do |t|
     t.text     "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "display_name"
   end
 
   create_table "topic_tags", force: :cascade do |t|
@@ -106,6 +110,7 @@ ActiveRecord::Schema.define(version: 20160716013110) do
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
     t.integer  "role",            default: 0
+    t.string   "display_name"
   end
 
   create_table "visuals", force: :cascade do |t|
