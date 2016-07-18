@@ -15,7 +15,11 @@
           <div class="container">
             <div class="carousel-caption">
               <h1>Hot Topic</h1>
-              <p><a class="btn btn-lg btn-primary landing" href="/previews/f1c9500ea66070413b45" role="button">Learn more</a></p>
+              <% if current_admin? %>
+                <p><%= link_to "Learn more", admin_preview_path(@ht_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
+              <% else %>
+                <p><%= link_to "Learn more", preview_path(@ht_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
+              <% end %>
             </div>
           </div>
         </div>
@@ -24,7 +28,11 @@
           <div class="container">
             <div class="carousel-caption">
               <h1>Global Macro</h1>
-              <p><a class="btn btn-lg btn-primary landing" href="/previews/5d3c89d094a55f2262e1" role="button">Learn more</a></p>
+              <% if current_admin? %>
+                <p><%= link_to "Learn more", admin_preview_path(@gm_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
+              <% else %>
+                <p><%= link_to "Learn more", preview_path(@gm_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
+              <% end %>
             </div>
           </div>
         </div>
@@ -33,7 +41,11 @@
           <div class="container">
             <div class="carousel-caption">
               <h1>Financial Markets</h1>
-              <p><a class="btn btn-lg btn-primary landing" href="/previews/8af6bd4f9912100829be" role="button">Learn more</a></p>
+              <% if current_admin? %>
+                <p><%= link_to "Learn more", admin_preview_path(@fm_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
+              <% else %>
+                <p><%= link_to "Learn more", preview_path(@fm_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
+              <% end %>
             </div>
           </div>
         </div>
