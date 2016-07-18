@@ -3,7 +3,7 @@
   <h5><em><%= @topic.report_date %></em></h5>
 
   <p><%= @topic.intro %></p>
-  <% @topic.visuals.reverse.each do |visual| %>
+  <% @visuals.each do |visual| %>
     <br><%= visual.link.html_safe %>
     <span style="padding-left: 175px;"><em><%= visual.caption %></em></span><br><br>
     <p><%= simple_format(visual.description) %></p>

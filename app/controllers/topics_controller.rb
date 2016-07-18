@@ -7,5 +7,6 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find_by(display_name: params[:display_name])
+    @visuals = @topic.visuals.sort
   end
 end
