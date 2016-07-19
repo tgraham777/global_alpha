@@ -2,7 +2,7 @@ class Admin::TopicsController < Admin::BaseController
   before_action :require_login
 
   def index
-    @topics = Topic.all
+    @topics = Topic.all.sort_by { |topic| topic.updated_at }.reverse!
   end
 
   def new
