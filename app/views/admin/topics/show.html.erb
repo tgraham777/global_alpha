@@ -32,12 +32,12 @@
     <div class="column col-xs-3" id="sidebar">
       Related Countries:
       <ul>
-        <li><%= link_to @topic.tags.first.countries.first.name, admin_country_path(Country.find_by(name: @topic.tags.first.countries.first.name)) %></li>
+        <li><%= link_to @topic.tags.sample.countries.sample.name, admin_country_path(Country.find_by(name: @topic.tags.sample.countries.sample.name)) %></li>
       </ul>
 
       Related Indicators:
       <ul>
-        <li><%= link_to @topic.tags.first.indicators.first.name, admin_indicator_path(Indicator.find_by(name: @topic.tags.first.indicators.first.name)) %></li>
+        <li><%= link_to @topic.tags.sample.indicators.sample.name, admin_indicator_path(Indicator.find_by(name: @topic.tags.sample.indicators.sample.name)) %></li>
       </ul>
     </div>
 </div>
