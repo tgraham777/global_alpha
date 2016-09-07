@@ -1,4 +1,6 @@
 <div class="container" id="topic-container">
+  <%= link_to "Back to Topics", admin_topics_path, class: "back-to-link" %>
+
   <h1><%= @topic.title %></h1>
   <h5><em><%= @topic.report_date %></em></h5>
 
