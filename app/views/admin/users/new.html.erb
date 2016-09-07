@@ -1,4 +1,6 @@
 <div class="container" id="new-user-container">
+  <%= link_to "Back to Users", admin_users_path, class: "back-to-link" %>
+
   <h1>Create Account</h1>
 
   <%= form_tag admin_users_path, html: { class: "form-group" } do %>
