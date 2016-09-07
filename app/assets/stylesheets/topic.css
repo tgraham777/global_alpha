@@ -9,3 +9,13 @@
 #new-topic-container {
   margin-top: 85px;
 }
+
+#sidebar {
+  position: fixed;
+  height: 100px;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  display: inline-block;
+  background-color: #CCCCCC;
+}
