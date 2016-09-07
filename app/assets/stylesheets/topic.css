@@ -4,6 +4,10 @@
 
 #topic-container {
   margin-top: 85px;
+  width: 70%;
+  position: absolute;
+  left: 6%;
+  padding-bottom: 100px;
 }
 
 #new-topic-container {
@@ -12,10 +16,14 @@
 
 #sidebar {
   position: fixed;
-  height: 120px;
+  height: 40%;
+  width: 20%;
   right: 0;
-  bottom: 0;
+  bottom: 25%;
   display: inline-block;
   border-style: ridge;
-  background-color: #DDD;
+  border-color: #DDD;
+  border-radius: 5px;
+  border-width: thick;
+  background-color: #EEE;
 }
