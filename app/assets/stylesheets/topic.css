@@ -12,10 +12,10 @@
 
 #sidebar {
   position: fixed;
-  height: 100px;
+  height: 120px;
   right: 0;
   bottom: 0;
-  z-index: 1000;
   display: inline-block;
-  background-color: #CCCCCC;
+  border-style: ridge;
+  background-color: #DDD;
 }
