@@ -1,4 +1,6 @@
-<div class="container" id="user-container">
+<div class="container" id="admin-user-container">
+  <%= link_to "Back to Users", admin_users_path, class: "back-to-link" %>
+
   <h1><%= @user.username %></h1>
   <h4>Role: <%= @user.role.capitalize %></h4>
   <h4>Date created: <%= @user.created_at %></h4>
