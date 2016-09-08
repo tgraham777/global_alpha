@@ -5,6 +5,6 @@ class Preview < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
 
   def to_param
-    display_name
+    name
   end
 end
