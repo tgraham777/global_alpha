@@ -4,8 +4,23 @@
 
 #topic-container {
   margin-top: 85px;
+  margin-left: 56px;
+  width: 70%;
 }
 
 #new-topic-container {
   margin-top: 85px;
+}
+
+#sidebar {
+  position: fixed;
+  height: 40%;
+  width: 20%;
+  right: 0;
+  bottom: 25%;
+  border-style: ridge;
+  border-color: #DDD;
+  border-radius: 5px;
+  border-width: thick;
+  background-color: #EEE;
 }

@@ -8,5 +8,8 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find_by(display_name: params[:display_name])
     @visuals = @topic.visuals.sort
+    @related_countries = 3.times.map { @topic.tags.sample.countries.sample }.uniq
+    @related_indicators = 3.times.map { @topic.tags.sample.indicators.sample }.uniq
+    @related_topics = 3.times.map { @topic.tags.sample.topics.sample }.uniq.reject{ |topic| topic.title == @topic.title }
   end
 end
