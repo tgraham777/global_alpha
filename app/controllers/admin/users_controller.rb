@@ -6,7 +6,7 @@ class Admin::UsersController < Admin::BaseController
   def create
     @user = User.new(username: params[:username], password: params[:password], password_confirmation: params[:password_confirmation], role: params[:role])
     if @user.save
-      @user.update(display_name: SecureRandom.hex(10))
+      @user.update(display_name: SecureRandom.hex(5))
       name = @user.username
       role = @user.role.capitalize
       flash[:success] = "New user #{name} created with role of #{role}"

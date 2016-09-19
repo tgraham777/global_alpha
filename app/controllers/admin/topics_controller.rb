@@ -13,7 +13,7 @@ class Admin::TopicsController < Admin::BaseController
   def create
     @topic = Topic.new(topic_params)
     if @topic.save
-      @topic.update(display_name: SecureRandom.hex(10))
+      @topic.update(display_name: SecureRandom.hex(5))
       create_tags
       redirect_to admin_topic_path(@topic)
     else

@@ -9,7 +9,7 @@ class Admin::PreviewsController < Admin::BaseController
     @preview = Preview.new(name: params[:name])
 
     if @preview.save
-      @preview.update(display_name: SecureRandom.hex(10))
+      @preview.update(display_name: SecureRandom.hex(5))
       tags = params[:preview][:tags]
       tags.each do |tag_name|
         if tag_name != ""
