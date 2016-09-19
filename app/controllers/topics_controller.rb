@@ -10,6 +10,6 @@ class TopicsController < ApplicationController
     @visuals = @topic.visuals.sort
     @related_countries = @topic.tags.sample.countries.last(3)
     @related_indicators = @topic.tags.sample.indicators.last(3)
-    @related_topics = @topic.tags.sample.topics.last(3).reject{ |topic| topic.title == @topic.title }
+    @related_topics = @topic.tags.sample.topics.reject{ |topic| topic.title == @topic.title }.last(2)
   end
 end
