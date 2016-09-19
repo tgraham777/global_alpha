@@ -9,7 +9,7 @@ class Admin::IndicatorsController < Admin::BaseController
     @indicator = Indicator.new(name: params[:name])
 
     if @indicator.save
-      @indicator.update(display_name: SecureRandom.hex(10))
+      @indicator.update(display_name: SecureRandom.hex(5))
       tags = params[:indicator][:tags]
       tags.each do |tag_name|
         if tag_name != ""

@@ -9,7 +9,7 @@ class Admin::CountriesController < Admin::BaseController
     @country = Country.new(name: params[:name])
 
     if @country.save
-      @country.update(display_name: SecureRandom.hex(10))
+      @country.update(display_name: SecureRandom.hex(5))
       tags = params[:country][:tags]
       tags.each do |tag_name|
         if tag_name != ""
