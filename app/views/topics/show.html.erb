@@ -16,6 +16,14 @@
         <h3>Conclusion</h3>
         <p><%= @topic.conclusion %></p><hr>
 
+        <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
+        <% @related_topics.each do |topic| %>
+          <div id="related-topic">
+            <h3><%= link_to topic.title, topic_path(topic) %></h3>
+            <%= truncate(topic.intro, length: 250) %>
+          </div>
+        <% end %><hr>
+
         <h4>Tags</h4>
         <ul>
           <% @topic.tags.each do |tag| %>
@@ -30,7 +38,7 @@
         <h4><span class="glyphicon glyphicon-globe"></span>&nbsp Related Countries</h4>
         <ul>
           <% @related_countries.each do |country| %>
-            <li><%= link_to country.name, admin_country_path(country) %></li>
+            <li><%= link_to country.name, country_path(country) %></li>
           <% end %>
         </ul>
       </div>
@@ -38,7 +46,7 @@
         <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Related Indicators</h4>
         <ul>
           <% @related_indicators.each do |indicator| %>
-            <li><%= link_to indicator.name, admin_indicator_path(indicator) %></li>
+            <li><%= link_to indicator.name, indicator_path(indicator) %></li>
           <% end %>
         </ul>
       </div>
