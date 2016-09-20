@@ -9,12 +9,20 @@
         <p><%= @topic.intro %></p>
         <% @visuals.each do |visual| %>
           <br><%= visual.link.html_safe %>
-          <p><span style="padding-left: 62px;"></span><em><%= visual.caption %></em></p>
+          <p><em><%= visual.caption %></em></p>
           <%= simple_format(visual.description) %>
         <% end %>
 
         <h3>Conclusion</h3>
         <p><%= @topic.conclusion %></p><hr>
+
+        <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
+        <% @related_topics.each do |topic| %>
+          <div id="related-topic">
+            <h3><%= link_to topic.title, admin_topic_path(topic) %></h3>
+            <%= truncate(topic.intro, length: 250) %>
+          </div>
+        <% end %><hr>
 
         <h4>Tags</h4>
         <ul>
@@ -29,25 +37,21 @@
     </div>
 
     <div class="column col-xs-3" id="sidebar">
-      <h5>Related Countries:</h5>
-      <ul>
-        <% @related_countries.each do |country| %>
-          <li><%= link_to country.name, admin_country_path(country) %></li>
-        <% end %>
-      </ul>
-
-      <h5>Related Indicators:</h5>
-      <ul>
-        <% @related_indicators.each do |indicator| %>
-          <li><%= link_to indicator.name, admin_indicator_path(indicator) %></li>
-        <% end %>
-      </ul>
-
-      <h5>Related Topics:</h5>
-      <ul>
-        <% @related_topics.each do |topic| %>
-          <li><%= link_to topic.title, admin_topic_path(topic) %></li>
-        <% end %>
-      </ul>
+      <div id="country-sidebar">
+        <h4><span class="glyphicon glyphicon-globe"></span>&nbsp Related Countries</h4>
+        <ul>
+          <% @related_countries.each do |country| %>
+            <li><%= link_to country.name, admin_country_path(country) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div id="indicator-sidebar">
+        <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Related Indicators</h4>
+        <ul>
+          <% @related_indicators.each do |indicator| %>
+            <li><%= link_to indicator.name, admin_indicator_path(indicator) %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
 </div>
