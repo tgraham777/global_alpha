@@ -30,6 +30,8 @@ class Admin::CountriesController < Admin::BaseController
 
   def show
     @country = Country.find_by(display_name: params[:display_name])
+    @related_topics = [Topic.find_by(title: "Global Oil Consumption"), Topic.find_by(title: "Global Oil Production")]
+    @related_indicators = Indicator.all
   end
 
   def destroy

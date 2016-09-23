@@ -1,13 +1,57 @@
-<div class="container" id="country-container">
-  <%= link_to "Back to Countries", admin_countries_path, class: "back-to-link" %>
+<div class="row">
+  <div class="column col-xs-12">
+    <div class="container" id="country-container">
+      <%= link_to "Back to Countries", admin_countries_path, class: "back-to-link" %>
 
-  <h1><%= @country.name %></h1>
-  <h3>Tags</h3>
-  <ul>
-    <% @country.tags.each do |tag| %>
-      <li><%= tag.name %></li>
-    <% end %>
-  </ul><br>
+      <h1>United States</h1>
 
-  <%= button_to "Delete country", admin_country_path(@country), method: :delete, class: "btn btn-control btn-danger" %>
+      <p>This is a paragraph or two introducing the country, key industries, etc., particulary as it relates to our view. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui dolor, lobortis ut tempor a, rhoncus eu est. Integer eleifend risus nec suscipit convallis. Phasellus quis metus blandit nisi elementum elementum. Praesent egestas orci eu dolor scelerisque, ac efficitur urna finibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+
+      <img id="default-view-us-photo1" src="/images/default-view-us.jpg" alt="Photo not available" />
+
+      <h3>AMG's View</h3>
+      <p>
+        This would include our thoughts on the factors most important to the United States economy and could also include TPC, etc. Vestibulum gravida ante eu tellus imperdiet, non facilisis nisl sagittis. In a posuere justo. Fusce et facilisis est, in tempus elit. Nam ac elementum quam. Aliquam erat volutpat. Donec nec ultricies dui, ac pretium tortor. Praesent efficitur enim vitae leo vulputate, nec efficitur tellus gravida. Mauris nec justo felis. Suspendisse enim erat, blandit hendrerit ipsum ac, tincidunt consectetur nisi. Mauris id convallis odio. Ut dapibus nunc vel suscipit aliquet. Pellentesque tempus tortor vel accumsan feugiat. Fusce hendrerit odio erat, nec mattis elit mollis sit amet. Phasellus volutpat tortor hendrerit, volutpat tellus sit amet, porta sapien.
+      </p>
+
+      <img id="amg-view-photo1" src="/images/amg-view-us.jpg" alt="Photo not available" />
+
+      <p>
+        Donec et ultrices orci, tincidunt mollis mauris. Pellentesque consequat diam nec erat vestibulum sodales. Duis sagittis leo eget rhoncus blandit. Nulla vulputate tellus urna, eget rhoncus ante sollicitudin sed. Proin sodales mauris mollis, ornare magna vel, malesuada diam. Ut id est augue. Donec dapibus dolor sed rutrum feugiat. Sed mattis mi eget nibh consequat ultricies. Etiam elementum risus justo, venenatis rhoncus orci luctus non. Nulla efficitur congue dui a dignissim. Suspendisse commodo diam in leo suscipit, sed rhoncus sapien porttitor.
+      </p>
+
+      <img id="amg-view-photo2" src="/images/amg-view-us2.jpg" alt="Photo not available" /><hr>
+
+      <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
+      <% @related_topics.each do |topic| %>
+        <div id="country-related-topic">
+          <h3><%= link_to topic.title, admin_topic_path(topic) %></h3>
+          <%= truncate(topic.intro, length: 250) %>
+        </div>
+      <% end %><hr>
+
+      <h3>Tags</h3>
+      <ul>
+        <% @country.tags.each do |tag| %>
+          <li><%= tag.name %></li>
+        <% end %>
+      </ul>
+
+      <%#= button_to "Delete country", admin_country_path(@country), method: :delete, class: "btn btn-control btn-danger" %>
+    </div>
+  </div>
+
+  <div class="column col-xs-3" id="country-show-sidebar">
+    <div id="indicator-sidebar">
+      <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Key Indicators</h4>
+      <table>
+        <% @related_indicators.each do |indicator| %>
+          <tr>
+            <td><%= link_to indicator.name, admin_indicator_path(indicator) %></td>
+            <td>Value</td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>

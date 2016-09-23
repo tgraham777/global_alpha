@@ -2,6 +2,36 @@
   <%= link_to "Back to Indicators", admin_indicators_path, class: "back-to-link" %>
 
   <h1><%= @indicator.name %></h1>
+
+  <p>
+    This is a paragraph about what this indicator means and how AMG uses it in its evaluations. Nam pellentesque malesuada sapien ut fringilla. Morbi tincidunt elit vel pretium faucibus. Quisque malesuada sit amet ante non congue. Curabitur dapibus sit amet sapien nec bibendum. Etiam non nisi dapibus, consectetur eros at, facilisis turpis. Nullam dignissim massa ac bibendum bibendum.
+  </p>
+
+  <h3>Global Rankings</h3>
+
+  <table id="indicator-table">
+    <tr>
+      <th>Country</th>
+      <th>Value</th>
+      <th>Rank</th>
+    </tr>
+    <% @related_countries.each do |country| %>
+      <tr>
+        <td><%= link_to country.name, admin_country_path(country) %></td>
+        <td>Value</td>
+        <td>Rank</td>
+      </tr>
+    <% end %>
+  </table><hr>
+
+  <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
+  <% @related_topics.each do |topic| %>
+    <div id="country-related-topic">
+      <h3><%= link_to topic.title, admin_topic_path(topic) %></h3>
+      <%= truncate(topic.intro, length: 250) %>
+    </div>
+  <% end %><hr>
+
   <h3>Tags</h3>
   <ul>
     <% @indicator.tags.each do |tag| %>
