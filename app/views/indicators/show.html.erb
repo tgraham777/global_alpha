@@ -13,7 +13,7 @@
     </tr>
     <% @related_countries.each do |country| %>
       <tr>
-        <td><%= link_to country.name, admin_country_path(country) %></td>
+        <td><%= link_to country.name, country_path(country) %></td>
         <td>Value</td>
         <td>Rank</td>
       </tr>
@@ -24,12 +24,12 @@
     <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
     <% @related_topics.each do |topic| %>
       <div id="country-related-topic">
-        <h3><%= link_to topic.title, admin_topic_path(topic) %></h3>
+        <h3><%= link_to topic.title, topic_path(topic) %></h3>
         <%= truncate(topic.intro, length: 250) %>
       </div>
     <% end %>
   </div><hr>
-  
+
   <h3>Tags</h3>
   <ul>
     <% @indicator.tags.each do |tag| %>
