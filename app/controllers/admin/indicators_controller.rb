@@ -31,7 +31,7 @@ class Admin::IndicatorsController < Admin::BaseController
   def show
     @indicator = Indicator.find_by(display_name: params[:display_name])
     @related_countries = Country.all
-    @related_topics = @indicator.tags.sample.topics.last(2).reverse!
+    @related_topics = @indicator.tags.sample.topics.last(2)
   end
 
   def destroy
