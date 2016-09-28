@@ -8,4 +8,62 @@
 
 #country-container {
   margin-top: 85px;
+  margin-left: 56px;
+  width: 70%;
+  padding-right: 25px;
+}
+
+#default-view-us-photo1 {
+  width: 90%;
+  border-style: solid;
+  border-color: #CCC;
+  border-width: thin;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#amg-view-photo1 {
+  width: 90%;
+  border-style: solid;
+  border-color: #CCC;
+  border-width: thin;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+#amg-view-photo2 {
+  width: 90%;
+  border-style: solid;
+  border-color: #CCC;
+  border-width: thin;
+  margin-top: 10px;
+}
+
+#country-related-topic {
+  display: inline-block;
+  width: 45%;
+  padding-right: 5%;
+}
+
+#country-show-sidebar {
+  position: fixed;
+  width: 24%;
+  right: 0;
+  top: 20%;
+  padding-left: 20px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #777;
+  border-radius: 7px;
+  padding-bottom: 4px;
+}
+
+#ind-side-table {
+  width: 100%;
+}
+
+td {
+  padding-bottom: 5px;
+  padding-top: 5px;
+  border-bottom: 1px solid #ddd;
 }

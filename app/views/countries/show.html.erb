@@ -1,11 +1,38 @@
-<div class="container" id="country-container">
-  <%= link_to "Back to Countries", countries_path, class: "back-to-link" %>
+<div class="row">
+  <div class="column col-xs-12">
+    <div class="container" id="country-container">
+      <%= link_to "Back to Countries", countries_path, class: "back-to-link" %>
 
-  <h1><%= @country.name %></h1>
-  <h3>Tags</h3>
-  <ul>
-    <% @country.tags.each do |tag| %>
-      <li><%= tag.name %></li>
-    <% end %>
-  </ul><br>
+      <h1><%= @country.name %></h1>
+
+      <hr><h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
+      <% @related_topics.each do |topic| %>
+        <div id="country-related-topic">
+          <h3><%= link_to topic.title, topic_path(topic) %></h3>
+          <%= truncate(topic.intro, length: 250) %>
+        </div>
+      <% end %><hr>
+
+      <h3>Tags</h3>
+      <ul>
+        <% @country.tags.each do |tag| %>
+          <li><%= tag.name %></li>
+        <% end %>
+      </ul><br>
+    </div>
+  </div>
+
+  <div class="column col-xs-3" id="country-show-sidebar">
+    <div id="indicator-sidebar">
+      <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Key Indicators</h4>
+      <table id="ind-side-table">
+        <% @related_indicators.each do |indicator| %>
+          <tr>
+            <td><%= link_to indicator.name, indicator_path(indicator) %></td>
+            <td>Value</td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </div>
 </div>

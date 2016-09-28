@@ -1,3 +1,18 @@
 #dashboard-container {
   margin-top: 70px;
+  margin-left: 56px;
+  width: 75%;
+  padding-right: 25px;
+}
+
+#dashboard-image1 {
+  width: 100%;
+  border-style: solid;
+  border-color: #CCC;
+  border-width: thin;
+}
+
+#topic-dashboard-sidebar {
+  padding-left: -10px;
+  padding-bottom: 10px;
 }

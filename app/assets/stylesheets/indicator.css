@@ -9,3 +9,7 @@
 #indicator-container {
   margin-top: 85px;
 }
+
+#indicator-table {
+  width: 40%;
+}
