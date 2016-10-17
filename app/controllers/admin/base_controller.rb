@@ -3,6 +3,9 @@ class Admin::BaseController < ApplicationController
 
 private
   def require_admin
-    render file: "/public/404" unless current_admin?
+    unless current_admin?
+      flash[:error] = "You must be logged in as an administrator to access this section."
+      redirect_to '/login'
+    end
   end
 end
