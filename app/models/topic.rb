@@ -3,6 +3,8 @@ class Topic < ActiveRecord::Base
   has_many :tags, through: :topic_tags
   has_many :topic_visuals
   has_many :visuals, through: :topic_visuals
+  has_many :topic_indicators
+  has_many :indicators, through: :topic_indicators
 
   accepts_nested_attributes_for :visuals
 
