@@ -13,6 +13,10 @@
   margin-top: 85px;
 }
 
+#edit-topic-container {
+  margin-top: 70px;
+}
+
 #sidebar {
   position: fixed;
   width: 20%;
