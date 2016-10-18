@@ -36,6 +36,7 @@ class Admin::IndicatorsController < Admin::BaseController
 
   def destroy
     indicator = Indicator.find_by(display_name: params[:display_name])
+    indicator.topics.clear
     indicator.tags.clear
     indicator.destroy
     flash[:success] = "Indicator deleted!"

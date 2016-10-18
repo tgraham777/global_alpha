@@ -31,9 +31,29 @@
     </div>
 
     <hr><%= f.label :conclusion %>
-    <%= f.text_area :conclusion, class: "form-control" %><br>
+    <%= f.text_area :conclusion, class: "form-control" %><hr>
 
-    <br><%= f.label :tags %><span><em> (select all that apply)</em></span><br>
+    <h4><span class="glyphicon glyphicon-globe"></span>&nbsp Related Countries</h4>
+    <%= f.fields_for :countries do |country| %>
+      <%= collection_check_boxes :topic, :countries, Country.all, :id, :name do |b| %>
+      <p>
+        <%= b.check_box(class: "check_box", checked: @topic.countries.include?(Country.find_by(name: b.object.name))) %>
+        <%= b.object.name %>
+      </p>
+      <% end %>
+    <% end %><hr>
+
+    <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Related Indicators</h4>
+    <%= f.fields_for :indicators do |indicator| %>
+      <%= collection_check_boxes :topic, :indicators, Indicator.all, :id, :name do |b| %>
+      <p>
+        <%= b.check_box(class: "check_box", checked: @topic.indicators.include?(Indicator.find_by(name: b.object.name))) %>
+        <%= b.object.name %>
+      </p>
+      <% end %>
+    <% end %><hr>
+
+    <h4><span class="glyphicon glyphicon-user"></span>&nbsp User Tags</h4>
     <%= f.fields_for :tags do |tag| %>
       <%= collection_check_boxes :topic, :tags, Tag.all, :id, :name do |b| %>
       <p>
