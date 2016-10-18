@@ -1,6 +1,6 @@
 <div class="container" id="new-topic-container">
   <%= link_to "Back to Topics", admin_topics_path, class: "back-to-link" %>
-  
+
   <h1>Create Topic</h1>
 
   <div class="add-visual-button-container">
@@ -33,9 +33,29 @@
     </div>
 
     <%= f.label :conclusion %>
-    <%= f.text_area :conclusion, class: "form-control", placeholder: "Enter conclusion (if applicable)" %><br>
+    <%= f.text_area :conclusion, class: "form-control", placeholder: "Enter conclusion (if applicable)" %><hr>
 
-    <br><%= f.label :tags %><span><em> (select all that apply)</em></span><br>
+    <h4><span class="glyphicon glyphicon-globe"></span>&nbsp Related Countries</h4>
+    <%= f.fields_for :countries do |country| %>
+      <%= collection_check_boxes :topic, :countries, Country.all, :id, :name do |b| %>
+      <p>
+        <%= b.check_box(class: "check_box") %>
+        <%= b.object.name %>
+      </p>
+      <% end %>
+    <% end %><hr>
+
+    <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Related Indicators</h4>
+    <%= f.fields_for :indicators do |indicator| %>
+      <%= collection_check_boxes :topic, :indicators, Indicator.all, :id, :name do |b| %>
+      <p>
+        <%= b.check_box(class: "check_box") %>
+        <%= b.object.name %>
+      </p>
+      <% end %>
+    <% end %><hr>
+
+    <h4><span class="glyphicon glyphicon-user"></span>&nbsp User Tags</h4>
     <%= f.fields_for :tags do |tag| %>
       <%= collection_check_boxes :topic, :tags, Tag.all, :id, :name do |b| %>
       <p>
