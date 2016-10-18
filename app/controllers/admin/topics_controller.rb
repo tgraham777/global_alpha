@@ -40,6 +40,8 @@ class Admin::TopicsController < Admin::BaseController
   def update
     @topic = Topic.find_by(display_name: params[:display_name])
     if @topic.update(topic_params)
+      update_topic_countries
+      update_topic_indicators
       update_topic_tags
       flash[:success] = "Topic was updated successfully!"
       redirect_to admin_topic_path(@topic)
@@ -51,6 +53,8 @@ class Admin::TopicsController < Admin::BaseController
 
   def destroy
     topic = Topic.find_by(display_name: params[:display_name])
+    topic.countries.clear
+    topic.indicators.clear
     topic.tags.clear
     topic.visuals.clear
     topic.destroy
@@ -82,6 +86,26 @@ private
     tags.each do |tag_id|
       if tag_id != ""
         @topic.tags << Tag.find_by(id: tag_id)
+      end
+    end
+  end
+
+  def update_topic_countries
+    @topic.countries.clear
+    countries = params[:topic][:countries]
+    countries.each do |country_id|
+      if country_id != ""
+        @topic.countries << Country.find_by(id: country_id)
+      end
+    end
+  end
+
+  def update_topic_indicators
+    @topic.indicators.clear
+    indicators = params[:topic][:indicators]
+    indicators.each do |indicator_id|
+      if indicator_id != ""
+        @topic.indicators << Indicator.find_by(id: indicator_id)
       end
     end
   end
