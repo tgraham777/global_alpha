@@ -25,13 +25,15 @@ class Admin::CountriesController < Admin::BaseController
 
   def show
     @country = Country.find_by(display_name: params[:display_name])
-    @related_topics = @country.tags.sample.topics.last(2).reverse!
-    @related_indicators = @country.tags.sample.indicators
+    @visuals = @country.visuals.sort
+    @related_indicators = @country.indicators
+    @related_topics = @country.tags.sample.topics.sort_by(&:updated_at).last(2).reverse!
   end
 
   def destroy
     country = Country.find_by(display_name: params[:display_name])
     country.topics.clear
+    country.indicators.clear
     country.tags.clear
     country.destroy
     flash[:success] = "Country deleted!"
