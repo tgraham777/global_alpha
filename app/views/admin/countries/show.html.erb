@@ -6,7 +6,17 @@
 
         <h1><%= @country.name %></h1>
 
-        <hr><h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
+        <p><%= @country.intro %></p>
+        <% @visuals.each do |visual| %>
+          <br><%= visual.link.html_safe %>
+          <p><em><%= visual.caption %></em></p>
+          <%= simple_format(visual.description) %>
+        <% end %>
+
+        <h3>Conclusion</h3>
+        <p><%= @country.conclusion %></p><hr>
+
+        <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
         <% @related_topics.each do |topic| %>
         <div id="country-related-topic">
           <h3><%= link_to topic.title, admin_topic_path(topic) %></h3>
@@ -14,14 +24,17 @@
         </div>
         <% end %><hr>
 
-        <h3>Tags</h3>
+        <h4>Tags</h4>
         <ul>
           <% @country.tags.each do |tag| %>
-          <li><%= tag.name %></li>
+            <li><%= tag.name %></li>
           <% end %>
         </ul><br>
 
-        <%= button_to "Delete country", admin_country_path(@country), method: :delete, class: "btn btn-control btn-danger" %>
+        <%= button_to "Edit country", edit_admin_country_path(@country), method: :get, class: "btn btn-control btn-success" %><br>
+        <%= button_to "Delete country", admin_country_path(@country), method: :delete, class: "btn btn-control btn-danger" %><br>
+
+        <p style="color: #999"><em>Last updated: <%= @country.last_updated %></em></p>
       </div>
     </div>
 
@@ -32,7 +45,6 @@
           <% @related_indicators.each do |indicator| %>
           <tr>
             <td><%= link_to indicator.name, admin_indicator_path(indicator) %></td>
-            <td>Value</td>
           </tr>
           <% end %>
         </table>

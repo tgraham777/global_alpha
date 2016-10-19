@@ -46,7 +46,7 @@ class Admin::TopicsController < Admin::BaseController
       flash[:success] = "Topic was updated successfully!"
       redirect_to admin_topic_path(@topic)
     else
-      flash[:error] = @user.errors.full_messages.first
+      flash[:error] = @topic.errors.full_messages.first
       redirect_to edit_admin_topic_path(@topic)
     end
   end

@@ -1,0 +1,58 @@
+<div class="container" id="edit-country-container">
+  <h1>Edit Country</h1>
+
+  <div class="add-visual-button-container">
+    <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "country-edit-add-visual-button" %><br>
+  </div>
+
+  <%= form_for [:admin, @country], html: { class: "form-group" } do |f| %>
+    <div class="default-country-edit-items">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control", placeholder: "Enter name" %><br>
+
+      <%= f.label :last_updated %>
+      <%= f.text_field :last_updated, class: "form-control", placeholder: "Enter date" %><br>
+
+      <%= f.label :intro %>
+      <%= f.text_area :intro, class: "form-control", placeholder: "Enter introduction (if applicable)" %><br>
+
+      <%= f.fields_for :visuals, @visuals do |ff| %>
+        <div class="country-edit-page-visual-counter">
+          <hr><%= ff.label :link %>
+          <%= ff.text_field :link, class: "form-control" %><br>
+
+          <%= ff.label :caption %>
+          <%= ff.text_field :caption, class: "form-control" %><br>
+
+          <%= ff.label :description %>
+          <%= ff.text_area :description, class: "form-control" %><br>
+        </div>
+      <% end %>
+    </div>
+
+    <hr><%= f.label :conclusion %>
+    <%= f.text_area :conclusion, class: "form-control", placeholder: "Enter conclusion (if applicable)" %><hr>
+
+    <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Related Indicators</h4>
+    <%= f.fields_for :indicators do |indicator| %>
+      <%= collection_check_boxes :country, :indicators, Indicator.all, :id, :name do |b| %>
+      <p>
+        <%= b.check_box(class: "check_box", checked: @country.indicators.include?(Indicator.find_by(name: b.object.name))) %>
+        <%= b.object.name %>
+      </p>
+      <% end %>
+    <% end %><hr>
+
+    <h4><span class="glyphicon glyphicon-user"></span>&nbsp User Tags</h4>
+    <%= f.fields_for :tags do |tag| %>
+      <%= collection_check_boxes :country, :tags, Tag.all, :id, :name do |b| %>
+      <p>
+        <%= b.check_box(class: "check_box", checked: @country.tags.include?(Tag.find_by(name: b.object.name))) %>
+        <%= b.object.name %>
+      </p>
+      <% end %>
+    <% end %>
+
+    <br><%= f.submit "Update country", class: "btn btn-control btn-primary" %>
+  <% end %>
+</div>
