@@ -1,11 +1,11 @@
 class Country < ActiveRecord::Base
-  has_many :country_tags
+  has_many :country_tags, dependent: :delete_all
   has_many :tags, through: :country_tags
-  has_many :topic_countries
+  has_many :topic_countries, dependent: :delete_all
   has_many :topics, through: :topic_countries
-  has_many :country_visuals
+  has_many :country_visuals, dependent: :delete_all
   has_many :visuals, through: :country_visuals
-  has_many :country_indicators
+  has_many :country_indicators, dependent: :delete_all
   has_many :indicators, through: :country_indicators
 
   validates :name, presence: true, uniqueness: true
