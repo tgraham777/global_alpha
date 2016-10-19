@@ -9,7 +9,7 @@
 #country-container {
   margin-top: 85px;
   margin-left: -13px;
-  width: 70%;
+  width: 75%;
   padding-right: 25px;
 }
 
@@ -41,6 +41,7 @@
 
 #country-related-topic {
   display: inline-block;
+  vertical-align: top;
   width: 45%;
   padding-right: 5%;
 }

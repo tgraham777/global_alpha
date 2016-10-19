@@ -23,7 +23,7 @@
   <div class="rel-top-container">
     <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
     <% @related_topics.each do |topic| %>
-      <div id="country-related-topic">
+      <div id="indicator-related-topic">
         <h3><%= link_to topic.title, admin_topic_path(topic) %></h3>
         <%= truncate(topic.intro, length: 250) %>
       </div>

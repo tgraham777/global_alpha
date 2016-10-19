@@ -11,6 +11,13 @@
   width: 94.5%;
 }
 
+#indicator-related-topic {
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+  padding-right: 5%;
+}
+
 #indicator-table {
   width: 40%;
 }
