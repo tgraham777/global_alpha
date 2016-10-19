@@ -19,4 +19,11 @@ $(document).ready(function(){
     $('.default-country-items').append('<h4>Visual #' + visual_number + '</h4><label for="country_visuals_attributes_' + count + '_link">Link</label><input class="form-control" placeholder="Enter Tableau script or URL" type="text" name="country[visuals_attributes][' + count + '][link]" id="country_visuals_attributes_' + count + '_link"><br><label for="country_visuals_attributes_' + count + '_caption">Caption</label><input class="form-control" placeholder="Enter caption for visual" type="text" name="country[visuals_attributes][' + count + '][caption]" id="country_visuals_attributes_' + count + '_caption"><br><label for="country_visuals_attributes_' + count + '_description">Description</label><textarea class="form-control" placeholder="Enter description for visual and/or additional text" name="country[visuals_attributes][' + count + '][description]" id="country_visuals_attributes_' + count + '_description"></textarea><br><hr>');
     count++;
   });
+
+  var country_visual_count = $('.country-edit-page-visual-counter').length;
+
+  $('#country-edit-add-visual-button').click(function(){
+    $('.default-country-edit-items').append('<hr><label for="country_visuals_attributes_' + country_visual_count + '_link">Link</label><input class="form-control" type="text" value="" name="country[visuals_attributes][' + country_visual_count + '][link]" id="country_visuals_attributes_' + country_visual_count + '_link"><br><label for="country_visuals_attributes_' + country_visual_count + '_caption">Caption</label><input class="form-control" type="text" value="" name="country[visuals_attributes][' + country_visual_count + '][caption]" id="country_visuals_attributes_' + country_visual_count + '_caption"><br><label for="country_visuals_attributes_' + country_visual_count + '_description">Description</label><textarea class="form-control" name="country[visuals_attributes][' + country_visual_count + '][description]" id="country_visuals_attributes_' + country_visual_count + '_description"></textarea><br>');
+    country_visual_count++;
+  });
 });

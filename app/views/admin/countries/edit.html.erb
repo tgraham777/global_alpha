@@ -4,11 +4,11 @@
   <h1>Edit Country</h1>
 
   <div class="add-visual-button-container">
-    <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "edit-add-visual-button" %><br>
+    <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "country-edit-add-visual-button" %><br>
   </div>
 
   <%= form_for [:admin, @country], html: { class: "form-group" } do |f| %>
-    <div class="default-topic-items">
+    <div class="default-country-edit-items">
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control", placeholder: "Enter name" %><br>
 
@@ -19,7 +19,7 @@
       <%= f.text_area :intro, class: "form-control", placeholder: "Enter introduction (if applicable)" %><br>
 
       <%= f.fields_for :visuals, @visuals do |ff| %>
-        <div class="edit-page-visual-counter">
+        <div class="country-edit-page-visual-counter">
           <hr><%= ff.label :link %>
           <%= ff.text_field :link, class: "form-control" %><br>
 
