@@ -3,20 +3,15 @@ class Admin::CountriesController < Admin::BaseController
 
   def new
     @country = Country.new
+    @visuals = @country.visuals.build
   end
 
   def create
-    @country = Country.new(name: params[:name])
-
+    @country = Country.new(country_params)
     if @country.save
       @country.update(display_name: SecureRandom.hex(5))
-      tags = params[:country][:tags]
-      tags.each do |tag_name|
-        if tag_name != ""
-          @country.tags << Tag.find_by(name: tag_name)
-        end
-      end
-
+      create_country_indicators
+      create_country_tags
       redirect_to admin_country_path(@country)
     else
       flash[:error] = @country.errors.full_messages.first
@@ -41,5 +36,28 @@ class Admin::CountriesController < Admin::BaseController
     country.destroy
     flash[:success] = "Country deleted!"
     redirect_to admin_countries_path
+  end
+
+private
+  def country_params
+    params.require(:country).permit(:name, :last_updated, :intro, :conclusion, { visuals_attributes: [:id, :link, :caption, :description]})
+  end
+
+  def create_country_indicators
+    indicators = params[:country][:indicators]
+    indicators.each do |indicator_id|
+      if indicator_id != ""
+        @country.indicators << Indicator.find_by(id: indicator_id)
+      end
+    end
+  end
+
+  def create_country_tags
+    tags = params[:country][:tags]
+    tags.each do |tag_id|
+      if tag_id != ""
+        @country.tags << Tag.find_by(id: tag_id)
+      end
+    end
   end
 end
