@@ -5,6 +5,8 @@ class Country < ActiveRecord::Base
   has_many :topics, through: :topic_countries
   has_many :country_visuals
   has_many :visuals, through: :country_visuals
+  has_many :country_indicators
+  has_many :indicators, through: :country_indicators
 
   validates :name, presence: true, uniqueness: true
   validates_presence_of :last_updated

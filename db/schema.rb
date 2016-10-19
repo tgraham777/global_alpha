@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019180740) do
+ActiveRecord::Schema.define(version: 20161019181342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,16 @@ ActiveRecord::Schema.define(version: 20161019180740) do
     t.text     "conclusion"
     t.string   "last_updated"
   end
+
+  create_table "country_indicators", force: :cascade do |t|
+    t.integer  "country_id"
+    t.integer  "indicator_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "country_indicators", ["country_id"], name: "index_country_indicators_on_country_id", using: :btree
+  add_index "country_indicators", ["indicator_id"], name: "index_country_indicators_on_indicator_id", using: :btree
 
   create_table "country_tags", force: :cascade do |t|
     t.integer  "country_id"
@@ -154,6 +164,8 @@ ActiveRecord::Schema.define(version: 20161019180740) do
     t.text     "description"
   end
 
+  add_foreign_key "country_indicators", "countries"
+  add_foreign_key "country_indicators", "indicators"
   add_foreign_key "country_tags", "countries"
   add_foreign_key "country_tags", "tags"
   add_foreign_key "country_visuals", "countries"
