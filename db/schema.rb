@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019180051) do
+ActiveRecord::Schema.define(version: 20161019180740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,16 @@ ActiveRecord::Schema.define(version: 20161019180051) do
 
   add_index "country_tags", ["country_id"], name: "index_country_tags_on_country_id", using: :btree
   add_index "country_tags", ["tag_id"], name: "index_country_tags_on_tag_id", using: :btree
+
+  create_table "country_visuals", force: :cascade do |t|
+    t.integer  "country_id"
+    t.integer  "visual_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "country_visuals", ["country_id"], name: "index_country_visuals_on_country_id", using: :btree
+  add_index "country_visuals", ["visual_id"], name: "index_country_visuals_on_visual_id", using: :btree
 
   create_table "indicator_tags", force: :cascade do |t|
     t.integer  "indicator_id"
@@ -146,6 +156,8 @@ ActiveRecord::Schema.define(version: 20161019180051) do
 
   add_foreign_key "country_tags", "countries"
   add_foreign_key "country_tags", "tags"
+  add_foreign_key "country_visuals", "countries"
+  add_foreign_key "country_visuals", "visuals"
   add_foreign_key "indicator_tags", "indicators"
   add_foreign_key "indicator_tags", "tags"
   add_foreign_key "preview_tags", "previews"
