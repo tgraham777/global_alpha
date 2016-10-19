@@ -29,7 +29,7 @@
           <% @country.tags.each do |tag| %>
             <li><%= tag.name %></li>
           <% end %>
-        </ul>
+        </ul><br>
 
         <%= button_to "Edit country", edit_admin_country_path(@country), method: :get, class: "btn btn-control btn-success" %><br>
         <%= button_to "Delete country", admin_country_path(@country), method: :delete, class: "btn btn-control btn-danger" %><br>

@@ -30,6 +30,24 @@ class Admin::CountriesController < Admin::BaseController
     @related_topics = @country.tags.sample.topics.sort_by(&:updated_at).last(2).reverse!
   end
 
+  def edit
+    @country = Country.find_by(display_name: params[:display_name])
+    @visuals = @country.visuals.sort
+  end
+
+  def update
+    @country = Country.find_by(display_name: params[:display_name])
+    if @country.update(country_params)
+      update_country_indicators
+      update_country_tags
+      flash[:success] = "Country was updated successfully!"
+      redirect_to admin_country_path(@country)
+    else
+      flash[:error] = @country.errors.full_messages.first
+      redirect_to edit_admin_country_path(@country)
+    end
+  end
+
   def destroy
     country = Country.find_by(display_name: params[:display_name])
     country.topics.clear
@@ -55,6 +73,26 @@ private
   end
 
   def create_country_tags
+    tags = params[:country][:tags]
+    tags.each do |tag_id|
+      if tag_id != ""
+        @country.tags << Tag.find_by(id: tag_id)
+      end
+    end
+  end
+
+  def update_country_indicators
+    @country.indicators.clear
+    indicators = params[:country][:indicators]
+    indicators.each do |indicator_id|
+      if indicator_id != ""
+        @country.indicators << Indicator.find_by(id: indicator_id)
+      end
+    end
+  end
+
+  def update_country_tags
+    @country.tags.clear
     tags = params[:country][:tags]
     tags.each do |tag_id|
       if tag_id != ""
