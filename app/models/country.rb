@@ -5,6 +5,7 @@ class Country < ActiveRecord::Base
   has_many :topics, through: :topic_countries
 
   validates :name, presence: true, uniqueness: true
+  validates_presence_of :last_updated
 
   def to_param
     display_name
