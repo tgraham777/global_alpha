@@ -5,4 +5,8 @@ class Visual < ActiveRecord::Base
   has_many :countries, through: :country_visuals
 
   validates_presence_of :link
+
+  def to_param
+    display_name
+  end
 end

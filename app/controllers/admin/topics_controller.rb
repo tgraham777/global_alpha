@@ -17,6 +17,7 @@ class Admin::TopicsController < Admin::BaseController
       create_topic_countries
       create_topic_indicators
       create_topic_tags
+      create_visual_display_names
       redirect_to admin_topic_path(@topic)
     else
       flash[:error] = @topic.errors.full_messages.first
@@ -43,6 +44,7 @@ class Admin::TopicsController < Admin::BaseController
       update_topic_countries
       update_topic_indicators
       update_topic_tags
+      update_visual_display_names
       flash[:success] = "Topic was updated successfully!"
       redirect_to admin_topic_path(@topic)
     else
@@ -90,6 +92,12 @@ private
     end
   end
 
+  def create_visual_display_names
+    @topic.visuals.each do |visual|
+      visual.update(display_name: SecureRandom.hex(5))
+    end
+  end
+
   def update_topic_countries
     @topic.countries.clear
     countries = params[:topic][:countries]
@@ -120,7 +128,15 @@ private
     end
   end
 
+  def update_visual_display_names
+    @topic.visuals.each do |visual|
+      if visual.display_name == nil
+        visual.update(display_name: SecureRandom.hex(5))
+      end
+    end
+  end
+
   def topic_params
-    params.require(:topic).permit(:title, :report_date, :intro, :conclusion, { visuals_attributes: [:id, :link, :caption, :description]})
+    params.require(:topic).permit(:title, :report_date, :intro, :conclusion, { visuals_attributes: [:id, :title, :link, :caption, :description]})
   end
 end
