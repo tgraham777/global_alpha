@@ -17,6 +17,7 @@ class Admin::TopicsController < Admin::BaseController
       create_topic_countries
       create_topic_indicators
       create_topic_tags
+      create_visual_display_names
       redirect_to admin_topic_path(@topic)
     else
       flash[:error] = @topic.errors.full_messages.first
@@ -87,6 +88,12 @@ private
       if tag_id != ""
         @topic.tags << Tag.find_by(id: tag_id)
       end
+    end
+  end
+
+  def create_visual_display_names
+    @topic.visuals.each do |visual|
+      visual.update(display_name: SecureRandom.hex(5))
     end
   end
 
