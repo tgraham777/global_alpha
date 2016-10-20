@@ -128,6 +128,6 @@ private
   end
 
   def topic_params
-    params.require(:topic).permit(:title, :report_date, :intro, :conclusion, { visuals_attributes: [:id, :link, :caption, :description]})
+    params.require(:topic).permit(:title, :report_date, :intro, :conclusion, { visuals_attributes: [:id, :title, :link, :caption, :description]})
   end
 end
