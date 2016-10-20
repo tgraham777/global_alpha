@@ -12,6 +12,7 @@ class Admin::CountriesController < Admin::BaseController
       @country.update(display_name: SecureRandom.hex(5))
       create_country_indicators
       create_country_tags
+      create_visual_display_names
       redirect_to admin_country_path(@country)
     else
       flash[:error] = @country.errors.full_messages.first
@@ -78,6 +79,12 @@ private
       if tag_id != ""
         @country.tags << Tag.find_by(id: tag_id)
       end
+    end
+  end
+
+  def create_visual_display_names
+    @country.visuals.each do |visual|
+      visual.update(display_name: SecureRandom.hex(5))
     end
   end
 
