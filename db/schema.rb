@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019181342) do
+ActiveRecord::Schema.define(version: 20161020163015) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,9 +159,11 @@ ActiveRecord::Schema.define(version: 20161019181342) do
   create_table "visuals", force: :cascade do |t|
     t.string   "link"
     t.string   "caption"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.text     "description"
+    t.text     "title"
+    t.text     "additional_description"
   end
 
   add_foreign_key "country_indicators", "countries"
