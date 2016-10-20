@@ -41,6 +41,7 @@ class Admin::CountriesController < Admin::BaseController
     if @country.update(country_params)
       update_country_indicators
       update_country_tags
+      update_visual_display_names
       flash[:success] = "Country was updated successfully!"
       redirect_to admin_country_path(@country)
     else
@@ -104,6 +105,14 @@ private
     tags.each do |tag_id|
       if tag_id != ""
         @country.tags << Tag.find_by(id: tag_id)
+      end
+    end
+  end
+
+  def update_visual_display_names
+    @country.visuals.each do |visual|
+      if visual.display_name == nil
+        visual.update(display_name: SecureRandom.hex(5))
       end
     end
   end

@@ -44,6 +44,7 @@ class Admin::TopicsController < Admin::BaseController
       update_topic_countries
       update_topic_indicators
       update_topic_tags
+      update_visual_display_names
       flash[:success] = "Topic was updated successfully!"
       redirect_to admin_topic_path(@topic)
     else
@@ -123,6 +124,14 @@ private
     tags.each do |tag_id|
       if tag_id != ""
         @topic.tags << Tag.find_by(id: tag_id)
+      end
+    end
+  end
+
+  def update_visual_display_names
+    @topic.visuals.each do |visual|
+      if visual.display_name == nil
+        visual.update(display_name: SecureRandom.hex(5))
       end
     end
   end

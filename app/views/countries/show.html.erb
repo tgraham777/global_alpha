@@ -38,6 +38,16 @@
 
     <div class="column col-xs-3" id="country-show-sidebar">
       <div id="indicator-sidebar">
+        <h4><span class="glyphicon glyphicon-eye-open"></span>&nbsp Visuals</h4>
+        <table id="ind-side-table">
+          <% @visuals.each do |visual| %>
+          <tr>
+            <td><%= link_to visual.title, visual_path(visual) %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <div id="indicator-sidebar">
         <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Key Indicators</h4>
         <table id="ind-side-table">
           <% @related_indicators.each do |indicator| %>
