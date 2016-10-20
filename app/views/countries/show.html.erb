@@ -6,9 +6,10 @@
 
         <h1><%= @country.name %></h1>
 
-        <p><%= @country.intro %></p>
+        <%= @country.intro %><br>
         <% @visuals.each do |visual| %>
-          <br><%= visual.link.html_safe %>
+          <h3 style="color: #777"><%= visual.title %></h3>
+          <%= visual.link.html_safe %>
           <p><em><%= visual.caption %></em></p>
           <%= simple_format(visual.description) %>
         <% end %>

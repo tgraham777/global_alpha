@@ -60,7 +60,7 @@ class Admin::CountriesController < Admin::BaseController
 
 private
   def country_params
-    params.require(:country).permit(:name, :last_updated, :intro, :conclusion, { visuals_attributes: [:id, :link, :caption, :description]})
+    params.require(:country).permit(:name, :last_updated, :intro, :conclusion, { visuals_attributes: [:id, :title, :link, :caption, :description]})
   end
 
   def create_country_indicators
