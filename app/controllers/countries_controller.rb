@@ -7,7 +7,8 @@ class CountriesController < ApplicationController
 
   def show
     @country = Country.find_by(display_name: params[:display_name])
-    @related_topics = @country.tags.sample.topics.last(2).reverse!
-    @related_indicators = @country.tags.sample.indicators
+    @visuals = @country.visuals.sort
+    @related_indicators = @country.indicators
+    @related_topics = @country.topics.sort_by(&:updated_at).last(2).reverse!
   end
 end
