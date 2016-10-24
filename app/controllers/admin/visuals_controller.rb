@@ -1,6 +1,10 @@
 class Admin::VisualsController < Admin::BaseController
   before_action :require_login
 
+  def index
+    @visuals = Visual.all
+  end
+
   def show
     @visual = Visual.find_by(display_name: params[:display_name])
   end
@@ -18,6 +22,15 @@ class Admin::VisualsController < Admin::BaseController
       flash[:error] = @visual.errors.full_messages.first
       redirect_to edit_admin_visual_path(@visual)
     end
+  end
+
+  def destroy
+    visual = Visual.find_by(display_name: params[:display_name])
+    visual.countries.clear
+    visual.topics.clear
+    visual.destroy
+    flash[:success] = "Visual deleted!"
+    redirect_to admin_visuals_path
   end
 
 private
