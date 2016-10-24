@@ -5,9 +5,10 @@
   <h1><%= @visual.title %></h1>
   <%= @visual.link.html_safe %>
   <p><em><%= @visual.caption %></em></p>
-  <%= simple_format(@visual.description) %><br>
+  <%= simple_format(@visual.description) %>
   <%= simple_format(@visual.additional_description) %>
 
+  <br><%= button_to "Edit visual", edit_admin_visual_path(@visual), method: :get, class: "btn btn-control btn-success" %><br>
   <%= button_to "Delete visual", admin_visual_path(@visual), method: :delete, class: "btn btn-control btn-danger" %>
 
   <br><p style="color: #999"><em>Last updated: <%= @visual.updated_at.strftime("%B %d, %Y") %></em></p>
