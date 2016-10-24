@@ -3,7 +3,12 @@
 
   <% @visuals.each do |visual| %>
     <hr><h3><%= link_to visual.title, admin_visual_path(visual) %></h3>
-    <h4><em>Last updated: <%= visual.updated_at.strftime("%B %d, %Y") %></em></h4>
+    <% if visual.countries.any? %>
+      <h4>Country: <%= visual.countries.first.name %></h4>
+    <% elsif visual.topics.any? %>
+      <h4>Topic: <%= visual.topics.first.title %></h4>
+    <% end %>
+    <h5><em>Last updated: <%= visual.updated_at.strftime("%B %d, %Y") %></em></h5>
     <%= truncate(visual.description, length: 250) %>
   <% end %>
 </div>
