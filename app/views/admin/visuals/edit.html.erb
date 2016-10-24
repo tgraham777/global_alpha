@@ -1,0 +1,22 @@
+<div class="container" id="edit-visual-container">
+  <h1>Edit Visual</h1>
+
+  <%= form_for [:admin, @visual], html: { class: "form-group" } do |f| %>
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %><br>
+
+      <%= f.label :link %>
+      <%= f.text_field :link, class: "form-control" %><br>
+
+      <%= f.label :caption %>
+      <%= f.text_field :caption, class: "form-control" %><br>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control" %><br>
+
+      <%= f.label :additional_description %> <em>(optional)</em>
+      <%= f.text_area :additional_description, class: "form-control", placeholder: "Enter additional description, if applicable." %><br>
+
+      <br><%= f.submit "Update visual", class: "btn btn-control btn-primary" %>
+  <% end %>
+</div>
