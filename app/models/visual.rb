@@ -30,6 +30,16 @@ class Visual < ActiveRecord::Base
     end
   end
 
+  def find_visual_source_route
+    if self.countries.any?
+      "/countries/" + self.countries.first.display_name
+    elsif self.topics.any?
+      "/topics/" + self.topics.first.display_name
+    elsif self.indicators.any?
+      "/indicators/" + self.indicators.first.display_name
+    end
+  end
+
   def find_admin_visual_source_route
     if self.countries.any?
       "/admin/countries/" + self.countries.first.display_name

@@ -5,10 +5,11 @@
   <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-eye-open"></span>&nbsp Visual</h4>
 
   <h1><%= @visual.title %></h1>
+  <em><h4 style="margin-bottom: 15px;"><%= @visual.find_visual_source_type %>:</em> <%= link_to @visual.find_visual_source_name, @visual.find_visual_source_route %></h4>
   <%= @visual.link.html_safe %>
   <p><em><%= @visual.caption %></em></p>
   <%= simple_format(@visual.description) %>
   <%= simple_format(@visual.additional_description) %>
 
-  <p style="color: #999"><em>Last updated: <%= @visual.updated_at.strftime("%B %d, %Y") %></em></p>
+  <br><p style="color: #999"><em>Last updated: <%= @visual.updated_at.strftime("%B %d, %Y") %></em></p>
 </div>
