@@ -22,7 +22,7 @@
 
       <%= f.fields_for :visuals do |ff| %>
         <%= ff.label :title %>
-        <%= ff.text_field :title, class: "form-control", placeholder: "Enter title (optional)" %><br>
+        <%= ff.text_field :title, class: "form-control", placeholder: "Enter title" %><br>
 
         <%= ff.label :link %>
         <%= ff.text_field :link, class: "form-control", placeholder: "Enter Tableau script or URL" %><br>
@@ -40,10 +40,10 @@
 
     <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Related Indicators</h4>
     <%= f.fields_for :indicators do |indicator| %>
-      <%= collection_check_boxes :country, :indicators, Indicator.all, :id, :name do |b| %>
+      <%= collection_check_boxes :country, :indicators, Indicator.all.sort_by(&:source_country), :id, :name do |b| %>
       <p>
         <%= b.check_box(class: "check_box") %>
-        <%= b.object.name %>
+        <strong><%= b.object.source_country %></strong> - <%= b.object.name %>
       </p>
       <% end %>
     <% end %><hr>

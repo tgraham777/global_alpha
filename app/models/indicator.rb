@@ -10,7 +10,8 @@ class Indicator < ActiveRecord::Base
 
   accepts_nested_attributes_for :visuals
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
+  validates_presence_of :source_country
   validates_presence_of :last_updated
 
   def to_param

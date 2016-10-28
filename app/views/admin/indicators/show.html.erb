@@ -7,6 +7,11 @@
         <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-stats"></span>&nbsp Indicator</h4>
 
         <h1><%= @indicator.name %></h1>
+        <% if @indicator.countries.any? %>
+          <h4><em>Country:</em> <%= link_to @indicator.countries.first.name, admin_country_path(@indicator.countries.first) %></h4>
+        <% else %>
+          <h4><em>Country:</em> <%= @indicator.source_country %></h4>
+        <% end %>
         <%= @indicator.intro %><br>
         <% @visuals.each do |visual| %>
           <h3 style="color: #777"><%= visual.title %></h3>

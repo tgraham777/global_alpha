@@ -20,7 +20,7 @@ class Admin::IndicatorsController < Admin::BaseController
   end
 
   def index
-    @indicators = Indicator.all
+    @indicators = Indicator.all.sort_by(&:source_country)
   end
 
   def show
@@ -42,7 +42,7 @@ class Admin::IndicatorsController < Admin::BaseController
 
 private
   def indicator_params
-    params.require(:indicator).permit(:name, :last_updated, :intro, :conclusion, { visuals_attributes: [:id, :title, :link, :caption, :description]})
+    params.require(:indicator).permit(:name, :source_country, :last_updated, :intro, :conclusion, { visuals_attributes: [:id, :title, :link, :caption, :description]})
   end
 
   def create_indicator_tags

@@ -8,7 +8,9 @@
 
 #indicator-container {
   margin-top: 85px;
-  width: 94.5%;
+  margin-left: -13px;
+  width: 75%;
+  padding-right: 25px;
 }
 
 #indicator-related-topic {

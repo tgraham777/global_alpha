@@ -12,6 +12,9 @@
       <%= f.label :name %>
       <%= f.text_field :name, class: "form-control", placeholder: "Enter name" %><br>
 
+      <%= f.label :source_country %>
+      <%= f.text_field :source_country, class: "form-control", placeholder: "Enter source country or region" %><br>
+
       <%= f.label :last_updated %>
       <%= f.text_field :last_updated, class: "form-control", placeholder: "Enter date" %><br>
 
@@ -22,7 +25,7 @@
 
       <%= f.fields_for :visuals do |ff| %>
         <%= ff.label :title %>
-        <%= ff.text_field :title, class: "form-control", placeholder: "Enter title (optional)" %><br>
+        <%= ff.text_field :title, class: "form-control", placeholder: "Enter title" %><br>
 
         <%= ff.label :link %>
         <%= ff.text_field :link, class: "form-control", placeholder: "Enter Tableau script or URL" %><br>
