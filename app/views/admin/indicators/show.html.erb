@@ -9,8 +9,6 @@
         <h1><%= @indicator.name %></h1>
         <% if @indicator.countries.any? %>
           <h4><em>Country:</em> <%= link_to @indicator.countries.first.name, admin_country_path(@indicator.countries.first) %></h4>
-        <% else %>
-          <h4><em>Country:</em> <%= @indicator.source_country %></h4>
         <% end %>
         <%= @indicator.intro %><br>
         <% @visuals.each do |visual| %>

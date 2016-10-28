@@ -10,6 +10,7 @@ class Admin::IndicatorsController < Admin::BaseController
     @indicator = Indicator.new(indicator_params)
     if @indicator.save
       @indicator.update(display_name: SecureRandom.hex(5))
+      create_country_indicators
       create_indicator_tags
       create_visual_display_names
       redirect_to admin_indicator_path(@indicator)
@@ -20,7 +21,8 @@ class Admin::IndicatorsController < Admin::BaseController
   end
 
   def index
-    @indicators = Indicator.all.sort_by(&:source_country)
+    @countries = Country.all
+    @indicators = Indicator.all
   end
 
   def show
@@ -42,7 +44,16 @@ class Admin::IndicatorsController < Admin::BaseController
 
 private
   def indicator_params
-    params.require(:indicator).permit(:name, :source_country, :last_updated, :intro, :conclusion, { visuals_attributes: [:id, :title, :link, :caption, :description]})
+    params.require(:indicator).permit(:name, :last_updated, :intro, :conclusion, { visuals_attributes: [:id, :title, :link, :caption, :description]})
+  end
+
+  def create_country_indicators
+    countries = params[:indicator][:countries]
+    countries.each do |country_id|
+      if country_id != ""
+        @indicator.countries << Country.find_by(id: country_id)
+      end
+    end
   end
 
   def create_indicator_tags

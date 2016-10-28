@@ -38,16 +38,6 @@
     <%= f.label :conclusion %>
     <%= f.text_area :conclusion, class: "form-control", placeholder: "Enter conclusion (if applicable)" %><hr>
 
-    <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Related Indicators</h4>
-    <%= f.fields_for :indicators do |indicator| %>
-      <%= collection_check_boxes :country, :indicators, Indicator.all.sort_by(&:source_country), :id, :name do |b| %>
-      <p>
-        <%= b.check_box(class: "check_box") %>
-        <strong><%= b.object.source_country %></strong> - <%= b.object.name %>
-      </p>
-      <% end %>
-    <% end %><hr>
-
     <h4><span class="glyphicon glyphicon-user"></span>&nbsp User Tags</h4>
     <%= f.fields_for :tags do |tag| %>
       <%= collection_check_boxes :country, :tags, Tag.all, :id, :name do |b| %>

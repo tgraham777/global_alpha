@@ -19,7 +19,7 @@ class Visual < ActiveRecord::Base
     elsif self.topics.any?
       self.topics.first.title
     elsif self.indicators.any?
-      self.indicators.first.name
+      self.indicators.first.name + " (" + self.indicators.first.countries.first.name + ")"
     end
   end
 

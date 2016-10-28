@@ -10,7 +10,6 @@ class Admin::CountriesController < Admin::BaseController
     @country = Country.new(country_params)
     if @country.save
       @country.update(display_name: SecureRandom.hex(5))
-      create_country_indicators
       create_country_tags
       create_visual_display_names
       redirect_to admin_country_path(@country)
@@ -64,15 +63,6 @@ class Admin::CountriesController < Admin::BaseController
 private
   def country_params
     params.require(:country).permit(:name, :last_updated, :intro, :conclusion, { visuals_attributes: [:id, :title, :link, :caption, :description]})
-  end
-
-  def create_country_indicators
-    indicators = params[:country][:indicators]
-    indicators.each do |indicator_id|
-      if indicator_id != ""
-        @country.indicators << Indicator.find_by(id: indicator_id)
-      end
-    end
   end
 
   def create_country_tags
