@@ -5,9 +5,12 @@
     <input type="submit" value="Create new indicator", class="btn btn-control btn-success">
   </form><br>
 
-  <ul>
-    <% @indicators.each do |indicator| %>
-      <li><%= link_to indicator.name, admin_indicator_path(indicator) %></li>
-    <% end %>
-  </ul>
+  <% @countries.each do |country| %>
+    <h3 style="text-decoration:underline;"><%= country.name %></h3>
+    <ul>
+      <% country.indicators.each do |indicator| %>
+        <li><%= link_to indicator.name, admin_indicator_path(indicator) %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

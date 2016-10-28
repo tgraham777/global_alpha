@@ -1,9 +1,12 @@
 <div class="container" id="country-index-container">
   <h1>Indicators</h1>
 
-  <ul>
-    <% @indicators.each do |indicator| %>
-      <li><%= link_to indicator.name, indicator_path(indicator) %></li>
-    <% end %>
-  </ul>
+  <% @countries.each do |country| %>
+    <h3 style="text-decoration:underline;"><%= country.name %></h3>
+    <ul>
+      <% country.indicators.each do |indicator| %>
+        <li><%= link_to indicator.name, indicator_path(indicator) %></li>
+      <% end %>
+    </ul>
+  <% end %>
 </div>

@@ -1,42 +1,59 @@
-<div class="container" id="indicator-container">
-  <%= link_to "Back to Indicators", admin_indicators_path, class: "back-to-link" %>
+<div class="container">
+  <div class="row">
+    <div class="column col-xs-12">
+      <div class="container" id="indicator-container">
+        <%= link_to "Back to Indicators", admin_indicators_path, class: "back-to-link" %>
 
-  <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-stats"></span>&nbsp Indicator</h4>
+        <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-stats"></span>&nbsp Indicator</h4>
 
-  <h1><%= @indicator.name %></h1>
+        <h1><%= @indicator.name %></h1>
+        <% if @indicator.countries.any? %>
+          <h4><em>Country:</em> <%= link_to @indicator.countries.first.name, admin_country_path(@indicator.countries.first) %></h4>
+        <% end %>
+        <%= @indicator.intro %><br>
+        <% @visuals.each do |visual| %>
+          <h3 style="color: #777"><%= visual.title %></h3>
+          <%= visual.link.html_safe %>
+          <p><em><%= visual.caption %></em></p>
+          <%= simple_format(visual.description) %>
+        <% end %>
 
-  <h3>Global Rankings</h3>
-  <table id="indicator-table">
-    <tr>
-      <th>Country</th>
-      <th>Value</th>
-      <th>Rank</th>
-    </tr>
-    <% @related_countries.each do |country| %>
-      <tr>
-        <td><%= link_to country.name, admin_country_path(country) %></td>
-        <td>Value</td>
-        <td>Rank</td>
-      </tr>
-    <% end %>
-  </table><hr>
+        <h3>Summary</h3>
+        <p><%= @indicator.conclusion %></p><hr>
 
-  <div class="rel-top-container">
-    <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
-    <% @related_topics.each do |topic| %>
-      <div id="indicator-related-topic">
-        <h3><%= link_to topic.title, admin_topic_path(topic) %></h3>
-        <%= truncate(topic.intro, length: 250) %>
+        <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
+        <% @related_topics.each do |topic| %>
+        <div id="indicator-related-topic">
+          <h3><%= link_to topic.title, admin_topic_path(topic) %></h3>
+          <%= truncate(topic.intro, length: 250) %>
+        </div>
+        <% end %><hr>
+
+        <h4>Tags</h4>
+        <ul>
+          <% @indicator.tags.each do |tag| %>
+            <li><%= tag.name %></li>
+          <% end %>
+        </ul><br>
+
+        <%= button_to "Edit indicator", edit_admin_indicator_path(@indicator), method: :get, class: "btn btn-control btn-success" %><br>
+        <%= button_to "Delete indicator", admin_indicator_path(@indicator), method: :delete, class: "btn btn-control btn-danger" %><br>
+
+        <p style="color: #999"><em>Last updated: <%= @indicator.last_updated %></em></p>
       </div>
-    <% end %>
-  </div><hr>
+    </div>
 
-  <h3>Tags</h3>
-  <ul>
-    <% @indicator.tags.each do |tag| %>
-      <li><%= tag.name %></li>
-    <% end %>
-  </ul><br>
-
-  <%= button_to "Delete Indicator", admin_indicator_path(@indicator), method: :delete, class: "btn btn-control btn-danger" %>
+    <div class="column col-xs-3" id="indicator-show-sidebar">
+      <div id="indicator-sidebar">
+        <h4><span class="glyphicon glyphicon-eye-open"></span>&nbsp Visuals</h4>
+        <table id="ind-side-table">
+          <% @visuals.each do |visual| %>
+          <tr>
+            <td><%= link_to visual.title, admin_visual_path(visual) %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>

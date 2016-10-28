@@ -8,7 +8,10 @@ class Indicator < ActiveRecord::Base
   has_many :country_indicators, dependent: :delete_all
   has_many :countries, through: :country_indicators
 
-  validates :name, presence: true, uniqueness: true
+  accepts_nested_attributes_for :visuals
+
+  validates :name, presence: true
+  validates_presence_of :last_updated
 
   def to_param
     display_name

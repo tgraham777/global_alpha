@@ -6,6 +6,7 @@ class Visual < ActiveRecord::Base
   has_many :indicator_visuals, dependent: :delete_all
   has_many :indicators, through: :indicator_visuals
 
+  validates_presence_of :title
   validates_presence_of :link
 
   def to_param
@@ -18,7 +19,7 @@ class Visual < ActiveRecord::Base
     elsif self.topics.any?
       self.topics.first.title
     elsif self.indicators.any?
-      self.indicators.first.name
+      self.indicators.first.name + " (" + self.indicators.first.countries.first.name + ")"
     end
   end
 
