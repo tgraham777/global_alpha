@@ -54,6 +54,7 @@ class Admin::CountriesController < Admin::BaseController
     country = Country.find_by(display_name: params[:display_name])
     country.topics.clear
     country.indicators.clear
+    country.visuals.clear
     country.tags.clear
     country.destroy
     flash[:success] = "Country deleted!"
