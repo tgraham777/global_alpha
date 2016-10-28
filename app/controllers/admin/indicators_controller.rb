@@ -21,7 +21,7 @@ class Admin::IndicatorsController < Admin::BaseController
   end
 
   def index
-    @countries = Country.all
+    @countries = Country.all.sort_by(&:name)
     @indicators = Indicator.all
   end
 

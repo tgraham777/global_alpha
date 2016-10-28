@@ -63,7 +63,7 @@
         <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Related Indicators</h4>
         <ul>
           <% @related_indicators.each do |indicator| %>
-            <li><%= link_to indicator.name, admin_indicator_path(indicator) %></li>
+            <li><%= link_to indicator.name + " (" + indicator.countries.first.name + ")", admin_indicator_path(indicator) %></li>
           <% end %>
         </ul>
       </div>

@@ -6,7 +6,7 @@
   </form><br>
 
   <% @countries.each do |country| %>
-    <h3><%= country.name %></h3>
+    <h3 style="text-decoration:underline;"><%= country.name %></h3>
     <ul>
       <% country.indicators.each do |indicator| %>
         <li><%= link_to indicator.name, admin_indicator_path(indicator) %></li>
