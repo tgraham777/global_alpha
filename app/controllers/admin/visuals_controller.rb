@@ -2,7 +2,7 @@ class Admin::VisualsController < Admin::BaseController
   before_action :require_login
 
   def index
-    @visuals = Visual.all
+    @visuals = Visual.all.sort_by(&:updated_at).reverse!
   end
 
   def show
