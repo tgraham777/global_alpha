@@ -1,0 +1,63 @@
+<div class="container" id="edit-indicator-container">
+  <%= link_to "Back to Indicator", admin_indicator_path(@indicator), class: "back-to-link" %>
+
+  <h1>Edit Indicator</h1>
+
+  <div class="add-visual-button-container">
+    <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "indicator-edit-add-visual-button" %><br>
+  </div>
+
+  <%= form_for [:admin, @indicator], html: { class: "form-group" } do |f| %>
+    <div class="default-indicator-edit-items">
+      <%= f.label :name %>
+      <%= f.text_field :name, class: "form-control" %><br>
+
+      <h4><span class="glyphicon glyphicon-globe"></span>&nbsp Country <em>(select one)</em></h4>
+      <%= f.fields_for :countries do |country| %>
+        <%= collection_check_boxes :indicator, :countries, Country.all.sort_by(&:name), :id, :name do |b| %>
+        <p>
+          <%= b.check_box(class: "check_box", checked: @indicator.countries.include?(Country.find_by(name: b.object.name))) %>
+          <%= b.object.name %>
+        </p>
+        <% end %>
+      <% end %><br>
+
+      <%= f.label :last_updated %>
+      <%= f.text_field :last_updated, class: "form-control" %><br>
+
+      <%= f.label :intro %>
+      <%= f.text_area :intro, class: "form-control" %><br>
+
+      <%= f.fields_for :visuals, @visuals do |ff| %>
+        <div class="indicator-edit-page-visual-counter">
+          <hr><%= ff.label :title %>
+          <%= ff.text_field :title, class: "form-control" %><br>
+
+          <%= ff.label :link %>
+          <%= ff.text_field :link, class: "form-control" %><br>
+
+          <%= ff.label :caption %>
+          <%= ff.text_field :caption, class: "form-control" %><br>
+
+          <%= ff.label :description %>
+          <%= ff.text_area :description, class: "form-control" %><br>
+        </div>
+      <% end %>
+    </div>
+
+    <hr><%= f.label :conclusion %>
+    <%= f.text_area :conclusion, class: "form-control" %><hr>
+
+    <h4><span class="glyphicon glyphicon-user"></span>&nbsp User Tags</h4>
+    <%= f.fields_for :tags do |tag| %>
+      <%= collection_check_boxes :indicator, :tags, Tag.all, :id, :name do |b| %>
+      <p>
+        <%= b.check_box(class: "check_box", checked: @indicator.tags.include?(Tag.find_by(name: b.object.name))) %>
+        <%= b.object.name %>
+      </p>
+      <% end %>
+    <% end %>
+
+    <br><%= f.submit "Update indicator", class: "btn btn-control btn-primary" %>
+  <% end %>
+</div>
