@@ -38,7 +38,6 @@ class Admin::CountriesController < Admin::BaseController
   def update
     @country = Country.find_by(display_name: params[:display_name])
     if @country.update(country_params)
-      update_country_indicators
       update_country_tags
       update_visual_display_names
       flash[:success] = "Country was updated successfully!"
@@ -77,16 +76,6 @@ private
   def create_visual_display_names
     @country.visuals.each do |visual|
       visual.update(display_name: SecureRandom.hex(5))
-    end
-  end
-
-  def update_country_indicators
-    @country.indicators.clear
-    indicators = params[:country][:indicators]
-    indicators.each do |indicator_id|
-      if indicator_id != ""
-        @country.indicators << Indicator.find_by(id: indicator_id)
-      end
     end
   end
 
