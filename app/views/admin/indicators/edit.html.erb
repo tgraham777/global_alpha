@@ -1,10 +1,10 @@
 <div class="container" id="edit-indicator-container">
   <%= link_to "Back to Indicator", admin_indicator_path(@indicator), class: "back-to-link" %>
 
-  <h1>Add Indicator</h1>
+  <h1>Edit Indicator</h1>
 
   <div class="add-visual-button-container">
-    <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "indicator-add-visual-button" %><br>
+    <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "indicator-edit-add-visual-button" %><br>
   </div>
 
   <%= form_for [:admin, @indicator], html: { class: "form-group" } do |f| %>
@@ -14,9 +14,9 @@
 
       <h4><span class="glyphicon glyphicon-globe"></span>&nbsp Country <em>(select one)</em></h4>
       <%= f.fields_for :countries do |country| %>
-        <%= collection_check_boxes :indicator, :countries, Country.all, :id, :name do |b| %>
+        <%= collection_check_boxes :indicator, :countries, Country.all.sort_by(&:name), :id, :name do |b| %>
         <p>
-          <%= b.check_box(class: "check_box") %>
+          <%= b.check_box(class: "check_box", checked: @indicator.countries.include?(Country.find_by(name: b.object.name))) %>
           <%= b.object.name %>
         </p>
         <% end %>
@@ -52,12 +52,12 @@
     <%= f.fields_for :tags do |tag| %>
       <%= collection_check_boxes :indicator, :tags, Tag.all, :id, :name do |b| %>
       <p>
-        <%= b.check_box(class: "check_box") %>
+        <%= b.check_box(class: "check_box", checked: @indicator.tags.include?(Tag.find_by(name: b.object.name))) %>
         <%= b.object.name %>
       </p>
       <% end %>
     <% end %>
 
-    <br><%= f.submit "Create indicator", class: "btn btn-control btn-primary" %>
+    <br><%= f.submit "Update indicator", class: "btn btn-control btn-primary" %>
   <% end %>
 </div>

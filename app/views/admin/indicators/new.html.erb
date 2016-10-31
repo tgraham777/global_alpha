@@ -14,7 +14,7 @@
 
       <h4><span class="glyphicon glyphicon-globe"></span>&nbsp Country <em>(select one)</em></h4>
       <%= f.fields_for :countries do |country| %>
-        <%= collection_check_boxes :indicator, :countries, Country.all, :id, :name do |b| %>
+        <%= collection_check_boxes :indicator, :countries, Country.all.sort_by(&:name), :id, :name do |b| %>
         <p>
           <%= b.check_box(class: "check_box") %>
           <%= b.object.name %>
