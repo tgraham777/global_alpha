@@ -51,13 +51,11 @@
       </div>
       <div id="indicator-sidebar">
         <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Key Indicators</h4>
-        <table id="ind-side-table">
+        <ul>
           <% @related_indicators.each do |indicator| %>
-          <tr>
-            <td><%= link_to indicator.name, indicator_path(indicator) %></td>
-          </tr>
+            <li><%= link_to indicator.name, indicator_path(indicator) %></li>
           <% end %>
-        </table>
+        </ul>
       </div>
     </div>
   </div>
