@@ -52,7 +52,7 @@
     <%= f.fields_for :indicators do |indicator| %>
       <%= collection_check_boxes :topic, :indicators, Indicator.all.sort_by {|indicator| indicator.countries.first.name}, :id, :name do |b| %>
       <p>
-        <%= b.check_box(class: "check_box", checked: @topic.indicators.include?(Indicator.find_by(name: b.object.name))) %>
+        <%= b.check_box(class: "check_box", checked: @topic.indicators.include?(Indicator.find_by(display_name: b.object.display_name))) %>
         <strong><%= b.object.countries.first.name %></strong> - <%= b.object.name %>
       </p>
       <% end %>
