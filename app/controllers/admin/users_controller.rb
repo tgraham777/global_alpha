@@ -10,7 +10,7 @@ class Admin::UsersController < Admin::BaseController
       name = @user.username
       role = @user.role.capitalize
       flash[:success] = "New user #{name} created with role of #{role}"
-      redirect_to new_admin_user_path
+      redirect_to admin_users_path
     else
       flash[:error] = @user.errors.full_messages.first
       render :action => 'new'

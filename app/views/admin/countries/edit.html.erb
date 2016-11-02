@@ -8,13 +8,13 @@
   <%= form_for [:admin, @country], html: { class: "form-group" } do |f| %>
     <div class="default-country-edit-items">
       <%= f.label :name %>
-      <%= f.text_field :name, class: "form-control", placeholder: "Enter name" %><br>
+      <%= f.text_field :name, class: "form-control" %><br>
 
       <%= f.label :last_updated %>
-      <%= f.text_field :last_updated, class: "form-control", placeholder: "Enter date" %><br>
+      <%= f.text_field :last_updated, class: "form-control" %><br>
 
       <%= f.label :intro %>
-      <%= f.text_area :intro, class: "form-control", placeholder: "Enter introduction (if applicable)" %><br>
+      <%= f.text_area :intro, class: "form-control" %><br>
 
       <%= f.fields_for :visuals, @visuals do |ff| %>
         <div class="country-edit-page-visual-counter">
@@ -34,7 +34,7 @@
     </div>
 
     <hr><%= f.label :conclusion %>
-    <%= f.text_area :conclusion, class: "form-control", placeholder: "Enter conclusion (if applicable)" %><hr>
+    <%= f.text_area :conclusion, class: "form-control" %><hr>
 
     <h4><span class="glyphicon glyphicon-user"></span>&nbsp User Tags</h4>
     <%= f.fields_for :tags do |tag| %>
