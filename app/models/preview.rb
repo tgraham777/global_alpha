@@ -6,6 +6,6 @@ class Preview < ActiveRecord::Base
   validates_presence_of :report_date
 
   def to_param
-    title
+    display_name
   end
 end

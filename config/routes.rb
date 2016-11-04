@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :countries, only: [:index, :show], param: :display_name
   resources :indicators, only: [:index, :show], param: :display_name
   resources :visuals, only: [:show], param: :display_name
-  resources :previews, only: [:index, :show], param: :title
+  resources :previews, only: [:index, :show], param: :display_name
 
   namespace :admin do
     resources :users, param: :display_name
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     resources :countries, param: :display_name
     resources :indicators, param: :display_name
     resources :visuals, param: :display_name
-    resources :previews, param: :title
+    resources :previews, param: :display_name
     get '/dashboard', to: 'dashboard#index'
   end
 

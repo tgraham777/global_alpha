@@ -4,6 +4,6 @@ class PreviewsController < ApplicationController
   end
 
   def show
-    @preview = Preview.find_by(title: params[:title])
+    @preview = Preview.find_by(display_name: params[:display_name])
   end
 end
