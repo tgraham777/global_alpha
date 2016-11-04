@@ -16,7 +16,7 @@
       <%= f.fields_for :countries do |country| %>
         <%= collection_check_boxes :indicator, :countries, Country.all.sort_by(&:name), :id, :name do |b| %>
         <p>
-          <%= b.check_box(class: "check_box", checked: @indicator.countries.include?(Country.find_by(name: b.object.name))) %>
+          <%= b.check_box(class: "check_box", checked: @indicator.countries.include?(Country.find_by(display_name: b.object.display_name))) %>
           <%= b.object.name %>
         </p>
         <% end %>
@@ -52,7 +52,7 @@
     <%= f.fields_for :tags do |tag| %>
       <%= collection_check_boxes :indicator, :tags, Tag.all, :id, :name do |b| %>
       <p>
-        <%= b.check_box(class: "check_box", checked: @indicator.tags.include?(Tag.find_by(name: b.object.name))) %>
+        <%= b.check_box(class: "check_box", checked: @indicator.tags.include?(Tag.find_by(display_name: b.object.display_name))) %>
         <%= b.object.name %>
       </p>
       <% end %>
