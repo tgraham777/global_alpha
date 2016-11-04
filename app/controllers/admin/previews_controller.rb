@@ -3,6 +3,7 @@ class Admin::PreviewsController < Admin::BaseController
 
   def new
     @preview = Preview.new
+    @visuals = @preview.visuals.build
   end
 
   def create
