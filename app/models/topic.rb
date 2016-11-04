@@ -7,6 +7,8 @@ class Topic < ActiveRecord::Base
   has_many :indicators, through: :topic_indicators
   has_many :topic_countries, dependent: :delete_all
   has_many :countries, through: :topic_countries
+  has_many :preview_topics, dependent: :delete_all
+  has_many :previews, through: :preview_topics
 
   accepts_nested_attributes_for :visuals
 

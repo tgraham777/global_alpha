@@ -5,6 +5,8 @@ class Visual < ActiveRecord::Base
   has_many :countries, through: :country_visuals
   has_many :indicator_visuals, dependent: :delete_all
   has_many :indicators, through: :indicator_visuals
+  has_many :preview_visuals, dependent: :delete_all
+  has_many :previews, through: :preview_visuals
 
   validates_presence_of :title
   validates_presence_of :link

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104180900) do
+ActiveRecord::Schema.define(version: 20161104211717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -95,6 +95,26 @@ ActiveRecord::Schema.define(version: 20161104180900) do
 
   add_index "preview_tags", ["preview_id"], name: "index_preview_tags_on_preview_id", using: :btree
   add_index "preview_tags", ["tag_id"], name: "index_preview_tags_on_tag_id", using: :btree
+
+  create_table "preview_topics", force: :cascade do |t|
+    t.integer  "preview_id"
+    t.integer  "topic_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "preview_topics", ["preview_id"], name: "index_preview_topics_on_preview_id", using: :btree
+  add_index "preview_topics", ["topic_id"], name: "index_preview_topics_on_topic_id", using: :btree
+
+  create_table "preview_visuals", force: :cascade do |t|
+    t.integer  "preview_id"
+    t.integer  "visual_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "preview_visuals", ["preview_id"], name: "index_preview_visuals_on_preview_id", using: :btree
+  add_index "preview_visuals", ["visual_id"], name: "index_preview_visuals_on_visual_id", using: :btree
 
   create_table "previews", force: :cascade do |t|
     t.text     "title"
@@ -195,6 +215,10 @@ ActiveRecord::Schema.define(version: 20161104180900) do
   add_foreign_key "indicator_visuals", "visuals"
   add_foreign_key "preview_tags", "previews"
   add_foreign_key "preview_tags", "tags"
+  add_foreign_key "preview_topics", "previews"
+  add_foreign_key "preview_topics", "topics"
+  add_foreign_key "preview_visuals", "previews"
+  add_foreign_key "preview_visuals", "visuals"
   add_foreign_key "topic_countries", "countries"
   add_foreign_key "topic_countries", "topics"
   add_foreign_key "topic_indicators", "indicators"
