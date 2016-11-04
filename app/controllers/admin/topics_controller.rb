@@ -65,6 +65,10 @@ class Admin::TopicsController < Admin::BaseController
   end
 
 private
+  def topic_params
+    params.require(:topic).permit(:title, :report_date, :intro, :conclusion, { visuals_attributes: [:id, :title, :link, :caption, :description]})
+  end
+
   def create_topic_countries
     countries = params[:topic][:countries]
     countries.each do |country_id|
@@ -134,9 +138,5 @@ private
         visual.update(display_name: SecureRandom.hex(5))
       end
     end
-  end
-
-  def topic_params
-    params.require(:topic).permit(:title, :report_date, :intro, :conclusion, { visuals_attributes: [:id, :title, :link, :caption, :description]})
   end
 end
