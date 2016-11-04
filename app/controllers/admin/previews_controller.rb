@@ -29,11 +29,11 @@ class Admin::PreviewsController < Admin::BaseController
   end
 
   def show
-    @preview = Preview.find_by(title: params[:title])
+    @preview = Preview.find_by(display_name: params[:display_name])
   end
 
   def destroy
-    preview = Preview.find_by(title: params[:title])
+    preview = Preview.find_by(display_name: params[:display_name])
     preview.tags.clear
     preview.destroy
     flash[:success] = "Preview deleted!"
