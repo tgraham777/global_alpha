@@ -7,6 +7,8 @@ class Preview < ActiveRecord::Base
   has_many :topics, through: :preview_topics
   has_many :preview_countries, dependent: :delete_all
   has_many :countries, through: :preview_countries
+  has_many :preview_indicators, dependent: :delete_all
+  has_many :indicators, through: :preview_indicators
 
   accepts_nested_attributes_for :visuals
 

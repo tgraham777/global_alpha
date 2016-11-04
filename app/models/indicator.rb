@@ -7,6 +7,8 @@ class Indicator < ActiveRecord::Base
   has_many :topics, through: :topic_indicators
   has_many :country_indicators, dependent: :delete_all
   has_many :countries, through: :country_indicators
+  has_many :preview_indicators, dependent: :delete_all
+  has_many :previews, through: :preview_indicators
 
   accepts_nested_attributes_for :visuals
 
