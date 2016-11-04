@@ -1,5 +1,7 @@
 <div class="container" id="visuals-container">
   <h1>Visuals</h1>
+  <em><h4 style="color: #888;">Total count: <%= @visuals.count %></h4></em>
+  <em><h4 style="color: #888;">With connections: <%= @visuals.count { |visual| visual.topics.any? || visual.indicators.any? || visual.countries.any? } %></h4></em>
 
   <% @visuals.each do |visual| %>
     <hr><h3><%= link_to visual.title, admin_visual_path(visual) %></h3>
