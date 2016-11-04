@@ -5,5 +5,9 @@ class PreviewsController < ApplicationController
 
   def show
     @preview = Preview.find_by(display_name: params[:display_name])
+    @visuals = @preview.visuals.sort
+    @related_topics = @preview.topics.sort_by(&:updated_at).last(2).reverse!
+    @related_countries = @preview.countries
+    @related_indicators = @preview.indicators
   end
 end
