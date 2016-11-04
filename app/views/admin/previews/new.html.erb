@@ -2,8 +2,8 @@
   <h1>Add Preview</h1>
 
   <%= form_tag admin_previews_path, html: { class: "form-group" } do %>
-    <%= label_tag :name %>
-    <%= text_field_tag :name, params[:name], type: "name", class: "form-control", placeholder: "Enter preview name" %><br><br>
+    <%= label_tag :title %>
+    <%= text_field_tag :title, params[:title], type: "title", class: "form-control", placeholder: "Enter preview title" %><br><br>
 
     <%= label_tag :tags %><span><em> (select all that apply)</em></span><br>
 

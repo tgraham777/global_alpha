@@ -7,7 +7,7 @@
 
   <ul>
     <% @previews.each do |preview| %>
-      <li><%= link_to preview.name, admin_preview_path(preview) %></li>
+      <li><%= link_to preview.title, admin_preview_path(preview) %></li>
     <% end %>
   </ul>
 </div>

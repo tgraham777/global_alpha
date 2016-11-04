@@ -1,12 +1,12 @@
 class Admin::PreviewsController < Admin::BaseController
-  before_action :require_login, except: [:show]
+  before_action :require_login, except: [:show, :index]
 
   def new
     @preview = Preview.new
   end
 
   def create
-    @preview = Preview.new(name: params[:name])
+    @preview = Preview.new(title: params[:title])
 
     if @preview.save
       @preview.update(display_name: SecureRandom.hex(5))
@@ -29,11 +29,11 @@ class Admin::PreviewsController < Admin::BaseController
   end
 
   def show
-    @preview = Preview.find_by(name: params[:name])
+    @preview = Preview.find_by(title: params[:title])
   end
 
   def destroy
-    preview = Preview.find_by(name: params[:name])
+    preview = Preview.find_by(title: params[:title])
     preview.tags.clear
     preview.destroy
     flash[:success] = "Preview deleted!"
