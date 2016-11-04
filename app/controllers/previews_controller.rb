@@ -1,6 +1,6 @@
 class PreviewsController < ApplicationController
   def index
-    @previews = Preview.all
+    @previews = Preview.all.sort_by(&:updated_at).reverse!
   end
 
   def show

@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   before_action :require_login
 
   def index
-    @topics = Topic.all.sort_by { |topic| topic.updated_at }.reverse!
+    @topics = Topic.all.sort_by(&:updated_at).reverse!
   end
 
   def show

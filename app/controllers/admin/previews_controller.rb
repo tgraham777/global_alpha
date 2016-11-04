@@ -25,7 +25,7 @@ class Admin::PreviewsController < Admin::BaseController
   end
 
   def index
-    @previews = Preview.all
+    @previews = Preview.all.sort_by(&:updated_at).reverse!
   end
 
   def show
