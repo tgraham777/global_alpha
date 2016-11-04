@@ -22,6 +22,8 @@ class Visual < ActiveRecord::Base
       self.topics.first.title
     elsif self.indicators.any?
       self.indicators.first.name + " (" + self.indicators.first.countries.first.name + ")"
+    elsif self.previews.any?
+      self.previews.first.title
     end
   end
 
@@ -32,6 +34,8 @@ class Visual < ActiveRecord::Base
       "Topic"
     elsif self.indicators.any?
       "Indicator"
+    elsif self.previews.any?
+      "Preview"
     end
   end
 
@@ -42,6 +46,8 @@ class Visual < ActiveRecord::Base
       "/topics/" + self.topics.first.display_name
     elsif self.indicators.any?
       "/indicators/" + self.indicators.first.display_name
+    elsif self.previews.any?
+      "/previews/" + self.previews.first.display_name
     end
   end
 
@@ -52,6 +58,8 @@ class Visual < ActiveRecord::Base
       "/admin/topics/" + self.topics.first.display_name
     elsif self.indicators.any?
       "/admin/indicators/" + self.indicators.first.display_name
+    elsif self.previews.any?
+      "/admin/previews/" + self.previews.first.display_name
     end
   end
 end
