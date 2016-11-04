@@ -5,6 +5,10 @@ class Preview < ActiveRecord::Base
   has_many :visuals, through: :preview_visuals
   has_many :preview_topics, dependent: :delete_all
   has_many :topics, through: :preview_topics
+  has_many :preview_countries, dependent: :delete_all
+  has_many :countries, through: :preview_countries
+
+  accepts_nested_attributes_for :visuals
 
   validates :title, presence: true, uniqueness: true
   validates_presence_of :report_date

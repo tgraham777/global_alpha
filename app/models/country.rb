@@ -7,6 +7,8 @@ class Country < ActiveRecord::Base
   has_many :visuals, through: :country_visuals
   has_many :country_indicators, dependent: :delete_all
   has_many :indicators, through: :country_indicators
+  has_many :preview_countries, dependent: :delete_all
+  has_many :previews, through: :preview_countries
 
   accepts_nested_attributes_for :visuals
 

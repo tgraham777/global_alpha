@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104211717) do
+ActiveRecord::Schema.define(version: 20161104212021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,16 @@ ActiveRecord::Schema.define(version: 20161104211717) do
     t.text     "conclusion"
     t.string   "last_updated"
   end
+
+  create_table "preview_countries", force: :cascade do |t|
+    t.integer  "preview_id"
+    t.integer  "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "preview_countries", ["country_id"], name: "index_preview_countries_on_country_id", using: :btree
+  add_index "preview_countries", ["preview_id"], name: "index_preview_countries_on_preview_id", using: :btree
 
   create_table "preview_tags", force: :cascade do |t|
     t.integer  "preview_id"
@@ -213,6 +223,8 @@ ActiveRecord::Schema.define(version: 20161104211717) do
   add_foreign_key "indicator_tags", "tags"
   add_foreign_key "indicator_visuals", "indicators"
   add_foreign_key "indicator_visuals", "visuals"
+  add_foreign_key "preview_countries", "countries"
+  add_foreign_key "preview_countries", "previews"
   add_foreign_key "preview_tags", "previews"
   add_foreign_key "preview_tags", "tags"
   add_foreign_key "preview_topics", "previews"
