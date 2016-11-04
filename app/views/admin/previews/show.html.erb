@@ -1,17 +1,73 @@
-<div class="container" id="preview-container">
-  <%= link_to "Back to Previews", admin_previews_path, class: "back-to-link" %>
+<div class="container">
+  <div class="row">
+    <div class="column col-xs-12">
+      <div class="container" id="preview-container">
+        <%= link_to "Back to Previews", admin_previews_path, class: "back-to-link" %>
 
-  <h1><%= @preview.title %></h1>
-  <h3>Tags</h3>
-  <ul>
-    <% @preview.tags.each do |tag| %>
-      <li><%= tag.name %></li>
-    <% end %>
-  </ul><br>
+        <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-zoom-in"></span>&nbsp Preview</h4>
 
-  <% if current_user %>
-    <%= button_to "Delete Preview", admin_preview_path(@preview), method: :delete, class: "btn btn-control btn-danger" %>
-  <% else %>
-    <%= button_to "Learn More", admin_dashboard_path, method: :get, class: "btn btn-control btn-success" %>
-  <% end %>
+        <h1><%= @preview.title %></h1>
+        <h5><em><%= @preview.report_date %></em></h5>
+
+        <%= @preview.intro %><br>
+        <% @visuals.each do |visual| %>
+          <h3 style="color: #777"><%= visual.title %></h3>
+          <%= visual.link.html_safe %>
+          <p><em><%= visual.caption %></em></p>
+          <%= simple_format(visual.description) %>
+        <% end %>
+
+        <h3>Conclusion</h3>
+        <p><%= @preview.conclusion %></p><hr>
+
+        <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
+        <% @related_topics.each do |topic| %>
+          <div id="related-topic">
+            <h3 style="margin-top: 10px;"><%= link_to topic.title, admin_topic_path(topic) %></h3>
+            <em><h5 style="margin-top: -5px; margin-bottom: 5px; color: #888"><%= topic.report_date %></h5></em>
+            <%= truncate(topic.intro, length: 250) %>
+          </div>
+        <% end %><hr>
+
+        <h4>Tags</h4>
+        <ul>
+          <% @preview.tags.each do |tag| %>
+            <li><%= tag.name %></li>
+          <% end %>
+        </ul><br>
+
+        <%= button_to "Edit preview", edit_admin_preview_path(@preview), method: :get, class: "btn btn-control btn-success" %><br>
+        <%= button_to "Delete preview", admin_preview_path(@preview), method: :delete, class: "btn btn-control btn-danger" %>
+      </div>
+    </div>
+
+    <div class="column col-xs-3" id="sidebar">
+      <div id="indicator-sidebar">
+        <h4><span class="glyphicon glyphicon-eye-open"></span>&nbsp Visuals</h4>
+        <table id="ind-side-table">
+          <% @visuals.each do |visual| %>
+          <tr>
+            <td><%= link_to visual.title, admin_visual_path(visual) %></td>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+      <div id="country-sidebar">
+        <h4><span class="glyphicon glyphicon-globe"></span>&nbsp Related Countries</h4>
+        <ul>
+          <% @related_countries.each do |country| %>
+            <li><%= link_to country.name, admin_country_path(country) %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div id="indicator-sidebar">
+        <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Related Indicators</h4>
+        <ul>
+          <% @related_indicators.each do |indicator| %>
+            <li><%= link_to indicator.name + " (" + indicator.countries.first.name + ")", admin_indicator_path(indicator) %></li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>

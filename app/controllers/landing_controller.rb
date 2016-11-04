@@ -4,7 +4,7 @@ class LandingController < ApplicationController
 
   def index
     @first_preview = Preview.find_by(title: "The Global Oil Market")
-    @second_preview = Preview.find_by(title: "Foreign Holdings of U.S. Debt")
-    @third_preview = Preview.find_by(title: "Emerging Markets Debt")
+    @second_preview = Preview.find_by(title: "The Global Oil Market")
+    @third_preview = Preview.find_by(title: "The Global Oil Market")
   end
 end
