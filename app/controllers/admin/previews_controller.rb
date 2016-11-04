@@ -1,6 +1,18 @@
 class Admin::PreviewsController < Admin::BaseController
   before_action :require_login, except: [:show, :index]
 
+  def index
+    @previews = Preview.all.sort_by(&:updated_at).reverse!
+  end
+
+  def show
+    @preview = Preview.find_by(display_name: params[:display_name])
+    @visuals = @preview.visuals.sort
+    @related_topics = @preview.topics.sort_by(&:updated_at).last(2).reverse!
+    @related_countries = @preview.countries
+    @related_indicators = @preview.indicators
+  end
+
   def new
     @preview = Preview.new
     @visuals = @preview.visuals.build
@@ -22,16 +34,9 @@ class Admin::PreviewsController < Admin::BaseController
     end
   end
 
-  def index
-    @previews = Preview.all.sort_by(&:updated_at).reverse!
-  end
-
-  def show
+  def edit
     @preview = Preview.find_by(display_name: params[:display_name])
     @visuals = @preview.visuals.sort
-    @related_topics = @preview.topics.sort_by(&:updated_at).last(2).reverse!
-    @related_countries = @preview.countries
-    @related_indicators = @preview.indicators
   end
 
   def destroy
