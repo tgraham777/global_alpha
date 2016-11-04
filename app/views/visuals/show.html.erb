@@ -2,7 +2,7 @@
   <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-eye-open"></span>&nbsp Visual</h4>
 
   <h1><%= @visual.title %></h1>
-  <% if @visual.topics.any? || @visual.indicators.any? || @visual.countries.any? %>
+  <% if @visual.topics.any? || @visual.indicators.any? || @visual.countries.any? || @visual.previews.any? %>
     <em><h4 style="margin-bottom: 15px;"><%= @visual.find_visual_source_type %>:</em> <%= link_to @visual.find_visual_source_name, @visual.find_visual_source_route %></h4>
   <% end %>
   <%= @visual.link.html_safe %>

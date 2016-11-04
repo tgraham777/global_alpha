@@ -1,0 +1,10 @@
+class CreatePreviewVisuals < ActiveRecord::Migration
+  def change
+    create_table :preview_visuals do |t|
+      t.references :preview, index: true, foreign_key: true
+      t.references :visual, index: true, foreign_key: true
+
+      t.timestamps null: false
+    end
+  end
+end

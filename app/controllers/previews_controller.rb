@@ -1,11 +1,13 @@
 class PreviewsController < ApplicationController
-  before_action :require_login, except: [:show]
-
   def index
-    @previews = Preview.all
+    @previews = Preview.all.sort_by(&:updated_at).reverse!
   end
 
   def show
-    @preview = Preview.find_by(name: params[:name])
+    @preview = Preview.find_by(display_name: params[:display_name])
+    @visuals = @preview.visuals.sort
+    @related_topics = @preview.topics.sort_by(&:updated_at).last(2).reverse!
+    @related_countries = @preview.countries
+    @related_indicators = @preview.indicators
   end
 end

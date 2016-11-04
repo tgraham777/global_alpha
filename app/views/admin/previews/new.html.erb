@@ -1,19 +1,83 @@
 <div class="container" id="new-preview-container">
-  <h1>Add Preview</h1>
+  <%= link_to "Back to Previews", admin_previews_path, class: "back-to-link" %>
 
-  <%= form_tag admin_previews_path, html: { class: "form-group" } do %>
-    <%= label_tag :name %>
-    <%= text_field_tag :name, params[:name], type: "name", class: "form-control", placeholder: "Enter preview name" %><br><br>
+  <h1>Create Preview</h1>
 
-    <%= label_tag :tags %><span><em> (select all that apply)</em></span><br>
+  <div class="add-visual-button-container">
+    <%= button_to "Add Visual", "javascript:void(0)", class: "btn btn-control btn-primary", id: "preview-add-visual-button" %><br>
+  </div>
 
-    <%= collection_check_boxes :preview, :tags, Tag.all, :name, :name do |b| %>
+  <%= form_for [:admin, @preview], html: { class: "form-group" } do |f| %>
+    <div class="default-preview-items">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control", placeholder: "Enter title" %><br>
+
+      <%= f.label :report_date %>
+      <%= f.text_field :report_date, class: "form-control", placeholder: "Enter report date" %><br>
+
+      <%= f.label :intro %>
+      <%= f.text_area :intro, class: "form-control", placeholder: "Enter introduction (if applicable)" %><br><hr>
+
+      <h4>Visual #1</h4>
+
+      <%= f.fields_for :visuals do |ff| %>
+        <%= ff.label :title %>
+        <%= ff.text_field :title, class: "form-control", placeholder: "Enter title" %><br>
+
+        <%= ff.label :link %>
+        <%= ff.text_field :link, class: "form-control", placeholder: "Enter Tableau script or URL" %><br>
+
+        <%= ff.label :caption %>
+        <%= ff.text_field :caption, class: "form-control", placeholder: "Enter caption for visual" %><br>
+
+        <%= ff.label :description %>
+        <%= ff.text_area :description, class: "form-control", placeholder: "Enter description for visual and/or additional text" %><br><hr>
+      <% end %>
+    </div>
+
+    <%= f.label :conclusion %>
+    <%= f.text_area :conclusion, class: "form-control", placeholder: "Enter conclusion (if applicable)" %><hr>
+
+    <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
+    <%= f.fields_for :topics do |topic| %>
+      <%= collection_check_boxes :preview, :topics, Topic.all.sort_by(&:title), :id, :title do |b| %>
+      <p>
+        <%= b.check_box(class: "check_box") %>
+        <%= b.object.title %>
+      </p>
+      <% end %>
+    <% end %><hr>
+
+    <h4><span class="glyphicon glyphicon-globe"></span>&nbsp Related Countries</h4>
+    <%= f.fields_for :countries do |country| %>
+      <%= collection_check_boxes :preview, :countries, Country.all.sort_by(&:name), :id, :name do |b| %>
       <p>
         <%= b.check_box(class: "check_box") %>
         <%= b.object.name %>
       </p>
+      <% end %>
+    <% end %><hr>
+
+    <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Related Indicators</h4>
+    <%= f.fields_for :indicators do |indicator| %>
+      <%= collection_check_boxes :preview, :indicators, Indicator.all.sort_by {|indicator| indicator.countries.first.name}, :id, :name do |b| %>
+      <p>
+        <%= b.check_box(class: "check_box") %>
+        <strong><%= b.object.countries.first.name %></strong> - <%= b.object.name %>
+      </p>
+      <% end %>
+    <% end %><hr>
+
+    <h4><span class="glyphicon glyphicon-user"></span>&nbsp User Tags</h4>
+    <%= f.fields_for :tags do |tag| %>
+      <%= collection_check_boxes :preview, :tags, Tag.all, :id, :name do |b| %>
+      <p>
+        <%= b.check_box(class: "check_box") %>
+        <%= b.object.name %>
+      </p>
+      <% end %>
     <% end %>
 
-    <br><%= submit_tag "Create Preview", class: "btn btn-control btn-primary" %>
+    <br><%= f.submit "Create preview", class: "btn btn-control btn-primary" %>
   <% end %>
 </div>

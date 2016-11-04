@@ -3,8 +3,8 @@ class LandingController < ApplicationController
   end
 
   def index
-    @fm_preview = Preview.find_by(name: "Financial Markets")
-    @gm_preview = Preview.find_by(name: "Global Macro")
-    @ht_preview = Preview.find_by(name: "Hot Topic")
+    @first_preview = Preview.find_by(title: "The Global Oil Market")
+    @second_preview = Preview.find_by(title: "The Global Oil Market")
+    @third_preview = Preview.find_by(title: "The Global Oil Market")
   end
 end

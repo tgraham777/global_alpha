@@ -9,13 +9,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Global Alpha</a>
+          <a id="ga-logo" class="navbar-brand" href="/">Global Alpha</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/logout" data-method="delete">Log Out</a></li>
+            <li><a href="/logout" data-method="delete" style="padding-left: 20px;">Log Out</a></li>
             <li><%= link_to "Accounts", admin_users_path %></li>
             <li><%= link_to "Tags", admin_tags_path %></li>
+            <li><%= link_to "Previews", admin_previews_path %></li>
             <li><%= link_to "Visuals", admin_visuals_path %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Explore <span class="caret"></span></a>
@@ -23,7 +24,6 @@
                 <li><%= link_to "Countries", admin_countries_path %></li>
                 <li><%= link_to "Topics", admin_topics_path %></li>
                 <li><%= link_to "Indicators", admin_indicators_path %></li>
-                <li><%= link_to "Previews", admin_previews_path %></li>
               </ul>
             </li>
             <li class="dropdown">
