@@ -1,5 +1,5 @@
 <div class="container" id="visuals-container">
-  <h1>Visuals</h1>
+  <h1><span style="font-size: 25px;" class="glyphicon glyphicon-eye-open"></span> Visuals</h1>
   <em><h4 style="color: #888;">Total count: <%= @visuals.count %></h4></em>
   <em><h4 style="color: #888;">With connections: <%= @visuals.count { |visual| visual.topics.any? || visual.indicators.any? || visual.countries.any? || visual.previews.any? } %></h4></em>
 
