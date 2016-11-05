@@ -1,9 +1,11 @@
 <div class="container" id="country-index-container">
   <h1><span style="font-size: 25px;" class="glyphicon glyphicon-globe"></span> Countries</h1>
 
-  <ul>
+  <table style="margin-top: 15px;" id="country-index-table">
     <% @countries.each do |country| %>
-      <li><%= link_to country.name, country_path(country) %></li>
+      <tr id="country-table-row">
+        <td><%= link_to country.name, country_path(country) %></td>
+      </tr>
     <% end %>
-  </ul>
+  </table>
 </div>

@@ -3,11 +3,13 @@
 
   <form method="GET" action="/admin/countries/new">
     <input type="submit" value="Create new country", class="btn btn-control btn-success">
-  </form><br>
+  </form>
 
-  <ul>
+  <table style="margin-top: 15px;" id="country-index-table">
     <% @countries.each do |country| %>
-      <li><%= link_to country.name, admin_country_path(country) %></li>
+      <tr id="country-table-row">
+        <td><%= link_to country.name, admin_country_path(country) %></td>
+      </tr>
     <% end %>
-  </ul>
+  </table>
 </div>

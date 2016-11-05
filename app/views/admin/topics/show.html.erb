@@ -46,9 +46,9 @@
         <h4><span class="glyphicon glyphicon-eye-open"></span>&nbsp Visuals</h4>
         <table id="ind-side-table">
           <% @visuals.each do |visual| %>
-          <tr>
-            <td><%= link_to visual.title, admin_visual_path(visual) %></td>
-          </tr>
+            <tr>
+              <td><%= link_to visual.title, admin_visual_path(visual) %></td>
+            </tr>
           <% end %>
         </table>
       </div>
