@@ -73,3 +73,11 @@ td {
   padding-top: 5px;
   border-bottom: 1px solid #ddd;
 }
+
+#country-index-table {
+  width: 30%;
+}
+
+#country-table-row:hover {
+  background-color: #EFEFEF;
+}

@@ -1,11 +1,11 @@
 <div class="container" id="country-index-container">
-  <h1>Indicators</h1>
+  <h1><span style="font-size: 25px;" class="glyphicon glyphicon-stats"></span> Indicators</h1>
 
   <% @countries.each do |country| %>
-    <h3 style="text-decoration:underline;"><%= country.name %></h3>
+    <h3 style="text-decoration: underline; margin-bottom: 7px;"><%= country.name %></h3>
     <ul>
-      <% country.indicators.each do |indicator| %>
-        <li><%= link_to indicator.name, indicator_path(indicator) %></li>
+      <% country.indicators.sort_by(&:name).each do |indicator| %>
+        <li><h5 style="margin-top: 7px; margin-bottom: 7px;"><%= link_to indicator.name, indicator_path(indicator) %></h5></li>
       <% end %>
     </ul>
   <% end %>

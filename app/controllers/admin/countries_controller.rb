@@ -20,7 +20,7 @@ class Admin::CountriesController < Admin::BaseController
   end
 
   def index
-    @countries = Country.all
+    @countries = Country.all.sort_by(&:name)
   end
 
   def show
