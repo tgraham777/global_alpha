@@ -1,0 +1,13 @@
+<div class="container" id="new-user-container">
+  <h1>Change password</h1>
+
+  <%= form_tag user_path(@user), method: :put, html: { class: "form-group" } do %>
+    <%= label_tag :password %>
+    <%= password_field_tag :password, params[:password], type: "password", class: "form-control", placeholder: "Enter password" %><br>
+
+    <%= label_tag :password_confirmation %>
+    <%= text_field_tag :password_confirmation, params[:password_confirmation], type: "password_confirmation", class: "form-control", placeholder: "Confirm password" %><br>
+
+    <br><%= submit_tag "Submit", class: "btn btn-control btn-primary" %>
+  <% end %>
+</div>
