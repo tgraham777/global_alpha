@@ -1,4 +1,6 @@
-<div class="container" id="new-user-container">
+<div class="container" id="change-password-container">
+  <%= link_to "Back to Profile", user_path(@user) %>
+
   <h1>Change password</h1>
 
   <%= form_tag user_path(@user), method: :put, html: { class: "form-group" } do %>
