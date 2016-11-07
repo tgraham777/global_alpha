@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'landing#index'
 
-  resources :users, only: [:show], param: :display_name
+  resources :users, only: [:show, :edit, :update], param: :display_name
   resources :topics, only: [:index, :show], param: :display_name
   resources :countries, only: [:index, :show], param: :display_name
   resources :indicators, only: [:index, :show], param: :display_name
