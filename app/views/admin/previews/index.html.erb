@@ -8,6 +8,6 @@
   <% @previews.each do |preview| %>
     <hr><h2><%= link_to preview.title, admin_preview_path(preview) %></h2>
     <h4><em><%= preview.report_date %></em></h4>
-    <%= truncate(preview.intro, length: 250) %>
+    <span style="font-family: palatino; font-size: 22px; color: #666;"><%= preview.tagline %></span>
   <% end %>
 </div>

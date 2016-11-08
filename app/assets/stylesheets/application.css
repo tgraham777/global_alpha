@@ -38,3 +38,16 @@
 #ga-logo:hover {
   color: #FFF;
 }
+
+.tagline {
+  width: 85%;
+  border-top-style: solid;
+  border-top-color: #CCC;
+  border-top-width: thin;
+  border-bottom-style: solid;
+  border-bottom-color: #CCC;
+  border-bottom-width: thin;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}

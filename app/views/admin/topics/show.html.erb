@@ -7,7 +7,13 @@
         <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-th-list"></span>&nbsp Topic</h4>
 
         <h1><%= @topic.title %></h1>
-        <h5><em><%= @topic.report_date %></em></h5>
+        <h5 style="margin-top: -5px; color: #888;"><em><%= @topic.report_date %></em></h5>
+
+        <% if @topic.tagline %>
+          <div class="tagline">
+            <span style="font-family: palatino; font-size: 22px; color: #666; line-height: 115%;"><%= @topic.tagline %></span>
+          </div>
+        <% end %>
 
         <%= @topic.intro %><br>
         <% @visuals.each do |visual| %>
