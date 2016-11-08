@@ -9,9 +9,11 @@
         <h1><%= @preview.title %></h1>
         <h5 style="margin-top: -5px; color: #888;"><em><%= @preview.report_date %></em></h5>
 
-        <div class="tagline">
-          <span style="font-family: palatino; font-size: 22px; color: #666; line-height: 115%;">Though prices have begun to recover, increasing production from OPEC will keep continue to put downward pressure on oil prices.</span>
-        </div>
+        <% if @preview.tagline %>
+          <div class="tagline">
+            <span style="font-family: palatino; font-size: 22px; color: #666; line-height: 115%;"><%= @preview.tagline %></span>
+          </div>
+        <% end %>
 
         <%= @preview.intro %><br>
         <% @visuals.each do |visual| %>
