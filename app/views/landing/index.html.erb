@@ -11,40 +11,40 @@
       </ol>
       <div class="carousel-inner" role="listbox">
         <div class="item active">
-          <img class="first-slide" src="/images/img1.jpg" alt="First slide">
+          <img id="slide-image" class="first-slide" src="/images/oil2.png" alt="First slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1><%= @first_preview.title %></h1>
+              <h1 class="slide-title"><%= @first_preview.title %></h1>
               <% if current_admin? %>
-                <p><%= link_to "Learn more", admin_preview_path(@first_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
+                <p><%= link_to "View report", admin_preview_path(@first_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
               <% else %>
-                <p><%= link_to "Learn more", preview_path(@first_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
+                <p><%= link_to "View report", preview_path(@first_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
               <% end %>
             </div>
           </div>
         </div>
         <div class="item">
-          <img class="second-slide" src="/images/img2.jpg" alt="Second slide">
+          <img id="slide-image" class="second-slide" src="/images/oil1.png" alt="Second slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1><%= @second_preview.title %></h1>
+              <h1 class="slide-title"><%= @second_preview.title %></h1>
               <% if current_admin? %>
-                <p><%= link_to "Learn more", admin_preview_path(@second_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
+                <p><%= link_to "View report", admin_preview_path(@second_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
               <% else %>
-                <p><%= link_to "Learn more", preview_path(@second_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
+                <p><%= link_to "View report", preview_path(@second_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
               <% end %>
             </div>
           </div>
         </div>
         <div class="item">
-          <img class="third-slide" src="/images/img3.jpg" alt="Third slide">
+          <img id="slide-image" class="third-slide" src="/images/country1.png" alt="Third slide">
           <div class="container">
             <div class="carousel-caption">
-              <h1><%= @third_preview.title %></h1>
+              <h1 class="slide-title"><%= @third_preview.title %></h1>
               <% if current_admin? %>
-                <p><%= link_to "Learn more", admin_preview_path(@third_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
+                <p><%= link_to "View report", admin_preview_path(@third_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
               <% else %>
-                <p><%= link_to "Learn more", preview_path(@third_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
+                <p><%= link_to "View report", preview_path(@third_preview), class: "btn btn-lg btn-primary landing", role: "button" %></p>
               <% end %>
             </div>
           </div>

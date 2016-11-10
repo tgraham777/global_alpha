@@ -66,13 +66,6 @@ body {
   transform: translate(-50%, -50%)
 }
 
-.btn.btn-lg.btn-primary.landing {
-  background-color: #999;
-  border-color: #444;
-  border-width: 2px;
-}
-
-
 /* RESPONSIVE CSS
 -------------------------------------------------- */
 
@@ -111,4 +104,44 @@ body {
   .featurette-heading {
     margin-top: 120px;
   }
+}
+
+#slide-image {
+  opacity: 0.35;
+  border-style: solid;
+  border-width: thin;
+  border-color: #EEE;
+}
+
+.slide-title {
+  font-family: palatino;
+  text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+  color: #555;
+}
+
+.btn.btn-lg.btn-primary.landing {
+  background-color: #555;
+  border-color: #CCC;
+  border-radius: 0px;
+  font-family: palatino;
+}
+
+.btn.btn-lg.btn-primary.landing:hover {
+  font-size: 19px;
+}
+
+#cidot1 {
+  background-color: #555;
+}
+
+#cidot2 {
+  background-color: #555;
+}
+
+#cidot3 {
+  background-color: #555;
+}
+
+.carousel-indicators {
+  margin-bottom: 15px;
 }
