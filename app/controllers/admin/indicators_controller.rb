@@ -54,7 +54,7 @@ class Admin::IndicatorsController < Admin::BaseController
     indicator = Indicator.find_by(display_name: params[:display_name])
     indicator.topics.clear
     indicator.countries.clear
-    indicator.visuals.clear
+    indicator.visuals.each { |visual| visual.destroy }
     indicator.tags.clear
     indicator.destroy
     flash[:success] = "Indicator deleted!"
