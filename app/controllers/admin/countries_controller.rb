@@ -51,8 +51,8 @@ class Admin::CountriesController < Admin::BaseController
   def destroy
     country = Country.find_by(display_name: params[:display_name])
     country.topics.clear
-    country.indicators.clear
-    country.visuals.clear
+    country.indicators.each { |indicator| indicator.destroy }
+    country.visuals.each { |visual| visual.destroy }
     country.tags.clear
     country.destroy
     flash[:success] = "Country deleted!"

@@ -60,7 +60,7 @@ class Admin::PreviewsController < Admin::BaseController
     preview.topics.clear
     preview.countries.clear
     preview.indicators.clear
-    preview.visuals.clear
+    preview.visuals.each { |visual| visual.destroy }
     preview.tags.clear
     preview.destroy
     flash[:success] = "Preview deleted!"
