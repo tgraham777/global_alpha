@@ -58,7 +58,7 @@ class Admin::TopicsController < Admin::BaseController
     topic.countries.clear
     topic.indicators.clear
     topic.tags.clear
-    topic.visuals.clear
+    topic.visuals.each { |visual| visual.destroy }
     topic.destroy
     flash[:success] = "Topic deleted!"
     redirect_to admin_topics_path
