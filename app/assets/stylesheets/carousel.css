@@ -45,6 +45,7 @@ body {
 /* Since positioning the image, we need to help out the caption */
 .carousel-caption {
   z-index: 10;
+  margin-bottom: 160px;
 }
 
 /* Declare heights because of positioning of img element */
@@ -107,7 +108,7 @@ body {
 }
 
 #slide-image {
-  opacity: 0.5;
+  opacity: 0.25;
   border-style: solid;
   border-width: thin;
   border-color: #EEE;
@@ -116,11 +117,11 @@ body {
 .slide-title {
   font-family: palatino;
   text-shadow: 1px 0 0 #fff, -1px 0 0 #fff, 0 1px 0 #fff, 0 -1px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
-  color: #555;
+  color: #666;
 }
 
 .btn.btn-lg.btn-primary.landing {
-  background-color: #555;
+  background-color: #666;
   border-color: #CCC;
   border-radius: 0px;
   font-family: palatino;
@@ -143,5 +144,5 @@ body {
 }
 
 .carousel-indicators {
-  margin-bottom: 15px;
+  margin-bottom: 170px;
 }
