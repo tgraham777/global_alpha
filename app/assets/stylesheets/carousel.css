@@ -118,11 +118,11 @@ body {
   font-family: palatino;
   font-size: 38px;
   text-shadow: 1px 0 0 #EEE, -1px 0 0 #EEE, 0 1px 0 #EEE, 0 -1px 0 #EEE, 1px 1px #EEE, -1px -1px 0 #EEE, 1px -1px 0 #EEE, -1px 1px 0 #EEE;
-  color: #0a0f44;
+  color: #26466D;
 }
 
 .btn.btn-lg.btn-primary.landing {
-  background-color: #0a0f44;
+  background-color: #26466D;
   border-color: #EEE;
   border-width: 1px;
   border-radius: 0px;
