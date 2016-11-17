@@ -116,13 +116,15 @@ body {
 
 .slide-title {
   font-family: palatino;
+  font-size: 38px;
   text-shadow: 1px 0 0 #EEE, -1px 0 0 #EEE, 0 1px 0 #EEE, 0 -1px 0 #EEE, 1px 1px #EEE, -1px -1px 0 #EEE, 1px -1px 0 #EEE, -1px 1px 0 #EEE;
-  color: #555;
+  color: #0a0f44;
 }
 
 .btn.btn-lg.btn-primary.landing {
-  background-color: #555;
-  border-color: #CCC;
+  background-color: #0a0f44;
+  border-color: #EEE;
+  border-width: 1px;
   border-radius: 0px;
   font-family: palatino;
 }
