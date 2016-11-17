@@ -117,7 +117,7 @@ body {
 .slide-title {
   font-family: palatino;
   font-size: 38px;
-  text-shadow: 2px 0 0 #EEE, -2px 0 0 #EEE, 0 2px 0 #EEE, 0 -2px 0 #EEE, 2px 2px #EEE, -2px -2px 0 #EEE, 2px -2px 0 #EEE, -2px 2px 0 #EEE;
+  text-shadow: 2px 0 0 #FFF, -2px 0 0 #FFF, 0 2px 0 #FFF, 0 -2px 0 #FFF, 2px 2px #FFF, -2px -2px 0 #FFF, 2px -2px 0 #FFF, -2px 2px 0 #FFF;
   color: #26466D;
 }
 
