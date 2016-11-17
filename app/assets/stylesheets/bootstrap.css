@@ -6324,7 +6324,7 @@ button.close {
   left: 0;
   width: 15%;
   font-size: 20px;
-  color: #999;
+  color: #AAA;
   text-align: center;
   /*text-shadow: 0 1px 2px rgba(0, 0, 0, .6);*/
   background-color: rgba(0, 0, 0, 0);
@@ -6353,12 +6353,12 @@ button.close {
 .carousel-control:hover .icon-next,
 .carousel-control:hover .glyphicon-chevron-left,
 .carousel-control:hover .glyphicon-chevron-right {
-  font-size: 40px;
-  color: #666;
-  margin-top: -12px;
+  font-size: 38px;
+  color: #888;
+  margin-top: -11px;
 }
 .carousel-control:focus {
-  color: #999;
+  color: #AAA;
 }
 .carousel-control .icon-prev,
 .carousel-control .icon-next,
@@ -6406,21 +6406,23 @@ button.close {
 }
 .carousel-indicators li {
   display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin: 1px;
+  width: 8px;
+  height: 8px;
+  margin: 2px;
   text-indent: -999px;
   cursor: pointer;
-  background-color: #000 \9;
-  background-color: rgba(0, 0, 0, 0);
-  border: 1px solid #fff;
+  background-color: #AAA;
+  /*background-color: #000 \9;*/
+  /*background-color: rgba(0, 0, 0, 0);*/
+  /*border: 1px solid #fff;*/
   border-radius: 10px;
 }
 .carousel-indicators .active {
-  width: 12px;
-  height: 12px;
-  margin: 0;
-  background-color: #fff;
+  width: 10px;
+  height: 10px;
+  margin: 2px;
+  background-color: #888;
+  margin-bottom: 1px;
 }
 .carousel-caption {
   position: absolute;

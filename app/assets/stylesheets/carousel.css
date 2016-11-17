@@ -132,18 +132,6 @@ body {
   font-size: 19px;
 }
 
-#cidot1 {
-  background-color: #555;
-}
-
-#cidot2 {
-  background-color: #555;
-}
-
-#cidot3 {
-  background-color: #555;
-}
-
 .carousel-indicators {
-  margin-bottom: 160px;
+  margin-bottom: 0px;
 }
