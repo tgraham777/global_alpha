@@ -118,15 +118,16 @@ body {
   font-family: palatino;
   font-size: 38px;
   text-shadow: 2px 0 0 #FFF, -2px 0 0 #FFF, 0 2px 0 #FFF, 0 -2px 0 #FFF, 2px 2px #FFF, -2px -2px 0 #FFF, 2px -2px 0 #FFF, -2px 2px 0 #FFF;
-  color: #26466D;
+  color: #555;
 }
 
 .btn.btn-lg.btn-primary.landing {
-  background-color: #26466D;
+  background-color: #555;
   border-color: #EEE;
   border-width: 1px;
   border-radius: 0px;
   font-family: palatino;
+  color: #FFF;
 }
 
 .btn.btn-lg.btn-primary.landing:hover {
