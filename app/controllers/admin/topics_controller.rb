@@ -30,7 +30,7 @@ class Admin::TopicsController < Admin::BaseController
     @visuals = @topic.visuals.sort
     @related_countries = @topic.countries
     @related_indicators = @topic.indicators
-    @related_topics = @topic.tags.sample.topics.reject{ |topic| topic.title == @topic.title }.sort_by(&:updated_at).last(2).reverse!
+    @related_topics = @topic.tags.sort_by{ |tag| tag.topics.count }.last.topics.reject{ |topic| topic.title == @topic.title }.sort_by(&:updated_at).last(2).reverse!
   end
 
   def edit
