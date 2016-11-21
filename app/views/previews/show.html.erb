@@ -2,9 +2,9 @@
   <div class="row">
     <div class="column col-xs-12">
       <div class="container" id="preview-container">
-        <%= link_to "Back to Previews", previews_path, class: "back-to-link" %>
+        <%= link_to "Back to Topics", previews_path, class: "back-to-link" %>
 
-        <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-zoom-in"></span>&nbsp Preview</h4>
+        <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-th-list"></span>&nbsp Topic</h4>
 
         <h1><%= @preview.title %></h1>
         <h5 style="margin-top: -5px; color: #888;"><em><%= @preview.report_date %></em></h5>
@@ -27,11 +27,11 @@
         <p><%= @preview.conclusion %></p><hr>
 
         <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
-        <% @related_topics.each do |topic| %>
+        <% @related_previews.each do |preview| %>
           <div id="related-topic">
-            <h3 style="margin-top: 10px;"><%= link_to topic.title, topic_path(topic) %></h3>
-            <em><h5 style="margin-top: -5px; margin-bottom: 5px; color: #888"><%= topic.report_date %></h5></em>
-            <%= truncate(topic.intro, length: 250) %>
+            <h3 style="margin-top: 10px;"><%= link_to preview.title, preview_path(preview) %></h3>
+            <em><h5 style="margin-top: -5px; margin-bottom: 5px; color: #888"><%= preview.report_date %></h5></em>
+            <%= truncate(preview.intro, length: 250) %>
           </div>
         <% end %><hr>
 
@@ -45,7 +45,7 @@
     </div>
 
     <div class="column col-xs-3" id="sidebar">
-      <div id="indicator-sidebar">
+      <div id="preview-sidebar">
         <h4><span class="glyphicon glyphicon-eye-open"></span>&nbsp Visuals</h4>
         <table id="ind-side-table">
           <% @visuals.each do |visual| %>
@@ -54,22 +54,6 @@
           </tr>
           <% end %>
         </table>
-      </div>
-      <div id="country-sidebar">
-        <h4><span class="glyphicon glyphicon-globe"></span>&nbsp Related Countries</h4>
-        <ul>
-          <% @related_countries.each do |country| %>
-            <li><%= link_to country.name, country_path(country) %></li>
-          <% end %>
-        </ul>
-      </div>
-      <div id="indicator-sidebar">
-        <h4><span class="glyphicon glyphicon-stats"></span>&nbsp Related Indicators</h4>
-        <ul>
-          <% @related_indicators.each do |indicator| %>
-            <li><%= link_to indicator.name + " (" + indicator.countries.first.name + ")", indicator_path(indicator) %></li>
-          <% end %>
-        </ul>
       </div>
     </div>
   </div>
