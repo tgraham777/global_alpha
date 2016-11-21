@@ -16,3 +16,8 @@
   width: 75%;
   padding-right: 25px;
 }
+
+#preview-sidebar {
+  padding-left: -10px;
+  padding-bottom: 14px;
+}
