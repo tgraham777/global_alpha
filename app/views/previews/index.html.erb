@@ -1,5 +1,9 @@
 <div class="container" id="preview-index-container">
-  <h1><span style="font-size: 25px;" class="glyphicon glyphicon-th-list"></span> Topics</h1>
+  <% if logged_in? %>
+    <h1><span style="font-size: 25px;" class="glyphicon glyphicon-zoom-in"></span> Previews</h1>
+  <% else %>
+    <h1><span style="font-size: 25px;" class="glyphicon glyphicon-th-list"></span> Topics</h1>
+  <% end %>
 
   <% @previews.each do |preview| %>
     <hr><h2><%= link_to preview.title, preview_path(preview) %></h2>

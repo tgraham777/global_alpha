@@ -6,6 +6,7 @@ class PreviewsController < ApplicationController
   def show
     @preview = Preview.find_by(display_name: params[:display_name])
     @visuals = @preview.visuals.sort
-    @related_previews = @preview.tags.sort_by{ |tag| tag.previews.count }.last.previews.reject{ |preview| preview.title == @preview.title }.sort_by(&:updated_at).last(2).reverse!
+    @related_topics = @preview.topics.sort_by(&:updated_at).last(2).reverse!
+    @related_previews = @preview.find_related_previews
   end
 end
