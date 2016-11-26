@@ -18,4 +18,12 @@ class Preview < ActiveRecord::Base
   def to_param
     display_name
   end
+
+  def find_related_previews
+    if self.tags.any?
+      self.tags.sort_by{ |tag| tag.previews.count }.last.previews.reject{ |preview| preview.title == self.title }.sort_by(&:updated_at).last(2).reverse!
+    else
+      []
+    end
+  end
 end
