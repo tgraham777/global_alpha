@@ -26,15 +26,28 @@
         <h3>Conclusion</h3>
         <p><%= @preview.conclusion %></p><hr>
 
-        <% if @related_previews.any? %>
-          <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
-          <% @related_previews.each do |preview| %>
-            <div id="related-topic">
-              <h3 style="margin-top: 10px;"><%= link_to preview.title, preview_path(preview) %></h3>
-              <em><h5 style="margin-top: -5px; margin-bottom: 5px; color: #888"><%= preview.report_date %></h5></em>
-              <%= truncate(preview.intro, length: 250) %>
-            </div>
-          <% end %><hr>
+        <% if logged_in? %>
+          <% if @related_topics.any? %>
+            <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
+            <% @related_topics.each do |topic| %>
+              <div id="related-topic">
+                <h3 style="margin-top: 10px;"><%= link_to topic.title, topic_path(topic) %></h3>
+                <em><h5 style="margin-top: -5px; margin-bottom: 5px; color: #888"><%= topic.report_date %></h5></em>
+                <%= truncate(topic.intro, length: 250) %>
+              </div>
+            <% end %><hr>
+          <% end %>
+        <% else %>
+          <% if @related_previews.any? %>
+            <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
+            <% @related_previews.each do |preview| %>
+              <div id="related-topic">
+                <h3 style="margin-top: 10px;"><%= link_to preview.title, preview_path(preview) %></h3>
+                <em><h5 style="margin-top: -5px; margin-bottom: 5px; color: #888"><%= preview.report_date %></h5></em>
+                <%= truncate(preview.intro, length: 250) %>
+              </div>
+            <% end %><hr>
+          <% end %>
         <% end %>
 
         <h4>Tags</h4>
