@@ -2,9 +2,14 @@
   <div class="row">
     <div class="column col-xs-12">
       <div class="container" id="preview-container">
-        <%= link_to "Back to Topics", previews_path, class: "back-to-link" %>
 
-        <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-th-list"></span>&nbsp Topic</h4>
+        <% if logged_in? %>
+          <%= link_to "Back to Previews", previews_path, class: "back-to-link" %>
+          <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-zoom-in"></span>&nbsp Preview</h4>
+        <% else %>
+          <%= link_to "Back to Topics", previews_path, class: "back-to-link" %>
+          <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-th-list"></span>&nbsp Topic</h4>
+        <% end %>
 
         <h1><%= @preview.title %></h1>
         <h5 style="margin-top: -5px; color: #888;"><em><%= @preview.report_date %></em></h5>
