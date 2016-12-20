@@ -70,7 +70,11 @@
         <table id="ind-side-table">
           <% @visuals.each do |visual| %>
           <tr>
-            <td><%= link_to visual.title, visual_path(visual) %></td>
+            <% if visual == @visuals.last %>
+              <td style="border-bottom: none"><%= link_to visual.title, visual_path(visual) %></td>
+            <% else %>
+              <td><%= link_to visual.title, visual_path(visual) %></td>
+            <% end %>
           </tr>
           <% end %>
         </table>
