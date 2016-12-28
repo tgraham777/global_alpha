@@ -4,11 +4,9 @@
       <div class="container" id="preview-container">
 
         <% if logged_in? %>
-          <%= link_to "Back to Previews", previews_path, class: "back-to-link" %>
-          <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-zoom-in"></span>&nbsp Preview</h4>
+          <h4 style="color: #CCC; margin-top: 4px; margin-bottom: -12px;"><span class="glyphicon glyphicon-zoom-in"></span>&nbsp Preview</h4>
         <% else %>
-          <%= link_to "Back to Topics", previews_path, class: "back-to-link" %>
-          <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-th-list"></span>&nbsp Topic</h4>
+          <h4 style="color: #CCC; margin-top: 4px; margin-bottom: -12px;"><span class="glyphicon glyphicon-th-list"></span>&nbsp Topic</h4>
         <% end %>
 
         <h1><%= @preview.title %></h1>
