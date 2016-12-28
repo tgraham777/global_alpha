@@ -69,7 +69,7 @@ class Admin::PreviewsController < Admin::BaseController
 
 private
   def preview_params
-    params.require(:preview).permit(:title, :report_date, :tagline, :intro, :conclusion, { visuals_attributes: [:id, :title, :link, :caption, :description]})
+    params.require(:preview).permit(:title, :report_date, :tagline, :intro, :conclusion, { visuals_attributes: [:id, :title, :intro, :link, :caption, :description]})
   end
 
   def create_preview_topics

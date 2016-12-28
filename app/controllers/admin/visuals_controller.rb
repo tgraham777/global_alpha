@@ -35,6 +35,6 @@ class Admin::VisualsController < Admin::BaseController
 
 private
   def visual_params
-    params.require(:visual).permit(:title, :link, :caption, :description, :additional_description)
+    params.require(:visual).permit(:title, :intro, :link, :caption, :description, :additional_description)
   end
 end

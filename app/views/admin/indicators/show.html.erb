@@ -12,7 +12,8 @@
         <% end %>
         <%= @indicator.intro %><br>
         <% @visuals.each do |visual| %>
-          <h3 style="color: #777"><%= visual.title %></h3>
+          <h3 style="color: #777; margin-top: 16px;"><%= visual.title %></h3>
+          <p style="margin-top: -3px; margin-bottom: 12px;"><%= visual.intro %></p>
           <%= visual.link.html_safe %>
           <p><em><%= visual.caption %></em></p>
           <%= simple_format(visual.description) %>
