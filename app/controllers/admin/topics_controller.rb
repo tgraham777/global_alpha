@@ -66,7 +66,7 @@ class Admin::TopicsController < Admin::BaseController
 
 private
   def topic_params
-    params.require(:topic).permit(:title, :report_date, :tagline, :intro, :conclusion, { visuals_attributes: [:id, :title, :link, :caption, :description]})
+    params.require(:topic).permit(:title, :report_date, :tagline, :intro, :conclusion, { visuals_attributes: [:id, :title, :intro, :link, :caption, :description]})
   end
 
   def create_topic_countries

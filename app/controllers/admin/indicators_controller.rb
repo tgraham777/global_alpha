@@ -63,7 +63,7 @@ class Admin::IndicatorsController < Admin::BaseController
 
 private
   def indicator_params
-    params.require(:indicator).permit(:name, :last_updated, :intro, :conclusion, { visuals_attributes: [:id, :title, :link, :caption, :description]})
+    params.require(:indicator).permit(:name, :last_updated, :intro, :conclusion, { visuals_attributes: [:id, :title, :intro, :link, :caption, :description]})
   end
 
   def create_country_indicators
