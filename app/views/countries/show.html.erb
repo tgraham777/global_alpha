@@ -6,17 +6,17 @@
 
         <h1><%= @country.name %></h1>
 
-        <%= @country.intro %><br>
+        <%= @country.intro.html_safe %><br>
         <% @visuals.each do |visual| %>
           <h3 style="color: #777; margin-top: 16px;"><%= visual.title %></h3>
-          <p style="margin-top: -3px; margin-bottom: 12px;"><%= simple_format(visual.intro) %></p>
+          <p style="margin-top: -3px; margin-bottom: 12px;"><%= visual.intro.html_safe %></p>
           <%= visual.link.html_safe %>
           <p><em><%= visual.caption %></em></p>
-          <%= simple_format(visual.description) %>
+          <%= visual.description.html_safe %>
         <% end %>
 
         <h3>Outlook</h3>
-        <p><%= @country.conclusion %></p><hr>
+        <p><%= @country.conclusion.html_safe %></p><hr>
 
         <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
         <% @related_topics.each do |topic| %>

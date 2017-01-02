@@ -7,7 +7,7 @@
   <% if @visual.topics.any? || @visual.indicators.any? || @visual.countries.any? || @visual.previews.any? %>
     <em><h4 style="margin-bottom: 15px;"><%= @visual.find_visual_source_type %>:</em> <%= link_to @visual.find_visual_source_name, @visual.find_admin_visual_source_route %></h4>
   <% end %>
-  <p style="margin-top: -3px; margin-bottom: 12px;"><%= simple_format(@visual.intro) %></p>
+  <p style="margin-top: -3px; margin-bottom: 12px;"><%= @visual.intro.html_safe %></p>
   <%= @visual.link.html_safe %>
   <p><em><%= @visual.caption %></em></p>
   <%= simple_format(@visual.description) %>

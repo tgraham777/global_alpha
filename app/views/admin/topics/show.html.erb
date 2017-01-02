@@ -15,17 +15,17 @@
           </div>
         <% end %>
 
-        <%= @topic.intro %><br>
+        <%= @topic.intro.html_safe %><br>
         <% @visuals.each do |visual| %>
           <h3 style="color: #777; margin-top: 16px;"><%= visual.title %></h3>
-          <p style="margin-top: -3px; margin-bottom: 12px;"><%= simple_format(visual.intro) %></p>
+          <p style="margin-top: -3px; margin-bottom: 12px;"><%= visual.intro.html_safe %></p>
           <%= visual.link.html_safe %>
           <p><em><%= visual.caption %></em></p>
-          <%= simple_format(visual.description) %>
+          <%= visual.description.html_safe %>
         <% end %>
 
         <h3>Conclusion</h3>
-        <p><%= @topic.conclusion %></p><hr>
+        <p><%= @topic.conclusion.html_safe %></p><hr>
 
         <h4><span class="glyphicon glyphicon-th-list"></span>&nbsp Related Topics</h4>
         <% @related_topics.each do |topic| %>
