@@ -14,6 +14,10 @@
  *= require_self
  */
 
+body {
+  font-size: 15px;
+}
+
 .alert {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -40,14 +44,51 @@
 }
 
 .tagline {
-  width: 85%;
-  border-top-style: solid;
+  width: 90%;
+  border-top-style: double;
   border-top-color: #CCC;
-  border-top-width: thin;
-  border-bottom-style: solid;
+  border-bottom-style: double;
   border-bottom-color: #CCC;
-  border-bottom-width: thin;
-  padding-top: 10px;
-  padding-bottom: 5px;
-  margin-bottom: 10px;
+  padding-top: 4px;
+  padding-bottom: 2px;
+  margin-top: 14px;
+  margin-bottom: 15px;
+  font-family: palatino;
+  font-size: 20px;
+  color: #777;
+  line-height: 120%;
+}
+
+.tagline-index {
+  width: 90%;
+  padding-top: 1px;
+  padding-bottom: 2px;
+  margin-bottom: -5px;
+  font-family: palatino;
+  font-size: 21px;
+  color: #777;
+  line-height: 120%;
+}
+
+.index-title {
+  border-bottom-style: ridge;
+  border-bottom-color: #EEE;
+  padding-bottom: 18px;
+}
+
+.index-item-title {
+  padding-top: 4px;
+}
+
+.takeaway-list {
+  list-style-type: none;
+}
+
+.takeaway-list-item {
+  margin-left: -16px;
+  margin-top: 10px;
+}
+
+.takeaway-bullet {
+  font-size: 20px;
 }

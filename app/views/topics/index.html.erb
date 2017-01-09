@@ -1,9 +1,9 @@
 <div class="container" id="topics-container">
-  <h1><span style="font-size: 25px;" class="glyphicon glyphicon-th-list"></span> Topics</h1>
+  <h1 class="index-title"><span style="font-size: 25px;" class="glyphicon glyphicon-th-list"></span> Topics</h1>
 
   <% @topics.each do |topic| %>
-    <hr><h2><%= link_to topic.title, topic_path(topic) %></h2>
+    <h2 class="index-item-title"><%= link_to topic.title, topic_path(topic) %></h2>
     <h4><em><%= topic.report_date %></em></h4>
-    <span style="font-family: palatino; font-size: 22px; color: #666;"><%= topic.tagline %></span>
+    <div class="tagline-index"><%= topic.tagline.html_safe %></div><hr>
   <% end %>
 </div>

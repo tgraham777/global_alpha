@@ -4,14 +4,14 @@
       <div class="container" id="topic-container">
         <%= link_to "Back to Topics", admin_topics_path, class: "back-to-link" %>
 
-        <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -12px;"><span class="glyphicon glyphicon-th-list"></span>&nbsp Topic</h4>
+        <h4 style="color: #CCC; margin-top: 16px; margin-bottom: -9px;"><span class="glyphicon glyphicon-th-list"></span>&nbsp Topic</h4>
 
         <h1><%= @topic.title %></h1>
-        <h5 style="margin-top: -5px; color: #888;"><em><%= @topic.report_date %></em></h5>
+        <p style="font-size: 14px; margin-top: -5px; color: #888;"><%= @topic.report_date %></p>
 
         <% if @topic.tagline %>
           <div class="tagline">
-            <span style="font-family: palatino; font-size: 22px; color: #666; line-height: 115%;"><%= @topic.tagline %></span>
+            <%= @topic.tagline.html_safe %>
           </div>
         <% end %>
 
