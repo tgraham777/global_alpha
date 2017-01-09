@@ -6,8 +6,8 @@
   </form>
 
   <% @previews.each do |preview| %>
-    <hr><h2><%= link_to preview.title, admin_preview_path(preview) %></h2>
+    <hr><h2 class="index-item-title"><%= link_to preview.title, admin_preview_path(preview) %></h2>
     <h4><em><%= preview.report_date %></em></h4>
-    <span style="font-family: palatino; font-size: 22px; color: #666;"><%= preview.tagline %></span>
+    <div class="tagline-index"><%= preview.tagline.html_safe %></div>
   <% end %>
 </div>
