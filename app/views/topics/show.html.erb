@@ -9,7 +9,7 @@
 
         <% if @topic.tagline %>
           <div class="tagline">
-            <span style="font-family: palatino; font-size: 22px; color: #666; line-height: 115%;"><%= @topic.tagline %></span>
+            <%= @topic.tagline.html_safe %>
           </div>
         <% end %>
 
