@@ -5,7 +5,7 @@
         <h4 style="color: #CCC; margin-top: 4px; margin-bottom: -12px;"><span class="glyphicon glyphicon-th-list"></span>&nbsp Topic</h4>
 
         <h1><%= @topic.title %></h1>
-        <h5 style="margin-top: -5px; color: #888;"><em><%= @topic.report_date %></em></h5>
+        <p style="font-size: 14px; margin-top: -5px; color: #888;"><%= @topic.report_date %></p>
 
         <% if @topic.tagline %>
           <div class="tagline">
