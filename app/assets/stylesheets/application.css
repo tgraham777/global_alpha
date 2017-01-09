@@ -70,6 +70,13 @@ body {
   line-height: 120%;
 }
 
+.index-title {
+  border-bottom-style: ridge;
+  border-bottom-width: thin;
+  border-bottom-color: #BBB;
+  padding-bottom: 18px;
+}
+
 .index-item-title {
   padding-top: 4px;
 }
