@@ -6,8 +6,8 @@
   </form>
 
   <% @topics.each do |topic| %>
-    <hr><h2 class="index-item-title"><%= link_to topic.title, admin_topic_path(topic) %></h2>
+    <h2 class="index-item-title"><%= link_to topic.title, admin_topic_path(topic) %></h2>
     <h4><em><%= topic.report_date %></em></h4>
-    <div class="tagline-index"><%= topic.tagline %></div>
+    <div class="tagline-index"><%= topic.tagline %></div><hr>
   <% end %>
 </div>
