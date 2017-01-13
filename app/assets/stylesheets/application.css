@@ -92,3 +92,8 @@ body {
 .takeaway-bullet {
   font-size: 20px;
 }
+
+.visual-caption {
+  font-size: 14px;
+  color: #777;
+}
