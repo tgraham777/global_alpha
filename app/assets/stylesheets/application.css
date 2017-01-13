@@ -71,9 +71,9 @@ body {
 }
 
 .index-title {
-  border-bottom-style: ridge;
-  border-bottom-color: #EEE;
-  padding-bottom: 18px;
+  border-bottom-style: double;
+  border-bottom-color: #DDD;
+  padding-bottom: 14px;
 }
 
 .index-item-title {
@@ -91,4 +91,9 @@ body {
 
 .takeaway-bullet {
   font-size: 20px;
+}
+
+.visual-caption {
+  font-size: 14px;
+  color: #777;
 }
