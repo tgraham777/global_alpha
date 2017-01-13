@@ -70,9 +70,11 @@
           <% @visuals.each do |visual| %>
           <tr>
             <% if visual == @visuals.last %>
-              <td style="border-bottom: none"><%= link_to visual.title, visual_path(visual) %></td>
+              <td style="padding-top: 8px; border-bottom: none"><%= link_to visual.title, visual_path(visual) %></td>
+            <% elsif visual == @visuals.first %>
+              <td style="padding-bottom: 8px; padding-top: 3px;"><%= link_to visual.title, visual_path(visual) %></td>
             <% else %>
-              <td><%= link_to visual.title, visual_path(visual) %></td>
+              <td style="padding-bottom: 8px; padding-top: 8px;"><%= link_to visual.title, visual_path(visual) %></td>
             <% end %>
           </tr>
           <% end %>
