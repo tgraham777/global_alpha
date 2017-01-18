@@ -16,10 +16,10 @@
       <%= f.text_field :report_date, class: "form-control", placeholder: "Enter report date" %><br>
 
       <%= f.label :tagline %>
-      <%= f.text_area :tagline, class: "form-control", placeholder: "Enter key takeaways" %><br>
+      <%= f.text_area :tagline, class: "form-control", placeholder: "Enter key takeaways", rows: 8 %><br>
 
       <%= f.label :intro %>
-      <%= f.text_area :intro, class: "form-control", placeholder: "Enter introduction (if applicable)" %><br><hr>
+      <%= f.text_area :intro, class: "form-control", placeholder: "Enter introduction (if applicable)", rows: 8 %><br><hr>
 
       <h4>Visual #1</h4>
 
@@ -28,7 +28,7 @@
         <%= ff.text_field :title, class: "form-control", placeholder: "Enter title" %><br>
 
         <%= ff.label :intro %>
-        <%= ff.text_area :intro, class: "form-control", placeholder: "Enter introduction or explanation of visual" %><br>
+        <%= ff.text_area :intro, class: "form-control", placeholder: "Enter introduction or explanation of visual", rows: 8 %><br>
 
         <%= ff.label :link %>
         <%= ff.text_field :link, class: "form-control", placeholder: "Enter Tableau script or URL" %><br>
@@ -37,12 +37,12 @@
         <%= ff.text_field :caption, class: "form-control", placeholder: "Enter caption for visual" %><br>
 
         <%= ff.label :description %>
-        <%= ff.text_area :description, class: "form-control", placeholder: "Enter description for visual and/or additional text" %><br><hr>
+        <%= ff.text_area :description, class: "form-control", placeholder: "Enter description for visual and/or additional text", rows: 8 %><br><hr>
       <% end %>
     </div>
 
     <%= f.label :conclusion %>
-    <%= f.text_area :conclusion, class: "form-control", placeholder: "Enter conclusion (if applicable)" %><hr>
+    <%= f.text_area :conclusion, class: "form-control", placeholder: "Enter conclusion (if applicable)", rows: 8 %><hr>
 
     <h4><span class="glyphicon glyphicon-globe"></span>&nbsp Related Countries</h4>
     <%= f.fields_for :countries do |country| %>

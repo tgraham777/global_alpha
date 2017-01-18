@@ -16,10 +16,10 @@
       <%= f.text_field :report_date, class: "form-control" %><br>
 
       <%= f.label :tagline %>
-      <%= f.text_area :tagline, class: "form-control" %><br>
+      <%= f.text_area :tagline, class: "form-control", rows: 8 %><br>
 
       <%= f.label :intro %>
-      <%= f.text_area :intro, class: "form-control" %><br>
+      <%= f.text_area :intro, class: "form-control", rows: 8 %><br>
 
       <%= f.fields_for :visuals, @visuals do |ff| %>
         <div class="edit-page-visual-counter">
@@ -27,7 +27,7 @@
           <%= ff.text_field :title, class: "form-control" %><br>
 
           <%= ff.label :intro %>
-          <%= ff.text_area :intro, class: "form-control" %><br>
+          <%= ff.text_area :intro, class: "form-control", rows: 8 %><br>
 
           <%= ff.label :link %>
           <%= ff.text_field :link, class: "form-control" %><br>
@@ -36,13 +36,13 @@
           <%= ff.text_field :caption, class: "form-control" %><br>
 
           <%= ff.label :description %>
-          <%= ff.text_area :description, class: "form-control" %><br>
+          <%= ff.text_area :description, class: "form-control", rows: 8 %><br>
         </div>
       <% end %>
     </div>
 
     <hr><%= f.label :conclusion %>
-    <%= f.text_area :conclusion, class: "form-control" %><hr>
+    <%= f.text_area :conclusion, class: "form-control", rows: 8 %><hr>
 
     <h4><span class="glyphicon glyphicon-globe"></span>&nbsp Related Countries</h4>
     <%= f.fields_for :countries do |country| %>
