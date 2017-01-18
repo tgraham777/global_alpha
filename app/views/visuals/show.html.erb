@@ -12,8 +12,8 @@
   <p style="margin-top: -3px; margin-bottom: 12px;"><%= @visual.intro.html_safe %></p>
   <%= @visual.link.html_safe %>
   <p class="visual-caption"><em><%= @visual.caption %></em></p>
-  <%= simple_format(@visual.description) %>
-  <%= simple_format(@visual.additional_description) %>
+  <%= @visual.description.html_safe %>
+  <%= @visual.additional_description %>
 
   <br><p style="color: #999"><em>Last updated: <%= @visual.updated_at.strftime("%B %d, %Y") %></em></p>
 </div>
