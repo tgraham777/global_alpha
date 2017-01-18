@@ -30,7 +30,7 @@
         <div id="related-topic">
           <h3 style="margin-top: 10px;"><%= link_to topic.title, topic_path(topic) %></h3>
           <em><h5 style="margin-top: -5px; margin-bottom: 5px; color: #888"><%= topic.report_date %></h5></em>
-          <%= truncate(topic.intro, length: 250) %>
+          <%= truncate(topic.intro.gsub("<p>", ""), length: 250) %>
         </div>
         <% end %><hr>
 
